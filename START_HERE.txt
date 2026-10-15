@@ -1,0 +1,53 @@
+VIDEO DOWNLOADER - START HERE
+=============================
+
+NO TERMINAL NEEDED. Double-click only.
+
+
+STEP 1 - BUILD THE INSTALLER
+----------------------------
+Double-click:
+
+  BUILD_INSTALLER_DOUBLE_CLICK.bat
+
+- Wait until finished (first time: several minutes).
+- If something fails, Notepad opens the log automatically.
+- Log file: build_logs\installer_build.log
+- On success, a folder opens with the installer.
+
+
+STEP 2 - INSTALL
+----------------
+Double-click:
+
+  installer_output\VideoDownloader_Setup_1.0.0.exe
+
+Install like any normal Windows program (Next, Install, Finish).
+Optional: desktop shortcut and launch after install.
+
+
+STEP 3 - OPEN THE APP
+---------------------
+Start Menu -> Video Downloader
+
+Or double-click: RUN_INSTALLED_APP.bat
+
+
+OTHER HELPFUL FILES
+-------------------
+  OPEN_INSTALLER_OUTPUT.bat  -> opens installer_output folder
+  RUN_INSTALLED_APP.bat      -> runs installed app
+
+
+IF BUILD FAILS
+--------------
+1. Read the black window (press any key only when done reading).
+2. Read build_logs\installer_build.log
+3. Inno missing? Install Inno Setup 6, run the .bat again.
+4. Python missing? Install from python.org, enable "Add Python to PATH".
+
+
+FFMPEG (for downloads)
+--------------------
+Optional before build: put ffmpeg.exe in tools\ffmpeg\
+Or install FFmpeg on Windows PATH. See tools\README.txt

@@ -1,0 +1,24 @@
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+build/
+installer_output/
+build_logs/
+*.spec.bak
+.venv/
+venv/
+env/
+
+logs/
+data/
+
+# Optional binaries (do not commit)
+tools/ffmpeg/*.exe
+tools/ffmpeg/*.dll
+
+# PyInstaller
+*.manifest
+/video_downloader_app/
