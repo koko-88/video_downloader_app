@@ -1,0 +1,6 @@
+catalogs:
+- name: pdac
+  url: https://raw.githubusercontent.com/juangcarmona/productshape/main/extensions/catalog.json
+  priority: 10
+  install_allowed: true
+  description: ''

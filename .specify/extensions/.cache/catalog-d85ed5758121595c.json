@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0",
+  "name": "Product Definition as Code (PDaC) extension catalog",
+  "description": "Installable Spec Kit extension catalog maintained by the ProductShape project. Add with: specify extension catalog add <raw URL of this file> --name pdac --install-allowed",
+  "repository": "https://github.com/juangcarmona/productshape",
+  "extensions": {
+    "pdac": {
+      "id": "pdac",
+      "name": "Product Definition as Code (PDaC)",
+      "version": "0.2.1",
+      "description": "Ground Spec Kit features in an accepted product definition: fetch a cited context projection before specifying, then verify citations after specify, plan and tasks. Never writes the product model.",
+      "author": "juangcarmona",
+      "repository": "https://github.com/juangcarmona/productshape",
+      "license": "Apache-2.0",
+      "category": "process",
+      "effect": "read-write",
+      "download_url": "https://github.com/juangcarmona/productshape/releases/download/speckit-pdac-v0.2.1/speckit-pdac.zip",
+      "sha256": "sha256:0a6722d920ecbdae583b5e2e91da949f096e712d9a6825a4fc0ce0df94a49b05",
+      "requires": {
+        "speckit_version": ">=0.7.2",
+        "tools": [
+          {
+            "name": "prodshape",
+            "version": ">=0.16.0",
+            "required": true
+          }
+        ]
+      },
+      "provides": {
+        "commands": 2,
+        "hooks": 3
+      },
+      "tags": [
+        "product",
+        "citations",
+        "pdac",
+        "traceability",
+        "governance"
+      ]
+    },
+    "pdac-product": {
+      "id": "pdac-product",
+      "name": "ProductShape PRODUCT workflows",
+      "version": "0.1.0",
+      "description": "Author, refine, validate, apply, archive and recover ProductShape product meaning in a separate Spec Kit lane.",
+      "author": "juangcarmona",
+      "repository": "https://github.com/juangcarmona/productshape",
+      "license": "Apache-2.0",
+      "category": "process",
+      "effect": "read-write",
+      "download_url": "https://github.com/juangcarmona/productshape/releases/download/speckit-pdac-product-v0.1.0/speckit-pdac-product.zip",
+      "sha256": "sha256:68e7bbfc3b601f091ff5c166205bf54e66c7c86041519f374e142afd69990009",
+      "requires": {
+        "speckit_version": ">=1.0.4",
+        "tools": [
+          {
+            "name": "prodshape",
+            "version": ">=0.19.0",
+            "required": true
+          }
+        ]
+      },
+      "provides": {
+        "commands": 6,
+        "hooks": 0
+      },
+      "tags": [
+        "product",
+        "product-change",
+        "recovery",
+        "pdac"
+      ]
+    }
+  }
+}

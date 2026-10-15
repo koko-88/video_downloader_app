@@ -1,0 +1,77 @@
+schema_version: "1.0"
+workflow:
+  id: "speckit"
+  name: "Full SDD Cycle"
+  version: "1.0.3"
+  author: "GitHub"
+  description: "Runs specify → plan → tasks → analyze → implement with review gates"
+
+requires:
+  speckit_version: ">=0.8.5"
+  integrations:
+    # Advisory compatibility list; execution environment is explicitly selected by the user.
+    any:
+      - "alquimia"
+      - "claude"
+      - "copilot"
+      - "gemini"
+      - "opencode"
+
+inputs:
+  spec:
+    type: string
+    required: true
+    prompt: "Describe what you want to build"
+  integration:
+    type: string
+    required: true
+    prompt: "User-selected integration for this run; initialization defaults do not select execution mode"
+
+steps:
+  - id: specify
+    command: speckit.specify
+    integration: "{{ inputs.integration }}"
+    input:
+      args: "{{ inputs.spec }}"
+
+  - id: review-spec
+    type: gate
+    message: "Review the generated spec before planning."
+    options: [approve, reject]
+    on_reject: abort
+
+  - id: plan
+    command: speckit.plan
+    integration: "{{ inputs.integration }}"
+    input:
+      args: "{{ inputs.spec }}"
+
+  - id: review-plan
+    type: gate
+    message: "Review the plan before generating tasks."
+    options: [approve, reject]
+    on_reject: abort
+
+  - id: tasks
+    command: speckit.tasks
+    integration: "{{ inputs.integration }}"
+    input:
+      args: "{{ inputs.spec }}"
+
+  - id: analyze
+    command: speckit.analyze
+    integration: "{{ inputs.integration }}"
+    input:
+      args: "{{ inputs.spec }}"
+
+  - id: review-analysis
+    type: gate
+    message: "Confirm material analysis findings are resolved and ROADMAP admits this feature before implementation; otherwise reject."
+    options: [approve, reject]
+    on_reject: abort
+
+  - id: implement
+    command: speckit.implement
+    integration: "{{ inputs.integration }}"
+    input:
+      args: "{{ inputs.spec }}"
