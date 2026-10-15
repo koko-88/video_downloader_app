@@ -1,50 +1,26 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+# Video Downloader Constitution
 
-## Core Principles
+Version: 1.0.0
+Ratified: 2026-10-16
+Last amended: 2026-10-16
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+## I. User-visible correctness and truthful coverage
+Every promised link class and export option requires an observable result with status and provenance. Full channel/playlist means iteration until verified pagination termination for accessible entries, not feed size or guessed total. Represent undiscoverable/unavailable and incomplete scans honestly. Requirements have stable IDs and verification evidence.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+## II. Preserve the existing production application
+Extend the existing Windows 10 PySide6 + yt-dlp application. Keep existing video/audio formats, queue, progress, cancellation, browser-cookie fallback, local storage, history/logging and distributable installer functioning. Reuse maintained libraries and actual code before introducing layers. Do not copy HBC-only governance/requirements.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+## III. Safety and privacy
+Operate within user permissions and source-site access controls. Don't circumvent DRM, access checks or rate limits. No hidden uploads, payment, credential transfer, or external application mutation. Sanitize hostile video metadata, timestamps, caption text and filesystem paths. Keep raw credentials and signed URLs out of logs. Opt-in ASR is local-only unless the user explicitly authorizes another processor.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+## IV. Evidence-led design and verification
+Requirements → plan → task → test traceability is mandatory. Use official API/source evidence when available. Resolve critical product/technical gaps before dependent implementation. Verify relevant behavior with deterministic tests and host integrations; missing/blocked/skipped tests are NOT_RUN or BLOCKED, never PASS. Repair diagnosed causes in bounded loops, not random experiments.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+## V. One owner per decision; minimal ceremony
+`PRODUCT.md` owns product promise, `ROADMAP.md` admission, feature `spec.md`/`plan.md`/`tasks.md` own feature design/execution, `LOGIC_VERIFICATION.md` and `IMPLEMENTATION_VERIFICATION.md` own verification policy, and `docs/workflows/transcript-feature.md` owns end-to-end execution sequencing. Skills and connected tools are capabilities, not a second policy. Prefer existing implementation and test tooling to bespoke abstractions.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
-
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+## VI. Controlled autonomous work
+Codex may implement and run local verification for authorized scope. No commit, push, release, payment, new credentials, destructive operation or new tool installation unless separately authorized by the user. Existing approval gates remain gates; unattended mode cannot silently impersonate user approval. Report unresolved blockers with independently completed work. User owns Git publishing and final release sign-off.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
-
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
-
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+Changes to this constitution require explicit rationale, impact on ongoing acceptance, and user approval for any relaxation of non-negotiable principles. Validate all new specs and code against it.

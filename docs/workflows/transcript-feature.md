@@ -1,41 +1,55 @@
-# Codex End-to-End Runbook — VD-02 Transcript Feature
+# VD-02 — Codex End-to-End Workflow (8-stage runbook)
 
-## Goal and operating bounds
+**Read first:** `AGENTS.md` → `PRODUCT.md` → `ROADMAP.md` → `specs/transcript-extraction/spec.md` → `docs/workflows/capabilities.md` → `docs/verification/acceptance.md`. This Markdown is the authoritative **agent procedure**, not a daemon, scheduled runner or substitute for MCP authentication. Run in the user's active Codex session; user controls its duration and permissions.
 
-Extend existing Windows PySide6/yt-dlp application with comprehensive transcript discovery/extraction, multi-format export and properly scoped optional local ASR. Work independently on the current worktree, with bounded verification-driven iterations. Do not commit/push/force/deploy/delete user data or install tools/spend credits without explicit authorization. This Markdown is a runbook, **not** a self-executing orchestrator or a permission bypass.
+## Operating contract
+- Implement authorized changes in existing Windows PySide6/yt-dlp app and run local checks. Preserve uncommitted data; no git commit/push, force, cloud publish, package install, payment, credential/tool-account changes, or destructive cleanup without separate user approval.
+- Stage has an entry precondition, named capabilities in `docs/workflows/capabilities.md`, tangible outputs and exit gate. A missing *optional* service must not prevent independent work; a missing essential feature/permission must stop dependent work.
+- Existing `.specify/workflows/speckit/workflow.yml` contains explicit human gates. **Do not represent this runbook as executing that YAML or silently auto-approve gates.** The main session can continue independently authorized changes; report user-only decisions pending.
 
-## Stage 0 — Discover live repo, preserve work
+## Stage 0 — Worktree and tool discovery (KOK-5)
+**Use:** Git, local Python source/tests, Spec Kit integration status, paths-only script; exact probes in capabilities catalog.
+**Entry:** repository open; do not assume remote equals worktree.
+**Actions:** review git diff/status and relevant code; verify `.specify/feature.json` resolves to `specs/transcript-extraction`; check copied Spec Kit managed-file modifications rather than overwriting them; record installed/callable/authenticated/operational/verified for each intended tool. Capture existing feature regression command results before edits.
+**Gate:** actual architecture, active spec path, modifications, testing baseline and any blockers are known.
 
-Check pwd, git status --short, current branch, app modules/tests/config, existing product/spec files, installed agents/skills/MCP and command help. Respect any newer local edits not reflected in GitHub. Read AGENTS.md, PRODUCT.md, ROADMAP.md, specs/transcript-extraction/spec.md, docs/verification/acceptance.md. Record observed/inferred/unknown separately. Do not duplicate working architecture or existing tasks.
+## Stage 1 — Evidence and bounded reverse engineering (KOK-5 / KOK-6)
+**Use:** authoritative yt-dlp/PySide6 docs/source and installed version; REA skill/CLI only if an authorized external app target needs reverse engineering. `REA setup selected none`, so MCP is not assumed integrated. Check REA capability/version and actual command schema before use; never install analysis engines or inspect targets without permission. Inspect local Codex MCP list for Linear/Qodo; verify any intended operation. Record platform URL coverage/continuation behavior, subtitle track behavior, FFmpeg/storage and Windows packaging constraints.
+**Gate:** source-backed findings distinguish observed, inferred and unknown. No unsupported technical assumptions are treated as facts.
 
-## Stage 1 — Capability & technical evidence
+## Stage 2 — Product scenarios and acceptance contracts (KOK-5)
+**Use:** `PRODUCT.md`, `ROADMAP.md`, VD-02 spec, project constitution, `LOGIC_VERIFICATION.md`.
+**Actions:** reconcile FR-001..012 and SC-001..007 with actual feature decisions, supported URL classes, auth/access limitation, language/caption/ASR default behavior and resumption boundary. Expand explicit scenarios when supported evidence finds omissions; reconcile rather than inventing new scope. Critical unanswerable user choices are explicit blockers.
+**Gate:** no critical unresolved contradiction for dependent work; each requirement has an observable acceptance claim.
 
-Read yt-dlp official extractor/subtitle/options documentation and locally installed package version and code, PySide6 threads/queues, conversion libraries, packaged-runtime constraints. Inspect REA if present: name/version, registration, source, operations, privileges. User has reported REA skill installation; do not assume agent integration or an operational REA provider. Use REA only where reverse engineering an external app is genuinely required and permitted, not to replace available source/docs. Inventory Qodo/Linear and tool permissions. For absent/untested integrations, record it; avoid installing without permission. Research best native runner for bounded Codex execution rather than assuming Spec Kit YAML or a Markdown file executes itself.
+## Stage 3 — Risk-specific technical spike, only where justified (KOK-6)
+**Use:** official source, relevant REA evidence only if needed, no alternative tooling ceremony. Identify an actual design-blocking unknown that cannot be resolved from reliable docs/source. If such a risk exists, record hypothesis, bounded reversible evidence, result and final decision; do not run random tests to choose technologies. If none exists, mark SKIPPED WITH REASON.
+**Gate:** every architecture-critical unknown is resolved or dependent tasks blocked.
 
-## Stage 2 — Scope and requirements alignment
+## Stage 4 — Spec Kit plan/tasks/consistency (KOK-6)
+**Use:** installed repo Codex skill `speckit-plan` → `speckit-tasks` → `speckit-analyze` + `speckit-checklist` as appropriate; `speckit-clarify` only for genuinely unresolved details. **The existing VD-02 spec exists; do not blindly rerun `speckit-specify` to create a second spec/branch.** Read actual skill instructions. Before any write-oriented skill, verify FEATURE_DIR with paths-only script and `specify integration status --json`. Original skill adapters expect root `LOGIC_VERIFICATION.md` and `IMPLEMENTATION_VERIFICATION.md`, both supplied here.
+**Actions:** generate `specs/transcript-extraction/plan.md` and `tasks.md` with sources, design tradeoffs, dependency order, acceptance traceability and implementation ownership; run read-only analyze and reconcile problems before coding. Any skill that asks for human signoff gets a recorded PENDING_USER gate; don't claim it was approved.
+**Gate:** complete reviewed design, tasks and FR/SC↔task↔test mapping for authorized work; no contradiction silently bypassed.
 
-Verify canonical product scope; reconcile contradictions, enumerate URL cases, discoverability/continuations, subtitle source hierarchy, formats and ASR operational expectations. Update feature spec acceptance cases; draft/review proposed product changes before accepting ambiguous requirements. A critical unresolved scope or rights question blocks dependent tasks; continue safe evidence/planning.
+## Stage 5 — Verified implementation loop (KOK-7)
+**Use:** existing app worker/queue/settings/config and yt-dlp options; Python unittest, golden data/fixture tests, UI-thread tests; `IMPLEMENTATION_VERIFICATION.md`.
+For each independent accepted task: (1) load spec/task/affected source (2) edit only relevant files (3) run targeted deterministic gate (4) classify failed evidence (5) repair underlying cause (6) re-run affected and baseline regression (7) checkpoint exact status and remaining tasks. Maximum three unsuccessful repairs in same category without new evidence; then BLOCKED. No disabled tests, threshold reductions, fake status or indefinite automatic retries. Tests alone aren't substitute for exact observable product acceptance.
+**Gate:** feature tasks implemented and tested; failures remain explicit and continue only independent work.
 
-## Stage 3 — Technical risk disposition
+## Stage 6 — Convergence, review, desktop packaging (KOK-8)
+**Use:** `speckit-converge` for spec↔code gaps, `speckit-analyze` for doc consistency, separate code reviewer/Qodo if operational, existing `build_exe.py` and `build_installer.py` with destructive build-dir check first. Verify cancel/resume, full pagination, status/manifest, caption representation and export formats, original downloads, UI responsiveness, Windows packaged app. No unattended PR creation/push for Qodo review. Review result must be independent or PENDING; missing optional provider not faked.
+**Gate:** recorded PASS or precise FAIL/BLOCKED/NOT_RUN by check; no "release complete" if crucial smoke/review missing.
 
-Identify only material unknowns remaining after official docs/source inspection; if a technical spike is indispensable, define falsifiable hypothesis, bounded evidence needed, minimal reversible implementation and disposition before production design. Do not run arbitrary experiments for tool selection. Never turn a disposable prototype into committed implementation architecture.
+## Stage 7 — Delivery and Linear reconciliation (KOK-8)
+**Use:** actual test results, git diff/status, Linear project and existing KOK-5..8 issues if authenticated in the Codex runtime. ChatGPT Linear connector availability does not prove Codex availability. Update issues ONLY upon successful real tool call; otherwise provide issue-ready text in the final disposition. No commit or push.
+**Gate:** per-criterion results, changed files, architectural decisions, coverage numbers with source boundaries, user-only decisions and pending reviews clearly described.
 
-## Stage 4 — Spec Kit plan + tasks
+## Progress / loop resume
+Keep durable checkpoints in existing `specs/transcript-extraction/tasks.md` or `plan.md` and native test logs, not a second orchestration ledger. A Codex session may execute successive tasks/repairs; an external Ralph/background runner has **not** been configured, so don't assert future repeated operation or guaranteed overnight success. The user may configure a runner separately after explicit permission and verified compatibility. Respect quotas and interruption; resume from worktree/tasks evidence, not remembered narrative.
 
-Use existing installed Spec Kit skills (specify, clarify, plan, tasks, analyze, checklist as relevant). Record selected architecture and alternatives in specs/transcript-extraction/plan.md and tasks in tasks.md once research resolves design. Avoid reusing HBC project docs. Require explicit task→requirement→test mapping and incremental checkpoint identifiers. Existing .specify/workflows/speckit/workflow.yml has user review gates; do **not** claim that its YAML executes unattended or disable explicit user approvals silently. Use this runbook as authorized execution scope for independently resolvable items; stop at decisions reserved for user.
-
-## Stage 5 — Implementation loop
-
-Implement in current app architecture; add smallest justified modules (e.g., discovery, track acquisition, converter, manifest) as determined by plan; reuse actual queue/worker/logging/settings where compatible. Per task: inspect source → implement → run checks → classify errors → root-cause repair → re-run affected regression → checkpoint. Hard cap 3 unsuccessful same-cause repair attempts; no shifting acceptance criteria, unbounded tool restarts, or silent fallbacks. Run headless/CLI test commands with explicit timeouts if automation runner supports it. Do not block on optional tool absent if equivalent verification can be done with local tests; mark optional review pending.
-
-## Stage 6 — Review, convergence, packaging
-
-Run Spec Kit analyze/checklist/converge if operational; review entire diff and security/quality regressions. Qodo is advisory independent reviewer only when credentials/plan/integration actually usable; otherwise record unmet independent-review requirement. Run Windows installer build and launch/smoke only on compatible local environment, record NOT_RUN on non-Windows. User owns committing/pushing and releasing.
-
-## Stage 7 — Report
-
-Report changed files, design, coverage matrix, exact executed checks and statuses, all unresolved blockers, whether original download behavior still passes, and manual approval needed. Update Linear issues by existing IDs KOK-5, KOK-6, KOK-7 and KOK-8 only if tool is available/authorized; never let Linear claims override actual worktree/test results. Leave changes uncommitted.
-
-## Bounded autonomy
-
-Work across approved repo changes without asking about reversible implementation details. Stop when an essential architectural/product/security/payments/credentials/user approval is unresolved, on unexpected destructive action, runaway API/retry behavior, or explicit agent quotas. Preserve recoverable current state. **No promise of completed unattended execution unless a real runner has been configured and demonstrated.**
+## Failure routing
+- Feature context points elsewhere → stop Spec Kit writes, fix context first.
+- Critical product ambiguity, unsafe operation, credentials or missing approval → block dependent task only.
+- External provider absent (REA/Qodo/Linear) → use documented equivalent **only** where it truly satisfies acceptance, otherwise mark NOT_RUN.
+- Pagination/API restrictions → keep partial manifest and causal error; don't label archive complete.
+- Windows packaging cannot run → NOT_RUN/BLOCKED, don't claim release.

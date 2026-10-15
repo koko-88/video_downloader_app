@@ -1,22 +1,17 @@
-# Start Codex for VD-02
+# Codex entry — VD-02
 
 ## Goal
-Deliver the complete Transcript Extraction & Export feature end-to-end in the existing K:\video_downloader_app Windows PySide6/yt-dlp application, preserving existing download behavior.
+Deliver Transcript Extraction & Export end-to-end, including comprehensive supported URL discovery/pagination, tracks, source provenance, TXT/MD/JSON/SRT/VTT, honest coverage, queue/GUI integration, resume/cancel/retry and relevant local-ASR behavior, while preserving original Windows PySide6/yt-dlp downloads.
 
 ## Requirements
-1. Read AGENTS.md, PRODUCT.md, ROADMAP.md, specs/transcript-extraction/spec.md, docs/workflows/transcript-feature.md, and docs/verification/acceptance.md.
-2. Execute the documented stages in order. First inspect the actual local worktree and installed skills, MCP tools, Spec Kit integration and available agent runner; do not assume that installation implies operational access.
-3. Use official source code/documentation for technical evidence; use REA only if authorized external reverse engineering genuinely closes a specific evidence gap.
-4. Resolve material contradictions and critical scope/requirements dependencies before dependent implementation.
-5. Use the existing Spec Kit integrations for consistent feature plan, tasks, traceability and gate analysis. Do not silently bypass human approval gates.
-6. Deliver supported URL discovery across all pages, manual/automatic caption acquisition, configurable languages, multiple output formats, precise coverage reporting, cancellation/retry/resume, safe storage and optional locally verified ASR where permitted.
-7. Use bounded task-level verification loops, diagnose root causes and preserve checkpoints; run new acceptance tests, existing regression suite, UI integration verification and packaged-app checks.
-8. Track progress/blockers in the connected Linear project using existing issues KOK-5 through KOK-8 when actually available. Use Qodo for independent review when its integration and permissions are verified.
+1. Read `AGENTS.md` and `docs/workflows/transcript-feature.md`, then referenced PRODUCT/ROADMAP/constitution/spec/capabilities/verification contracts. Execute the eight stages sequentially by their actual preconditions and gates.
+2. Map each phase to actual installed skills and tools from `docs/workflows/capabilities.md`; inspect local version, MCP registrations, permissions and real operation before claiming availability. REA global skill was installed without Codex MCP selection; never claim MCP connected without observing it. Linear exists in ChatGPT, not automatically local Codex. Qodo is not verified.
+3. Reconcile current local worktree, feature-dir pointer, copied Spec Kit customizations and existing code before edits. Research official libraries/source, targeted REA investigation only when external evidence is necessary, and bounded spikes only to resolve essential unknowns.
+4. Produce evidence-backed design with requirement-to-task-to-test mapping using installed Spec Kit skills. Respect actual workflow approvals and don't duplicate features/branches. Execute locally authorized implementation with bounded root-cause verification loops; save checkpoints.
+5. Run exact Python/unit/feature/UI/Windows installer gates where permitted, independent review when available, and no false complete-channel/caption claims. Update Linear IDs KOK-5..KOK-8 only if really connected.
 
 ## Constraints
-- No commits, pushes, force updates, releases, service installation, purchases or external account changes without user authorization.
-- No overwriting unrelated working-tree edits, duplicate governance/orchestration, fabricated tests, fake complete-archive claims or unbounded autonomous retries.
-- If a critical requirement, right, credential or human approval is unresolved, block only dependent work and continue independently executable authorized work.
+No Codex git commits/pushes/releases, forced changes, global installs, payment, external account mutation, destructive operations, silent approval bypass, missing dependency invention or unbounded retries. Preserve all unrelated work. Block only truly dependent work and continue remaining authorized tasks.
 
 ## Expected outcome
-Deliver the integrated feature with observed verification evidence if acceptance gates pass; otherwise complete safely executable independent work and report precise blockers. End with architecture decisions, changes, exact test results, coverage status, independent review state and remaining approvals. Leave changes uncommitted.
+Implemented feature plus actual evidence of acceptance where possible; otherwise maximum safely completed independent work with precise blockers, missing capabilities/permissions, review state, skipped tests and next human action. Leave all source changes uncommitted.
