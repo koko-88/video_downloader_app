@@ -23,6 +23,12 @@ For each gate record PASS/FAIL/BLOCKED/NOT_RUN with input/fixture identity, exac
 
 Each iteration: pick next independent approved task → implement focused change → run relevant checks → diagnose failing evidence → repair root cause → run regressions → mark checkpoint. At most 3 unsuccessful attempts on same failure category without new evidence; then mark BLOCKED and continue unrelated safe tasks. No test deletion, threshold relaxation or fabricated receipt to get green. Stop after limits selected and recorded in feature plan; no indefinite unattended retries.
 
+## Actual sensor and feedback
+
+`scripts/feature_loop.py` measures spec/plan/task presence, FR/SC textual traceability and (with `--run-checks`) existing fixed Python syntax/unittest checks. `PASS_WITH_SKIPS` is not a full PASS, and `VERIFY_RELEASE` only requests final acceptance, **not** approval. The sensor cannot establish semantic requirement coverage, channel completeness, GUI correctness, caption integrity or a valid Windows installer.
+
+For each failed acceptance case, identify the measured error and select a small correction. After two unsuccessful fixes sharing one assumption, follow Pstack's **attack-the-premise**: name the common assumption and collect contrary/confirming evidence before repeating a fix. Keep the requirement→task→test links and actual output evidence current; preserve regression gates. Do not declare all requirements passed just because tests that currently exist are green.
+
 ## Release gate
 
 Feature and regression tests verified; local runtime and Windows installer smoke verified; independent review disposition; no unresolved critical defects; actionable limitations and missing real-network evidence reported. If a review/service/tool is unavailable, report NOT_RUN and do not claim complete release.

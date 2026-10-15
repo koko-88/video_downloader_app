@@ -44,6 +44,14 @@ For each independent accepted task: (1) load spec/task/affected source (2) edit 
 **Use:** actual test results, git diff/status, Linear project and existing KOK-5..8 issues if authenticated in the Codex runtime. ChatGPT Linear connector availability does not prove Codex availability. Update issues ONLY upon successful real tool call; otherwise provide issue-ready text in the final disposition. No commit or push.
 **Gate:** per-criterion results, changed files, architectural decisions, coverage numbers with source boundaries, user-only decisions and pending reviews clearly described.
 
+## Runnable, measured VD-02 Control Loop
+
+Read `docs/workflows/loop-engineering.md`. Implemented deterministic sensor/controller entry points are `scripts/feature_loop.py measure` and `scripts/feature_loop.py next --run-checks` using the existing app Python interpreter; the latter runs fixed compileall and unittest baseline checks. Published main initially lacks `plan.md` and `tasks.md`, so `PLAN_OR_RECONCILE` is the expected next action, **not** a code-implementation green light. Generate and verify Spec Kit plan/tasks with explicit FR/SC-to-task mappings first.
+
+Every cycle: measure actual gap → select and check one dependency-safe increment → Codex implements and verifies it → remeasure, including regressions → record task evidence and move to next. Two failed fixes sharing a premise trigger Pstack's `attack-the-premise` reasoning **before** another patch. Three failed attempts is only a safety cap. `VERIFY_RELEASE` is a final verification request, not a PASS certificate.
+
+Use the HumanLayer/Pstack source principles without pretending their packages are installed; user deferred all optional installs. No unattended loop runner is configured tonight. Continue within active Codex session, never silently approve Spec Kit review gates.
+
 ## Progress / loop resume
 Keep durable checkpoints in existing `specs/transcript-extraction/tasks.md` or `plan.md` and native test logs, not a second orchestration ledger. A Codex session may execute successive tasks/repairs; an external Ralph/background runner has **not** been configured, so don't assert future repeated operation or guaranteed overnight success. The user may configure a runner separately after explicit permission and verified compatibility. Respect quotas and interruption; resume from worktree/tasks evidence, not remembered narrative.
 

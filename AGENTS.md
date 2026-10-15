@@ -7,8 +7,9 @@
 4. `specs/transcript-extraction/spec.md` — VD-02 user scenarios, FR/SC and acceptance.
 5. `docs/workflows/transcript-feature.md` — execution order and stopping rules.
 6. `docs/workflows/capabilities.md` — stage-by-stage skills, exact tool entry points and availability probes.
-7. `LOGIC_VERIFICATION.md` and `IMPLEMENTATION_VERIFICATION.md` — project-wide validation ownership; feature checks stay under `docs/verification/acceptance.md`.
-8. Existing `app/`, `tests/`, scripts, packaging, relevant installed skills. Read incrementally.
+7. `docs/workflows/loop-engineering.md` — source-backed control loop, runnable sensor/controller, and gap audit.
+8. `LOGIC_VERIFICATION.md` and `IMPLEMENTATION_VERIFICATION.md` — project-wide validation ownership; feature checks stay under `docs/verification/acceptance.md`.
+9. Existing `app/`, `tests/`, scripts, packaging, relevant installed skills. Read incrementally.
 
 ## Execution authorization
 The operator runs Codex to implement VD-02 within this repository. Repo source edits and bounded local verification are authorized. Codex must NOT commit, push, force-update Git, publish releases, deploy, purchase tools/services, install new dependencies globally, change account/credential integrations, silently overwrite unrelated local changes, or delete user data. Only the user authorizes those separately.

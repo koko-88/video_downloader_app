@@ -11,6 +11,7 @@ requires:
   integrations:
     # Advisory compatibility list; execution environment is explicitly selected by the user.
     any:
+      - "codex"
       - "alquimia"
       - "claude"
       - "copilot"

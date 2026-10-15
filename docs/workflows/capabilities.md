@@ -19,6 +19,18 @@
 | 0–7 — tracking | Linear | Project: https://linear.app/koko-88/project/video-downloader-transcript-extraction-and-export-cba592feaaa3 ; tasks `KOK-5`/`KOK-6`/`KOK-7`/`KOK-8` | Connected in ChatGPT; NOT verified inside local Codex. Verify `codex mcp list` and a real read before using. Official Codex endpoint `https://mcp.linear.app/mcp`; setup requires explicit user action/login if absent | Mirror verified progress and blockers; never invent updates or duplicate task ledger |
 | reproducibility | mise | `mise --version`, `mise tasks ls`; source project has separate web-specific mise.toml | User reports mise installed; target has no verified pinned toolchain yet. Do NOT copy web project's Node/graphics pins | Select target-specific versions only after inspecting existing Python/runtime/installer constraints |
 
+### Actual control-loop entry points (no new packages)
+
+`scripts/feature_loop.py` is a runnable standard-library-only deterministic Sensor/Controller. Call it with the existing Python interpreter. `measure` inspects FR/SC structural traceability and presence of plan/tasks; `next --run-checks` runs fixed compileall/unittest checks and issues an action (BLOCKED / PLAN_OR_RECONCILE / DIAGNOSE / IMPLEMENT_ONE / VERIFY_RELEASE). It does not write production code or run a background daemon. Current repo missing plan/tasks is deliberate and visible; Codex generates those with existing Spec Kit skills. `docs/workflows/loop-engineering.md` contains complete expected signals, proof limits, source principles, capability gaps and tomorrow's optional installation queue.
+
+```powershell
+.\.venv\Scripts\python.exe scripts\feature_loop.py measure
+.\.venv\Scripts\python.exe scripts\feature_loop.py next --run-checks
+.\.venv\Scripts\python.exe -m unittest tests.test_feature_loop -v
+```
+
+Choose the already-working Python interpreter if `.venv` is absent; do not install now. No green baseline can certify transcript fidelity/UI/packaging. HumanLayer/Pstack packages and Ralph/Symphony runners have not been verified installed; don't claim operational readiness.
+
 ## Safe, no-install Windows preflight
 
 Run in PowerShell from repository root, capture exact stdout/stderr and exit codes:
