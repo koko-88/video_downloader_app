@@ -1,0 +1,5 @@
+# Transcript interface and output
+Transcripts tab: multiline URLs, folder, exact language, four precedence modes, independent MD/TXT/JSON/SRT/VTT, optional local-ASR checkbox. Actions Extract / Resume, Retry failed, Cancel, Open folder. Same inputs/choices resume batch. Show scan/extraction/export counts and per-video states.
+Unsupported named-extractor input fails per input. Missing requested language = language_unavailable; truly no tracks = caption_absent. ASR unavailable never transcript success. Classified static errors omit secrets.
+UTF-8 TXT cue text/newlines; MD escaped title/provenance and timestamped cues; JSON schema 1/provenance/millisecond cues; SRT numbered HH:MM:SS,mmm; VTT WEBVTT plus HH:MM:SS.mmm. Escape markup where rendered. Overlap/repeated cues preserved. Malformed input fails explicitly, no silent partial parse.
+Atomic manifest. Outputs confined within batch. Never overwrite differing files; reuse interrupted files only byte-identical. Verify success hashes before skipping. Batch lock prevents concurrent writes.

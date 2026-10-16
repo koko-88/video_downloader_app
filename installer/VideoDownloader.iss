@@ -7,7 +7,12 @@
 #define MyAppExeName "VideoDownloader.exe"
 
 ; Paths relative to this .iss file (installer\)
+#ifndef BuildSource
 #define BuildSource "..\dist\VideoDownloader"
+#endif
+#ifndef BuildOutput
+#define BuildOutput "..\installer_output"
+#endif
 
 [Setup]
 AppId={{A7B3C9E1-4F2D-4A8B-9C0E-1D5E6F7A8B9C}
@@ -17,7 +22,7 @@ AppPublisher={#MyAppPublisher}
 DefaultDirName={autopf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
-OutputDir=..\installer_output
+OutputDir={#BuildOutput}
 OutputBaseFilename=VideoDownloader_Setup_{#MyAppVersion}
 Compression=lzma2
 SolidCompression=yes

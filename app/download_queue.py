@@ -163,9 +163,10 @@ class DownloadQueue(QObject):
             job.message = "Cancelled"
         self._pending.clear()
 
-    def wait_for_thread(self, ms: int = 5000) -> None:
+    def wait_for_thread(self, ms: int = 5000) -> bool:
         if self._thread and self._thread.isRunning():
-            self._thread.wait(ms)
+            return self._thread.wait(ms)
+        return True
 
     @Slot()
     def _process_next(self) -> None:
@@ -229,6 +230,11 @@ class DownloadQueue(QObject):
 
     @Slot(bool, str, object)
     def _on_worker_finished(self, success: bool, message: str, output_path: object) -> None:
+        thread = self._thread
+        if thread is not None:
+            # Result is emitted immediately before run returns; retain the native thread.
+            thread.wait()
+            thread.deleteLater()
         job = self._current
         if job is None:
             return

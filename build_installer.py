@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import os
 import shutil
 import subprocess
@@ -136,22 +137,33 @@ def _print_inno_not_found() -> None:
             print(f"  [{mark}] {path}")
 
 
-def main() -> int:
+def main(argv=None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--source-dir", type=Path, help="Explicit PyInstaller onedir folder")
+    parser.add_argument("--output-dir", type=Path, help="New installer output folder")
+    args = parser.parse_args(argv)
     root = Path(__file__).resolve().parent
-    dist_exe = root / "dist" / "VideoDownloader" / "VideoDownloader.exe"
+    source_dir = args.source_dir.resolve() if args.source_dir else root / "dist" / "VideoDownloader"
+    dist_exe = source_dir / "VideoDownloader.exe"
     iss = root / "installer" / "VideoDownloader.iss"
-    out_dir = root / "installer_output"
+    out_dir = args.output_dir.resolve() if args.output_dir else root / "installer_output"
     installer_exe = out_dir / INSTALLER_NAME
 
     if not iss.is_file():
         print(f"ERROR: Missing installer script: {iss}")
         return 1
 
+    if installer_exe.exists():
+        print("ERROR: Existing installer preserved. Choose a new --output-dir.")
+        return 1
+    if not dist_exe.is_file() and args.source_dir:
+        print(f"ERROR: Missing selected source EXE: {dist_exe}")
+        return 1
     if not dist_exe.is_file():
         print("PyInstaller output not found. Running build_exe.py first...")
         import build_exe
 
-        if build_exe.main() != 0:
+        if build_exe.main([]) != 0:
             print("ERROR: build_exe.py failed. Cannot create installer.")
             return 1
         if not dist_exe.is_file():
@@ -161,7 +173,6 @@ def main() -> int:
     iscc = find_iscc()
     if iscc is None:
         _print_inno_not_found()
-        open_inno_download_page()
         return 1
 
     print(f"Inno Setup compiler: {iscc}")
@@ -170,7 +181,7 @@ def main() -> int:
     env = os.environ.copy()
     env["INNO_SETUP_DIR"] = str(iscc.parent)
 
-    cmd = [str(iscc), str(iss)]
+    cmd = [str(iscc), f"/DBuildSource={source_dir}", f"/DBuildOutput={out_dir}", str(iss)]
     print("Running:", " ".join(cmd))
     print("Working directory:", root / "installer")
     result = subprocess.run(cmd, cwd=root / "installer", env=env)

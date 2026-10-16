@@ -42,6 +42,10 @@ def _dark_palette() -> QPalette:
 
 
 def main() -> int:
+    if len(sys.argv) == 3 and sys.argv[1] == "--smoke-report":
+        from pathlib import Path
+        from app.packaged_smoke import run
+        return run(Path(sys.argv[2]))
     setup_logging()
     sys.excepthook = _excepthook
 

@@ -23,6 +23,7 @@ from PySide6.QtWidgets import (
     QProgressBar,
     QTableWidget,
     QTableWidgetItem,
+    QTabWidget,
     QTextEdit,
     QVBoxLayout,
     QWidget,
@@ -83,7 +84,16 @@ class MainWindow(QWidget):
             self.setWindowIcon(QIcon(str(icon_path)))
 
     def _build_ui(self) -> None:
-        layout = QVBoxLayout(self)
+        from app.transcript_ui import TranscriptPanel
+
+        outer = QVBoxLayout(self)
+        self.tabs = QTabWidget()
+        downloads = QWidget()
+        layout = QVBoxLayout(downloads)
+        self.transcripts = TranscriptPanel(self._settings)
+        self.tabs.addTab(downloads, "Downloads")
+        self.tabs.addTab(self.transcripts, "Transcripts")
+        outer.addWidget(self.tabs)
 
         layout.addWidget(QLabel("Video URLs (one per line):"))
         self.url_input = QTextEdit()
@@ -504,9 +514,15 @@ class MainWindow(QWidget):
         self.log_box.append(text)
 
     def closeEvent(self, event) -> None:  # noqa: N802
+        if not self.transcripts.shutdown():
+            event.ignore()
+            self.transcripts.summary.setText("Cancelling; close again after the current request finishes.")
+            return
         if self._queue.is_active:
             self._queue.cancel()
-            self._queue.wait_for_thread(5000)
+            if not self._queue.wait_for_thread(100):
+                event.ignore()
+                return
         self._settings.last_output_dir = self.path_input.text().strip()
         self._settings.last_format = self.format_combo.currentText()
         self._settings.last_video_quality = self.video_quality_combo.currentText()

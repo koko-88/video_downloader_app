@@ -3,14 +3,17 @@
 
 from __future__ import annotations
 
+import argparse
 import os
-import shutil
 import subprocess
 import sys
 from pathlib import Path
 
 
-def main() -> int:
+def main(argv=None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output-root", type=Path, help="New isolated build destination; existing build/dist are never removed")
+    args = parser.parse_args(argv)
     root = Path(__file__).resolve().parent
     spec = root / "video_downloader.spec"
 
@@ -33,6 +36,18 @@ def main() -> int:
         print("  ffmpeg.exe:   no (optional - app can use PATH FFmpeg at runtime)")
         print("                Put ffmpeg.exe in tools/ffmpeg/ before build to bundle it.")
 
+    destination = args.output_root.resolve() if args.output_root else root
+    try:
+        destination.relative_to(root)
+    except ValueError:
+        print("ERROR: Build destination must be inside this workspace.")
+        return 1
+    if any((destination / folder).exists() for folder in ("build", "dist")):
+        print("ERROR: Existing build/dist preserved. Choose a new --output-root inside the workspace.")
+        return 1
+    destination.mkdir(parents=True, exist_ok=True)
+
+
     # Ensure PyInstaller is available
     try:
         import PyInstaller  # noqa: F401
@@ -50,12 +65,6 @@ def main() -> int:
     print(f"  yt-dlp version:    {yt_dlp.version.__version__}")
     print(f"  yt-dlp package:    {yt_dlp.__file__}")
 
-    for folder in ("build", "dist"):
-        path = root / folder
-        if path.is_dir():
-            shutil.rmtree(path)
-            print(f"Removed old {folder}/")
-
     cmd = [
         sys.executable,
         "-m",
@@ -63,9 +72,12 @@ def main() -> int:
         str(spec),
         "--noconfirm",
         "--clean",
+        "--distpath", str(destination / "dist"),
+        "--workpath", str(destination / "build"),
     ]
     print("Running:", " ".join(cmd))
     build_env = os.environ.copy()
+    build_env["PYINSTALLER_CONFIG_DIR"] = str(destination / "cache")
     path_entries = build_env.get("PATH", "").split(os.pathsep)
     clean_path_entries = [
         entry for entry in path_entries if "codex-runtimes" not in entry.lower()
@@ -79,14 +91,14 @@ def main() -> int:
         print(f"ERROR: PyInstaller failed (exit {result.returncode})")
         return result.returncode
 
-    exe = root / "dist" / "VideoDownloader" / "VideoDownloader.exe"
+    exe = destination / "dist" / "VideoDownloader" / "VideoDownloader.exe"
     if not exe.is_file():
         print("ERROR: Build finished but EXE not found:")
         print(f"  {exe}")
         return 1
 
     print(f"\nBuild OK: {exe}")
-    bundled_ffmpeg = root / "dist" / "VideoDownloader" / "tools" / "ffmpeg" / "ffmpeg.exe"
+    bundled_ffmpeg = destination / "dist" / "VideoDownloader" / "tools" / "ffmpeg" / "ffmpeg.exe"
     if bundled_ffmpeg.is_file():
         print(f"Bundled FFmpeg: {bundled_ffmpeg}")
     return 0

@@ -23,6 +23,11 @@ hiddenimports = [
     "app.paths",
     "app.formats",
     "app.runtime_status",
+    "app.captions",
+    "app.transcript_source",
+    "app.transcript_batch",
+    "app.transcript_ui",
+    "app.packaged_smoke",
     "yt_dlp",
     "yt_dlp.extractor",
     "yt_dlp.extractor.youtube",
@@ -79,7 +84,7 @@ a = Analysis(
     noarchive=False,
 )
 
-pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
+pyz = PYZ(a.pure)
 
 exe = EXE(
     pyz,
@@ -103,7 +108,6 @@ exe = EXE(
 coll = COLLECT(
     exe,
     a.binaries,
-    a.zipfiles,
     a.datas,
     strip=False,
     upx=False,
