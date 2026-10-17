@@ -1,0 +1,64 @@
+{
+  "findings": [
+    {
+      "source": "E-0011",
+      "acceptChanged": true,
+      "classification": "represented",
+      "complete": true,
+      "note": "Already classified source re-read after the accepted Qodo false-rate-limit repair and current verification/task reconciliation; invalidate prior digest, no new semantic evidence batch.",
+      "artifacts": [
+        "BR-ARCHIVE-COVERAGE",
+        "BR-EXPORT-INTEGRITY",
+        "FR-VD-007",
+        "FR-VD-008",
+        "FR-VD-010",
+        "FR-VD-011",
+        "FR-VD-012",
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY"
+      ]
+    },
+    {
+      "source": "E-0014",
+      "acceptChanged": true,
+      "classification": "represented",
+      "complete": true,
+      "note": "Already classified source re-read after the accepted Qodo false-rate-limit repair and current verification/task reconciliation; invalidate prior digest, no new semantic evidence batch.",
+      "artifacts": [
+        "CON-LOCAL-AUTHORITY",
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY"
+      ]
+    },
+    {
+      "source": "E-0032",
+      "acceptChanged": true,
+      "classification": "represented",
+      "complete": true,
+      "note": "Already classified source re-read after the accepted Qodo false-rate-limit repair and current verification/task reconciliation; invalidate prior digest, no new semantic evidence batch.",
+      "artifacts": [
+        "FR-VD-001",
+        "FR-VD-010",
+        "FR-VD-011",
+        "QR-SECURITY"
+      ]
+    },
+    {
+      "source": "E-0060",
+      "acceptChanged": true,
+      "classification": "represented",
+      "complete": true,
+      "note": "Already classified source re-read after the accepted Qodo false-rate-limit repair and current verification/task reconciliation; invalidate prior digest, no new semantic evidence batch.",
+      "artifacts": [
+        "FR-VD-003",
+        "FR-VD-006",
+        "FR-VD-007",
+        "FR-VD-008",
+        "FR-VD-010",
+        "FR-VD-011",
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "findings": [
+    {
+      "source": "E-0004",
+      "classification": "represented",
+      "artifacts": [
+        "SB-RESUME-VERIFIED",
+        "SB-DISCOVERY-INTERRUPTED",
+        "SB-LANGUAGE-UNAVAILABLE",
+        "SB-CAPTIONS-ABSENT"
+      ],
+      "complete": true,
+      "note": "Refinement explicitly maps already reviewed documented FR-002/004/005/007/008/009 scenarios to four structured examples. This supplements existing mappings without another semantic evidence batch."
+    }
+  ],
+  "familyProbes": [
+    {
+      "family": "journey",
+      "note": "Searched PRODUCT outcomes, ROADMAP admission and all ten feature user scenarios/quickstart flows. They define the two recovered use cases and their alternatives, without a distinct cross-use-case journey contract. No additional journey was invented."
+    },
+    {
+      "family": "bounded-context",
+      "note": "Searched product authorities, feature plan/data model, workflows and application boundaries. Existing module/feature partitions are technical; no separately owned domain/language boundary is documented. Do not manufacture DDD architecture."
+    },
+    {
+      "family": "domain-term",
+      "note": "Searched PRODUCT distinctions, cue/input/video/batch data model and feature contract. These terms remain explicit in requirements and behavior; no documented bounded-context ownership exists for schema-required defined-in. No complete domain-term candidate was asserted by inventing that ownership."
+    }
+  ]
+}

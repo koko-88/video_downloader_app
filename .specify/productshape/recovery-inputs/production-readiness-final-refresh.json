@@ -1,0 +1,57 @@
+{
+  "findings": [
+    {
+      "source": "E-0007",
+      "acceptChanged": true,
+      "classification": "represented",
+      "artifacts": [
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY"
+      ],
+      "complete": true,
+      "note": "Re-read changed authorized engineering evidence; original documented product obligations remain. Invalidate old digest; same original ten-source semantic boundary."
+    },
+    {
+      "source": "E-0009",
+      "acceptChanged": true,
+      "classification": "represented",
+      "artifacts": [
+        "FR-VD-004",
+        "FR-VD-006",
+        "FR-VD-007",
+        "FR-VD-008",
+        "FR-VD-011"
+      ],
+      "complete": true,
+      "note": "Re-read changed authorized engineering evidence; original documented product obligations remain. Invalidate old digest; same original ten-source semantic boundary."
+    },
+    {
+      "source": "E-0011",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0014",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0023",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0041",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0043",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0055",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0060",
+      "acceptChanged": true
+    }
+  ]
+}

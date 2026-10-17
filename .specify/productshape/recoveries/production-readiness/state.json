@@ -1,0 +1,159 @@
+{
+  "schema": "product-definition-as-code/recovery-state/v1alpha1",
+  "formatVersion": 1,
+  "sessionId": "production-readiness",
+  "cliVersion": "0.22.0",
+  "createdAt": "2026-10-16T09:54:14.473Z",
+  "updatedAt": "2026-10-17T06:37:45.313Z",
+  "changeId": "CHG-INITIAL",
+  "changeDir": ".specify/productshape/changes/production-readiness",
+  "brief": {
+    "roots": [
+      "."
+    ],
+    "include": [
+      "PRODUCT.md",
+      "ROADMAP.md",
+      "AGENTS.md",
+      "LOGIC_VERIFICATION.md",
+      "IMPLEMENTATION_VERIFICATION.md",
+      "README.md",
+      "requirements.txt",
+      "main.py",
+      "build_exe.py",
+      "build_installer.py",
+      "video_downloader.spec",
+      "installer/**/*.iss",
+      ".specify/memory/constitution.md",
+      "specs/**/*.md",
+      "docs/workflows/**/*.md",
+      "docs/verification/**/*.md",
+      "app/**/*.py",
+      "tests/**/*.py",
+      "scripts/**/*.py"
+    ],
+    "exclude": [],
+    "forbidden": [
+      "**/*.key",
+      "**/*.pem",
+      "**/.env",
+      "**/.env*",
+      "**/.env.*",
+      "**/__pycache__/**",
+      "**/id_rsa*",
+      "**/node_modules/**",
+      "**/secrets/**",
+      ".git/**",
+      ".venv/**",
+      "_backup/**",
+      "build/**",
+      "build_logs/**",
+      "data/**",
+      "dist/**",
+      "installer_output/**",
+      "logs/**",
+      "video_downloader_app/**"
+    ],
+    "ignore": [],
+    "languages": [],
+    "knownActors": [],
+    "knownJourneys": [],
+    "knownUseCases": [],
+    "knownTerminology": [],
+    "synonyms": {},
+    "knownContradictions": [],
+    "authority": [
+      "PRODUCT.md",
+      "ROADMAP.md",
+      ".specify/memory/constitution.md",
+      "specs/transcript-extraction/spec.md"
+    ],
+    "secondaryEvidence": {
+      "code": true,
+      "tests": true,
+      "issues": false,
+      "commitHistory": false,
+      "external": false
+    },
+    "batchSize": 10,
+    "confirm": [
+      "Recovery brief explicitly confirmed by human in this chat on 2026-10-16.",
+      "CLI repository-local installation explicitly approved.",
+      "Implementation may proceed with seven unchecked reviewer checklist items; markers remain unchanged."
+    ],
+    "tiers": [
+      {
+        "name": "product-authority",
+        "globs": [
+          "PRODUCT.md",
+          "ROADMAP.md",
+          ".specify/memory/constitution.md",
+          "specs/transcript-extraction/spec.md"
+        ]
+      },
+      {
+        "name": "contracts-and-verification",
+        "globs": [
+          "LOGIC_VERIFICATION.md",
+          "IMPLEMENTATION_VERIFICATION.md",
+          "docs/verification/**",
+          "specs/transcript-extraction/**"
+        ]
+      },
+      {
+        "name": "workflow-and-delivery",
+        "globs": [
+          "AGENTS.md",
+          "README.md",
+          "docs/workflows/**",
+          "requirements.txt",
+          "build_*.py",
+          "installer/**",
+          "video_downloader.spec"
+        ]
+      },
+      {
+        "name": "source-and-tests",
+        "globs": [
+          "app/**",
+          "main.py",
+          "scripts/**",
+          "tests/**"
+        ]
+      }
+    ],
+    "externalSources": [],
+    "scope": "Human confirmed 2026-10-16 in this Codex chat: review production gaps across the existing Video Downloader and implement admitted PRODUCT/ROADMAP scope. Preserve downloads and local work. No publishing, deployment, global installs, credential changes, accepted-model writes, or user-data deletion."
+  },
+  "modelSnapshot": [],
+  "familyProbes": {
+    "journey": {
+      "outcome": "none-found",
+      "note": "Searched PRODUCT outcomes, ROADMAP admission and all ten feature user scenarios/quickstart flows. They define the two recovered use cases and their alternatives, without a distinct cross-use-case journey contract. No additional journey was invented.",
+      "recordedAt": "2026-10-16T11:51:12.213Z"
+    },
+    "bounded-context": {
+      "outcome": "none-found",
+      "note": "Searched product authorities, feature plan/data model, workflows and application boundaries. Existing module/feature partitions are technical; no separately owned domain/language boundary is documented. Do not manufacture DDD architecture.",
+      "recordedAt": "2026-10-16T11:51:12.387Z"
+    },
+    "domain-term": {
+      "outcome": "none-found",
+      "note": "Searched PRODUCT distinctions, cue/input/video/batch data model and feature contract. These terms remain explicit in requirements and behavior; no documented bounded-context ownership exists for schema-required defined-in. No complete domain-term candidate was asserted by inventing that ownership.",
+      "recordedAt": "2026-10-16T11:51:12.533Z"
+    }
+  },
+  "counters": {
+    "evidence": 60,
+    "lead": 1,
+    "question": 0
+  },
+  "nextAction": "Inventory recorded; process the first batch: prodshape recover next",
+  "validation": {
+    "at": "2026-10-17T06:37:44.744Z",
+    "errors": 0,
+    "warnings": 0,
+    "lowConfidence": [],
+    "changeDigest": "sha256:95a6f59209ba2d2fcbcf7475d567863bbcbce9c16d3f89ba29813aee7032ffd5"
+  }
+}

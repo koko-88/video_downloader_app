@@ -9,6 +9,8 @@ from typing import Callable
 from urllib.parse import urlparse
 
 from app.errors import DownloadCancelled
+from app.privacy import redact
+from app.js_runtime import resolve_js_runtimes
 from app.ffmpeg_resolver import FFmpegInfo
 from app.formats import (
     FORMAT_M4A,
@@ -83,14 +85,19 @@ def make_progress_hook(
 class YdlLogger:
     """Forward yt-dlp logs without dumping signed media URLs."""
 
-    def __init__(self, app_logger: logging.Logger | None = None) -> None:
+    def __init__(self, app_logger: logging.Logger | None = None,
+                 is_cancelled: CancelCheck | None = None) -> None:
         self._log = app_logger or logger
+        self._is_cancelled = is_cancelled or (lambda: False)
 
     def _safe(self, msg: str) -> str | None:
+        if self._is_cancelled():
+            raise DownloadCancelled()
         text = str(msg)
         lower = text.lower()
         if any(marker in lower for marker in _SENSITIVE_LOG_MARKERS):
             return None
+        text = redact(text)
         if len(text) > 2000:
             return text[:2000] + "..."
         return text
@@ -122,7 +129,7 @@ class YdlLogger:
 
 def url_domain(url: str) -> str:
     try:
-        host = urlparse(url.strip()).netloc.lower()
+        host = (urlparse(url.strip()).hostname or '').lower()
     except Exception:
         return "unknown"
     if host.startswith("www."):
@@ -193,7 +200,9 @@ def build_ydl_opts(
         "noplaylist": False,
         "windowsfilenames": True,
         "restrictfilenames": False,
-        "logger": YdlLogger(),
+        "logger": YdlLogger(is_cancelled=is_cancelled),
+        "js_runtimes": resolve_js_runtimes(),
+        "remote_components": [],
         "progress_hooks": [
             make_progress_hook(on_progress, is_cancelled or (lambda: False))
         ],
@@ -237,6 +246,7 @@ def build_ydl_opts(
         )
         opts["format_sort"] = _video_format_sort(video_quality, "webm")
         opts["merge_output_format"] = "webm"
+        opts["postprocessors"] = [{"key": "FFmpegVideoRemuxer", "preferedformat": "webm"}]
 
     else:
         opts["format"] = (
@@ -244,6 +254,7 @@ def build_ydl_opts(
         )
         opts["format_sort"] = _video_format_sort(video_quality, "mp4")
         opts["merge_output_format"] = "mp4"
+        opts["postprocessors"] = [{"key": "FFmpegVideoRemuxer", "preferedformat": "mp4"}]
 
     _validate_ydl_opts(opts)
     return opts

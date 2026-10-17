@@ -49,5 +49,10 @@ IF BUILD FAILS
 
 FFMPEG (for downloads)
 --------------------
-Optional before build: put ffmpeg.exe in tools\ffmpeg\
-Or install FFmpeg on Windows PATH. See tools\README.txt
+Production builds include FFmpeg, FFprobe and Node with vendor licenses.
+See tools\README.txt for staging and verified versions.
+
+
+CURRENT VERIFIED DELIVERY
+-------------------------
+Use the latest artifact paths in specs\transcript-extraction\plan.md. Build scripts preserve older outputs and refuse to overwrite them. The older default installer_output path above may contain a previous version; a new verified build uses fresh isolated destinations. Transcripts are available in the Transcripts tab with language/format choices and resumable results.

@@ -1,0 +1,127 @@
+{
+  "findings": [
+    {
+      "source": "E-0031",
+      "classification": "represented",
+      "artifacts": [
+        "UC-MEDIA-DOWNLOAD",
+        "FR-VD-010",
+        "FR-VD-011",
+        "QR-SECURITY"
+      ],
+      "complete": true,
+      "acceptChanged": true,
+      "note": "Observed actual completed-file/container checks, original formats, bounded format/cookie fallback and filtered logging. Existing end-to-end media proof is snapshot-specific; no new product capability inferred."
+    },
+    {
+      "source": "E-0032",
+      "classification": "represented",
+      "artifacts": [
+        "FR-VD-001",
+        "FR-VD-010",
+        "FR-VD-011",
+        "QR-SECURITY"
+      ],
+      "complete": true,
+      "acceptChanged": true,
+      "note": "Observed validated public HTTP inputs, privacy-preserving errors and shared surfaced-rate-limit priority. Static messages preserve actionable failure classes without raw credentials."
+    },
+    {
+      "source": "E-0033",
+      "classification": "represented",
+      "artifacts": [
+        "FR-VD-010",
+        "QR-DESKTOP-RELIABILITY"
+      ],
+      "complete": true,
+      "acceptChanged": true,
+      "note": "Observed deterministic existing/bundled FFmpeg resolution and typed status; presence is not execution proof, which is separately recorded for exact artifacts."
+    },
+    {
+      "source": "E-0034",
+      "classification": "represented",
+      "artifacts": [
+        "UC-MEDIA-DOWNLOAD",
+        "FR-VD-010"
+      ],
+      "complete": true,
+      "acceptChanged": true,
+      "note": "Observed supported MP4/WEBM/MP3/M4A labels, exact quality choices and legacy label migration, corroborating documented downloads."
+    },
+    {
+      "source": "E-0035",
+      "classification": "represented",
+      "artifacts": [
+        "FR-VD-010",
+        "FR-VD-011",
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY"
+      ],
+      "complete": true,
+      "acceptChanged": true,
+      "note": "Observed malformed/unreadable history could be overwritten or interrupt queue completion. RED proved changed old bytes, leftover temp and stalled queue; repaired preservation, unique atomic publication/cleanup and explicit save outcome while retaining valid legacy records."
+    },
+    {
+      "source": "E-0036",
+      "classification": "represented",
+      "artifacts": [
+        "FR-VD-011",
+        "QR-SECURITY"
+      ],
+      "complete": true,
+      "acceptChanged": true,
+      "note": "Observed privacy filtering before handlers plus bounded rotating file logs. No generated log contents or private user data were recovery evidence."
+    },
+    {
+      "source": "E-0037",
+      "classification": "represented",
+      "artifacts": [
+        "FR-VD-007",
+        "FR-VD-010",
+        "QR-DESKTOP-RELIABILITY"
+      ],
+      "complete": true,
+      "acceptChanged": true,
+      "note": "Observed real Qt controls, queue, plain-text logs and safe thread-aware close. RED proved MP3 quality resetting to Best through normal settings/busy transitions; repaired retention for every supported quality. History warnings now preserve successful queue completion."
+    },
+    {
+      "source": "E-0038",
+      "classification": "represented",
+      "artifacts": [
+        "FR-VD-006",
+        "FR-VD-010",
+        "QR-DESKTOP-RELIABILITY"
+      ],
+      "complete": true,
+      "acceptChanged": true,
+      "note": "Observed explicit source/frozen diagnostic uses temporary settings/history/output, native widgets, worker and optional authorized download. Fixture export is not independent live archive/installer acceptance."
+    },
+    {
+      "source": "E-0039",
+      "classification": "represented",
+      "artifacts": [
+        "FR-VD-010",
+        "FR-VD-011",
+        "QR-SECURITY"
+      ],
+      "complete": true,
+      "acceptChanged": true,
+      "note": "Observed dev/frozen resource and user-data ownership paths plus filename sanitization; transcript root confinement has separate manifest/path validation and hostile-path evidence."
+    },
+    {
+      "source": "E-0040",
+      "classification": "represented",
+      "artifacts": [
+        "FR-VD-010",
+        "QR-DESKTOP-RELIABILITY"
+      ],
+      "complete": true,
+      "acceptChanged": true,
+      "note": "Observed diagnostics report actual local versions/paths/runtime detection. Callable/authenticated/reviewed/verified remain separate; file detection alone is not operational acceptance."
+    }
+  ],
+  "leads": [],
+  "questions": [],
+  "retractions": [],
+  "familyProbes": []
+}

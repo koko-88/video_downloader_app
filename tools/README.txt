@@ -1,20 +1,25 @@
-FFmpeg (required for MP3 extraction and MP4 stream merging)
-================================================================
+LOCAL RUNTIMES FOR WINDOWS DELIVERY
+==================================
 
-Place these files in this folder:
+Downloads need FFmpeg/FFprobe. YouTube also needs a supported JavaScript runtime and the matching installed yt-dlp-ejs package. Caption-only export requires neither rendered media nor FFmpeg.
 
+Stage authorized existing runtime files before a production build:
   tools/ffmpeg/ffmpeg.exe
-  tools/ffmpeg/ffprobe.exe   (recommended)
+  tools/ffmpeg/ffprobe.exe
+  tools/ffmpeg/LICENSE.txt
+  tools/ffmpeg/README-distribution.txt
+  tools/javascript/node.exe
+  tools/javascript/LICENSE.txt
 
-Where to get FFmpeg (Windows):
-  - https://www.gyan.dev/ffmpeg/builds/  (release essentials)
-  - https://github.com/BtbN/FFmpeg-Builds/releases
+The current local copies are FFmpeg/FFprobe 9.0.2 (Gyan full build) and Node 24.19.0. tools/runtime-provenance.json records exact hashes, vendor sources and the successful official Node checksum comparison. Binaries are ignored by Git; vendor notices are retained and bundled. These are copied local runtime files, not a global installation.
 
-Extract the zip and copy ffmpeg.exe (and ffprobe.exe) into tools/ffmpeg/.
+FFmpeg links from its upstream download page:
+  https://ffmpeg.org/download.html
+  https://www.gyan.dev/ffmpeg/builds/
+Node release and license:
+  https://nodejs.org/dist/v24.19.0/
+  https://raw.githubusercontent.com/nodejs/node/v24.19.0/LICENSE
 
-Alternative: install FFmpeg and add it to your system PATH.
+The app prefers bundled runtimes, otherwise existing supported PATH runtimes. It explicitly enables the selected Deno/Node path and disables remote EJS-component downloads. There are no automatic dependency installs, browser account changes or speech-model downloads.
 
-The app also searches PATH if tools/ffmpeg is empty.
-
-For EXE builds, run build_exe.py after placing FFmpeg here if you want
-FFmpeg bundled inside dist/VideoDownloader/.
+ProductShape is a separate development-only local CLI at tools/productshape/node_modules/.bin/prodshape.cmd, pinned to 0.22.0 by its package-lock.json. It is not bundled with the desktop application. A fresh tool installation requires operator authorization; npm install scripts were disabled in this task.

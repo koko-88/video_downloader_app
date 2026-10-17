@@ -1,0 +1,45 @@
+{
+  "findings": [
+    {
+      "source": "E-0011",
+      "acceptChanged": true,
+      "classification": "represented",
+      "artifacts": [
+        "BR-ARCHIVE-COVERAGE",
+        "BR-EXPORT-INTEGRITY",
+        "FR-VD-007",
+        "FR-VD-008",
+        "FR-VD-010",
+        "FR-VD-011",
+        "FR-VD-012",
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY"
+      ],
+      "complete": true,
+      "note": "Same original round-two evidence re-read after documentation reconciliation; product scope unchanged and old digest invalidated."
+    },
+    {
+      "source": "E-0014",
+      "acceptChanged": true,
+      "classification": "represented",
+      "artifacts": [
+        "CON-LOCAL-AUTHORITY",
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY"
+      ],
+      "complete": true,
+      "note": "Same original round-two evidence re-read after documentation reconciliation; product scope unchanged and old digest invalidated."
+    },
+    {
+      "source": "E-0019",
+      "acceptChanged": true,
+      "classification": "represented",
+      "artifacts": [
+        "CON-LOCAL-AUTHORITY",
+        "QR-DESKTOP-RELIABILITY"
+      ],
+      "complete": true,
+      "note": "Same original round-two evidence re-read after documentation reconciliation; product scope unchanged and old digest invalidated."
+    }
+  ]
+}

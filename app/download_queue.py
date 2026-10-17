@@ -10,6 +10,7 @@ from pathlib import Path
 from PySide6.QtCore import QObject, QThread, Signal, Slot
 
 from app.downloader_worker import DownloaderWorker
+from app.errors import RATE_LIMITED_MSG
 from app.formats import FORMAT_MP3, normalize_format_label
 from app.history import append_entry
 from app.ydl_options import reset_progress_throttle
@@ -51,6 +52,7 @@ class _WorkerThread(QThread):
 
 
 class DownloadQueue(QObject):
+    _worker_progress = Signal(int, int)
     log_line = Signal(str)
     job_started = Signal(int, str)
     job_progress = Signal(int, int)
@@ -72,6 +74,7 @@ class DownloadQueue(QObject):
         self._active = False
         self._cancel_requested = False
         self._batch_completed = 0
+        self._worker_progress.connect(self._on_progress)
 
     @property
     def is_active(self) -> bool:
@@ -161,6 +164,7 @@ class DownloadQueue(QObject):
         for job in self._pending:
             job.status = JobStatus.CANCELLED
             job.message = "Cancelled"
+            self.job_finished.emit(job.row_index, False, "Cancelled", None)
         self._pending.clear()
 
     def wait_for_thread(self, ms: int = 5000) -> bool:
@@ -201,7 +205,7 @@ class DownloadQueue(QObject):
             fmt=self._fmt,
             video_quality=self._video_quality,
             audio_quality=self._audio_quality,
-            on_progress=lambda p: self._on_progress(job.row_index, p),
+            on_progress=lambda p: self._worker_progress.emit(job.row_index, p),
             on_log=lambda m: self.log_line.emit(m),
         )
 
@@ -209,6 +213,7 @@ class DownloadQueue(QObject):
         self._thread.finished_result.connect(self._on_worker_finished)
         self._thread.start()
 
+    @Slot(int, int)
     def _on_progress(self, row_index: int, percent: int) -> None:
         for job in self._jobs:
             if job.row_index == row_index:
@@ -263,7 +268,7 @@ class DownloadQueue(QObject):
             job.message = "Completed"
             job.output_path = path_str
             self._batch_completed += 1
-            append_entry(
+            history_saved = append_entry(
                 url=job.url,
                 fmt=self._fmt,
                 resolution=self._video_quality,
@@ -271,6 +276,8 @@ class DownloadQueue(QObject):
                 status="completed",
                 audio_quality=self._audio_quality,
             )
+            if history_saved is False:
+                self.log_line.emit("Media saved; download history could not be updated. See the log file.")
             self.log_line.emit("Completed.")
         else:
             job.status = JobStatus.FAILED
@@ -282,7 +289,15 @@ class DownloadQueue(QObject):
         self._current = None
         self._thread = None
 
-        if self._cancel_requested:
+        if not success and message == RATE_LIMITED_MSG:
+            for pending in self._pending:
+                pending.status = JobStatus.FAILED
+                pending.message = "Not attempted: " + RATE_LIMITED_MSG
+                self.job_finished.emit(pending.row_index, False, pending.message, None)
+            self._pending.clear()
+            self.log_line.emit("Source rate limit stopped further downloads. Wait before using Retry failed.")
+            self._finish_queue()
+        elif self._cancel_requested:
             self._finish_queue()
         else:
             self._emit_overall()

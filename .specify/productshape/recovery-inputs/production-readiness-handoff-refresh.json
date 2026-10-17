@@ -1,0 +1,64 @@
+{
+  "findings": [
+    {
+      "source": "E-0011",
+      "acceptChanged": true,
+      "classification": "represented",
+      "complete": true,
+      "note": "Already processed evidence re-read after explicit provider-request throttle restoration and source verification; invalidate prior bytes while retaining documented intent, not using external review as new product authority.",
+      "artifacts": [
+        "BR-ARCHIVE-COVERAGE",
+        "BR-EXPORT-INTEGRITY",
+        "FR-VD-007",
+        "FR-VD-008",
+        "FR-VD-010",
+        "FR-VD-011",
+        "FR-VD-012",
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY"
+      ]
+    },
+    {
+      "source": "E-0014",
+      "acceptChanged": true,
+      "classification": "represented",
+      "complete": true,
+      "note": "Already processed evidence re-read after explicit provider-request throttle restoration and source verification; invalidate prior bytes while retaining documented intent, not using external review as new product authority.",
+      "artifacts": [
+        "CON-LOCAL-AUTHORITY",
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY"
+      ]
+    },
+    {
+      "source": "E-0032",
+      "acceptChanged": true,
+      "classification": "represented",
+      "complete": true,
+      "note": "Already processed evidence re-read after explicit provider-request throttle restoration and source verification; invalidate prior bytes while retaining documented intent, not using external review as new product authority.",
+      "artifacts": [
+        "FR-VD-001",
+        "FR-VD-010",
+        "FR-VD-011",
+        "QR-SECURITY"
+      ]
+    },
+    {
+      "source": "E-0060",
+      "acceptChanged": true,
+      "classification": "represented",
+      "complete": true,
+      "note": "Already processed evidence re-read after explicit provider-request throttle restoration and source verification; invalidate prior bytes while retaining documented intent, not using external review as new product authority.",
+      "artifacts": [
+        "FR-VD-003",
+        "FR-VD-006",
+        "FR-VD-007",
+        "FR-VD-008",
+        "FR-VD-010",
+        "FR-VD-011",
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY"
+      ]
+    }
+  ]
+}

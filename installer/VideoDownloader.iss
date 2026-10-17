@@ -28,6 +28,7 @@ Compression=lzma2
 SolidCompression=yes
 WizardStyle=modern
 PrivilegesRequired=admin
+PrivilegesRequiredOverridesAllowed=commandline
 ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
 UninstallDisplayName={#MyAppName}
@@ -53,6 +54,3 @@ Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: de
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent; WorkingDir: "{app}"
-
-[UninstallDelete]
-Type: filesandordirs; Name: "{app}\tools"

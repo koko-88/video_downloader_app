@@ -18,7 +18,16 @@ data/
 # Optional binaries (do not commit)
 tools/ffmpeg/*.exe
 tools/ffmpeg/*.dll
+tools/javascript/*.exe
+tools/javascript/*.dll
 
 # PyInstaller
 *.manifest
 /video_downloader_app/
+
+# Repository-local ProductShape tooling and operating-system/editor artifacts
+node_modules/
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp

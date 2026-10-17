@@ -1,0 +1,89 @@
+{
+  "findings": [
+    {
+      "source": "E-0011",
+      "acceptChanged": true,
+      "classification": "represented",
+      "complete": true,
+      "note": "Same processed code/documentation re-read after three independently diagnosed engineering corrections; old bytes invalidated, existing documented intent and twenty-four drafts retained. External review receipts are operational verification, not new product authority.",
+      "artifacts": [
+        "BR-ARCHIVE-COVERAGE",
+        "BR-EXPORT-INTEGRITY",
+        "FR-VD-007",
+        "FR-VD-008",
+        "FR-VD-010",
+        "FR-VD-011",
+        "FR-VD-012",
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY"
+      ]
+    },
+    {
+      "source": "E-0014",
+      "acceptChanged": true,
+      "classification": "represented",
+      "complete": true,
+      "note": "Same processed code/documentation re-read after three independently diagnosed engineering corrections; old bytes invalidated, existing documented intent and twenty-four drafts retained. External review receipts are operational verification, not new product authority.",
+      "artifacts": [
+        "CON-LOCAL-AUTHORITY",
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY"
+      ]
+    },
+    {
+      "source": "E-0027",
+      "acceptChanged": true,
+      "classification": "represented",
+      "complete": true,
+      "note": "Same processed code/documentation re-read after three independently diagnosed engineering corrections; old bytes invalidated, existing documented intent and twenty-four drafts retained. External review receipts are operational verification, not new product authority.",
+      "artifacts": [
+        "FR-VD-006",
+        "FR-VD-011",
+        "QR-SECURITY"
+      ]
+    },
+    {
+      "source": "E-0031",
+      "acceptChanged": true,
+      "classification": "represented",
+      "complete": true,
+      "note": "Same processed code/documentation re-read after three independently diagnosed engineering corrections; old bytes invalidated, existing documented intent and twenty-four drafts retained. External review receipts are operational verification, not new product authority.",
+      "artifacts": [
+        "FR-VD-010",
+        "FR-VD-011",
+        "QR-SECURITY",
+        "UC-MEDIA-DOWNLOAD"
+      ]
+    },
+    {
+      "source": "E-0045",
+      "acceptChanged": true,
+      "classification": "represented",
+      "complete": true,
+      "note": "Same processed code/documentation re-read after three independently diagnosed engineering corrections; old bytes invalidated, existing documented intent and twenty-four drafts retained. External review receipts are operational verification, not new product authority.",
+      "artifacts": [
+        "FR-VD-010",
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY",
+        "UC-MEDIA-DOWNLOAD"
+      ]
+    },
+    {
+      "source": "E-0060",
+      "acceptChanged": true,
+      "classification": "represented",
+      "complete": true,
+      "note": "Same processed code/documentation re-read after three independently diagnosed engineering corrections; old bytes invalidated, existing documented intent and twenty-four drafts retained. External review receipts are operational verification, not new product authority.",
+      "artifacts": [
+        "FR-VD-003",
+        "FR-VD-006",
+        "FR-VD-007",
+        "FR-VD-008",
+        "FR-VD-010",
+        "FR-VD-011",
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,397 @@
+{
+  "schema": "product-definition-as-code/recovery-coverage/v1alpha1",
+  "sessionId": "production-readiness",
+  "generatedAt": "2026-10-17T06:37:45.459Z",
+  "sources": {
+    "total": 60,
+    "pending": 0,
+    "processed": 60,
+    "stale": 0,
+    "missing": 0,
+    "excluded": 0
+  },
+  "classifications": {
+    "represented": 53,
+    "duplicate": 0,
+    "contradiction": 0,
+    "question": 0,
+    "out-of-scope": 0,
+    "no-product-intent": 8
+  },
+  "candidates": {
+    "total": 24,
+    "byType": {
+      "actor": 1,
+      "structured-behaviour": 4,
+      "constraint": 1,
+      "quality-requirement": 2,
+      "functional-requirement": 12,
+      "business-rule": 2,
+      "use-case": 2
+    }
+  },
+  "evidenceToCandidates": {
+    "E-0001": [
+      "CON-LOCAL-AUTHORITY",
+      "QR-DESKTOP-RELIABILITY",
+      "QR-SECURITY"
+    ],
+    "E-0002": [
+      "ACT-DESKTOP-USER",
+      "CON-LOCAL-AUTHORITY",
+      "UC-MEDIA-DOWNLOAD",
+      "UC-TRANSCRIPT-BATCH"
+    ],
+    "E-0003": [
+      "QR-DESKTOP-RELIABILITY",
+      "UC-MEDIA-DOWNLOAD",
+      "UC-TRANSCRIPT-BATCH"
+    ],
+    "E-0004": [
+      "FR-VD-001",
+      "FR-VD-002",
+      "FR-VD-003",
+      "FR-VD-004",
+      "FR-VD-005",
+      "FR-VD-006",
+      "FR-VD-007",
+      "FR-VD-008",
+      "FR-VD-009",
+      "FR-VD-010",
+      "FR-VD-011",
+      "FR-VD-012",
+      "QR-DESKTOP-RELIABILITY",
+      "QR-SECURITY",
+      "SB-CAPTIONS-ABSENT",
+      "SB-DISCOVERY-INTERRUPTED",
+      "SB-LANGUAGE-UNAVAILABLE",
+      "SB-RESUME-VERIFIED",
+      "UC-TRANSCRIPT-BATCH"
+    ],
+    "E-0005": [
+      "QR-DESKTOP-RELIABILITY",
+      "QR-SECURITY"
+    ],
+    "E-0007": [
+      "QR-DESKTOP-RELIABILITY",
+      "QR-SECURITY"
+    ],
+    "E-0009": [
+      "FR-VD-004",
+      "FR-VD-006",
+      "FR-VD-007",
+      "FR-VD-008",
+      "FR-VD-011"
+    ],
+    "E-0011": [
+      "BR-ARCHIVE-COVERAGE",
+      "BR-EXPORT-INTEGRITY",
+      "FR-VD-007",
+      "FR-VD-008",
+      "FR-VD-010",
+      "FR-VD-011",
+      "FR-VD-012",
+      "QR-DESKTOP-RELIABILITY",
+      "QR-SECURITY"
+    ],
+    "E-0012": [
+      "BR-ARCHIVE-COVERAGE",
+      "BR-EXPORT-INTEGRITY",
+      "FR-VD-004",
+      "FR-VD-006",
+      "FR-VD-007",
+      "FR-VD-008",
+      "FR-VD-010",
+      "UC-TRANSCRIPT-BATCH"
+    ],
+    "E-0013": [
+      "BR-ARCHIVE-COVERAGE",
+      "BR-EXPORT-INTEGRITY",
+      "FR-VD-001",
+      "FR-VD-002",
+      "FR-VD-004",
+      "FR-VD-005",
+      "FR-VD-007",
+      "FR-VD-008",
+      "FR-VD-009",
+      "FR-VD-011",
+      "QR-SECURITY"
+    ],
+    "E-0014": [
+      "CON-LOCAL-AUTHORITY",
+      "QR-DESKTOP-RELIABILITY",
+      "QR-SECURITY"
+    ],
+    "E-0015": [
+      "CON-LOCAL-AUTHORITY",
+      "QR-DESKTOP-RELIABILITY",
+      "QR-SECURITY"
+    ],
+    "E-0016": [
+      "BR-ARCHIVE-COVERAGE",
+      "BR-EXPORT-INTEGRITY",
+      "FR-VD-010",
+      "QR-DESKTOP-RELIABILITY",
+      "QR-SECURITY",
+      "UC-MEDIA-DOWNLOAD",
+      "UC-TRANSCRIPT-BATCH"
+    ],
+    "E-0017": [
+      "CON-LOCAL-AUTHORITY",
+      "QR-DESKTOP-RELIABILITY"
+    ],
+    "E-0018": [
+      "CON-LOCAL-AUTHORITY",
+      "QR-DESKTOP-RELIABILITY"
+    ],
+    "E-0019": [
+      "CON-LOCAL-AUTHORITY",
+      "QR-DESKTOP-RELIABILITY"
+    ],
+    "E-0020": [
+      "CON-LOCAL-AUTHORITY",
+      "QR-DESKTOP-RELIABILITY",
+      "QR-SECURITY"
+    ],
+    "E-0021": [
+      "BR-ARCHIVE-COVERAGE",
+      "CON-LOCAL-AUTHORITY",
+      "QR-DESKTOP-RELIABILITY"
+    ],
+    "E-0022": [
+      "BR-ARCHIVE-COVERAGE",
+      "CON-LOCAL-AUTHORITY",
+      "QR-DESKTOP-RELIABILITY",
+      "QR-SECURITY"
+    ],
+    "E-0023": [
+      "FR-VD-010",
+      "QR-DESKTOP-RELIABILITY",
+      "QR-SECURITY"
+    ],
+    "E-0025": [
+      "FR-VD-010",
+      "QR-DESKTOP-RELIABILITY"
+    ],
+    "E-0027": [
+      "FR-VD-006",
+      "FR-VD-011",
+      "QR-SECURITY"
+    ],
+    "E-0028": [
+      "FR-VD-010",
+      "QR-DESKTOP-RELIABILITY"
+    ],
+    "E-0029": [
+      "FR-VD-010",
+      "FR-VD-011",
+      "QR-SECURITY"
+    ],
+    "E-0030": [
+      "FR-VD-007",
+      "FR-VD-010",
+      "QR-DESKTOP-RELIABILITY",
+      "QR-SECURITY"
+    ],
+    "E-0031": [
+      "FR-VD-010",
+      "FR-VD-011",
+      "QR-SECURITY",
+      "UC-MEDIA-DOWNLOAD"
+    ],
+    "E-0032": [
+      "FR-VD-001",
+      "FR-VD-010",
+      "FR-VD-011",
+      "QR-SECURITY"
+    ],
+    "E-0033": [
+      "FR-VD-010",
+      "QR-DESKTOP-RELIABILITY"
+    ],
+    "E-0034": [
+      "FR-VD-010",
+      "UC-MEDIA-DOWNLOAD"
+    ],
+    "E-0035": [
+      "FR-VD-010",
+      "FR-VD-011",
+      "QR-DESKTOP-RELIABILITY",
+      "QR-SECURITY"
+    ],
+    "E-0036": [
+      "FR-VD-011",
+      "QR-SECURITY"
+    ],
+    "E-0037": [
+      "FR-VD-007",
+      "FR-VD-010",
+      "QR-DESKTOP-RELIABILITY"
+    ],
+    "E-0038": [
+      "FR-VD-006",
+      "FR-VD-010",
+      "QR-DESKTOP-RELIABILITY"
+    ],
+    "E-0039": [
+      "FR-VD-010",
+      "FR-VD-011",
+      "QR-SECURITY"
+    ],
+    "E-0040": [
+      "FR-VD-010",
+      "QR-DESKTOP-RELIABILITY"
+    ],
+    "E-0041": [
+      "BR-ARCHIVE-COVERAGE",
+      "BR-EXPORT-INTEGRITY",
+      "FR-VD-002",
+      "FR-VD-003",
+      "FR-VD-006",
+      "FR-VD-007",
+      "FR-VD-008",
+      "FR-VD-011",
+      "FR-VD-012"
+    ],
+    "E-0042": [
+      "FR-VD-001",
+      "FR-VD-004",
+      "FR-VD-005",
+      "FR-VD-009",
+      "FR-VD-011",
+      "QR-SECURITY"
+    ],
+    "E-0043": [
+      "FR-VD-006",
+      "FR-VD-007",
+      "FR-VD-010",
+      "FR-VD-012",
+      "QR-DESKTOP-RELIABILITY"
+    ],
+    "E-0044": [
+      "FR-VD-010",
+      "FR-VD-011",
+      "QR-SECURITY",
+      "UC-MEDIA-DOWNLOAD"
+    ],
+    "E-0045": [
+      "FR-VD-010",
+      "QR-DESKTOP-RELIABILITY",
+      "QR-SECURITY",
+      "UC-MEDIA-DOWNLOAD"
+    ],
+    "E-0047": [
+      "FR-VD-010"
+    ],
+    "E-0050": [
+      "FR-VD-010",
+      "FR-VD-011",
+      "QR-DESKTOP-RELIABILITY",
+      "QR-SECURITY"
+    ],
+    "E-0051": [
+      "FR-VD-002",
+      "FR-VD-003",
+      "FR-VD-007",
+      "FR-VD-008",
+      "FR-VD-011",
+      "FR-VD-012",
+      "SB-DISCOVERY-INTERRUPTED",
+      "SB-RESUME-VERIFIED"
+    ],
+    "E-0052": [
+      "FR-VD-006",
+      "FR-VD-011"
+    ],
+    "E-0053": [
+      "FR-VD-010",
+      "QR-DESKTOP-RELIABILITY",
+      "QR-SECURITY"
+    ],
+    "E-0054": [
+      "FR-VD-001",
+      "FR-VD-002",
+      "FR-VD-004",
+      "FR-VD-005",
+      "FR-VD-011",
+      "SB-CAPTIONS-ABSENT",
+      "SB-LANGUAGE-UNAVAILABLE"
+    ],
+    "E-0055": [
+      "FR-VD-007",
+      "FR-VD-010",
+      "FR-VD-012",
+      "QR-DESKTOP-RELIABILITY",
+      "QR-SECURITY"
+    ],
+    "E-0056": [
+      "FR-VD-010"
+    ],
+    "E-0057": [
+      "FR-VD-010",
+      "QR-DESKTOP-RELIABILITY"
+    ],
+    "E-0058": [
+      "FR-VD-011",
+      "QR-SECURITY"
+    ],
+    "E-0059": [
+      "FR-VD-010",
+      "QR-DESKTOP-RELIABILITY"
+    ],
+    "E-0060": [
+      "FR-VD-003",
+      "FR-VD-006",
+      "FR-VD-007",
+      "FR-VD-008",
+      "FR-VD-010",
+      "FR-VD-011",
+      "QR-DESKTOP-RELIABILITY",
+      "QR-SECURITY"
+    ]
+  },
+  "families": {
+    "actor": "candidates",
+    "journey": "none-found",
+    "use-case": "candidates",
+    "business-rule": "candidates",
+    "domain-term": "none-found",
+    "bounded-context": "none-found",
+    "functional-requirement": "candidates",
+    "quality-requirement": "candidates",
+    "constraint": "candidates",
+    "structured-behaviour": "candidates"
+  },
+  "leads": {
+    "open": 0,
+    "resolved": 1
+  },
+  "questions": {
+    "open": 0,
+    "answered": 0,
+    "deferred": 0
+  },
+  "validation": {
+    "at": "2026-10-17T06:37:44.744Z",
+    "errors": 0,
+    "warnings": 0,
+    "lowConfidence": [],
+    "fresh": true
+  },
+  "completion": {
+    "complete": true,
+    "criteria": {
+      "sourcesClassified": true,
+      "leadsResolved": true,
+      "questionsResolved": true,
+      "familiesProbed": true,
+      "duplicatesReconciled": true,
+      "validationPasses": true,
+      "validationFresh": true,
+      "noStaleEvidence": true,
+      "lowConfidenceReported": true,
+      "modelUntouched": true,
+      "outputOnlyChgInitial": true
+    }
+  }
+}

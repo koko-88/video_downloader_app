@@ -1,0 +1,5 @@
+{
+  "schema": "product-definition-as-code/recovery-questions/v1alpha1",
+  "sessionId": "production-readiness",
+  "questions": []
+}

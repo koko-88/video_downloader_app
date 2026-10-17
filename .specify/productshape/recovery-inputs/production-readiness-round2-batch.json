@@ -1,0 +1,148 @@
+{
+  "findings": [
+    {
+      "source": "E-0011",
+      "classification": "represented",
+      "artifacts": [
+        "BR-EXPORT-INTEGRITY",
+        "BR-ARCHIVE-COVERAGE",
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY",
+        "FR-VD-007",
+        "FR-VD-008",
+        "FR-VD-010",
+        "FR-VD-011",
+        "FR-VD-012"
+      ],
+      "complete": true,
+      "note": "Documented product recovery/integrity and truthful result obligations. Historical capability evidence is explicitly superseded by the current checkpoint; review/provider/human gates remain unapproved.",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0012",
+      "classification": "represented",
+      "artifacts": [
+        "BR-EXPORT-INTEGRITY",
+        "BR-ARCHIVE-COVERAGE",
+        "UC-TRANSCRIPT-BATCH",
+        "FR-VD-004",
+        "FR-VD-006",
+        "FR-VD-007",
+        "FR-VD-008",
+        "FR-VD-010"
+      ],
+      "complete": true,
+      "note": "Documented user flow: same choices resume verified successes, failed-only retry, distinct discovery/results and original downloads. Validation examples do not establish release acceptance.",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0013",
+      "classification": "represented",
+      "artifacts": [
+        "BR-EXPORT-INTEGRITY",
+        "BR-ARCHIVE-COVERAGE",
+        "FR-VD-001",
+        "FR-VD-002",
+        "FR-VD-004",
+        "FR-VD-005",
+        "FR-VD-007",
+        "FR-VD-008",
+        "FR-VD-009",
+        "FR-VD-011",
+        "QR-SECURITY"
+      ],
+      "complete": true,
+      "note": "Design rationale corroborates metadata-only captions, exact-language tracks, exhausted iterators, safe durable products and unavailable local ASR. Historical Inno absence clarified against current evidence.",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0014",
+      "classification": "represented",
+      "artifacts": [
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY",
+        "CON-LOCAL-AUTHORITY"
+      ],
+      "complete": true,
+      "note": "Task ledger traces implemented obligations and explicitly incomplete external/human gates; checked implementation tasks do not approve reviewer checklists or release.",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0015",
+      "classification": "represented",
+      "artifacts": [
+        "CON-LOCAL-AUTHORITY",
+        "QR-SECURITY",
+        "QR-DESKTOP-RELIABILITY"
+      ],
+      "complete": true,
+      "note": "Explicit governing authority for local edits, non-destructive bounded verification, no unapproved Git/tools/account actions and truthful capability levels.",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0016",
+      "classification": "represented",
+      "artifacts": [
+        "UC-MEDIA-DOWNLOAD",
+        "UC-TRANSCRIPT-BATCH",
+        "BR-EXPORT-INTEGRITY",
+        "BR-ARCHIVE-COVERAGE",
+        "FR-VD-010",
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY"
+      ],
+      "complete": true,
+      "note": "User-facing documentation explicitly promises selected media containers with visible incompatible failures, transcript choices/recovery and preservation. Added no capability beyond admitted downloads/transcripts.",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0017",
+      "classification": "represented",
+      "artifacts": [
+        "QR-DESKTOP-RELIABILITY",
+        "CON-LOCAL-AUTHORITY"
+      ],
+      "complete": true,
+      "note": "Observed build implementation: isolated workspace destination, collision refusal, optional asset checks and existing dependency use. Supports documented preservation; code is secondary evidence, not new product intent.",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0018",
+      "classification": "represented",
+      "artifacts": [
+        "QR-DESKTOP-RELIABILITY",
+        "CON-LOCAL-AUTHORITY"
+      ],
+      "complete": true,
+      "note": "Observed installer build implementation selects source/output, preserves existing setup and uses existing compiler. A stub build would not prove installed behavior; actual release gates remain separate.",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0019",
+      "classification": "represented",
+      "artifacts": [
+        "CON-LOCAL-AUTHORITY",
+        "QR-DESKTOP-RELIABILITY"
+      ],
+      "complete": true,
+      "note": "Operational entry prompt corroborates scope, evidence and human boundaries. Repaired stale absent-plan/task instructions; explicit current-state resolution now prevents duplicate generation.",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0020",
+      "classification": "represented",
+      "artifacts": [
+        "CON-LOCAL-AUTHORITY",
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY"
+      ],
+      "complete": true,
+      "note": "Capability routing preserves present/callable/authenticated/operational/verified distinctions. Replaced stale missing-plan/tasks assertion; service authentication is not completed independent review.",
+      "acceptChanged": true
+    }
+  ],
+  "leads": [],
+  "questions": [],
+  "retractions": [],
+  "familyProbes": []
+}

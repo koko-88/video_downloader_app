@@ -1,0 +1,122 @@
+{
+  "findings": [
+    {
+      "source": "E-0001",
+      "classification": "represented",
+      "artifacts": [
+        "CON-LOCAL-AUTHORITY",
+        "QR-SECURITY",
+        "QR-DESKTOP-RELIABILITY"
+      ],
+      "complete": true,
+      "note": "High-confidence documented governing boundaries; no constitutional relaxation."
+    },
+    {
+      "source": "E-0002",
+      "classification": "represented",
+      "artifacts": [
+        "ACT-DESKTOP-USER",
+        "UC-TRANSCRIPT-BATCH",
+        "UC-MEDIA-DOWNLOAD",
+        "CON-LOCAL-AUTHORITY"
+      ],
+      "complete": true,
+      "note": "High-confidence explicit user outcomes and product boundaries; no new ASR capability inferred."
+    },
+    {
+      "source": "E-0003",
+      "classification": "represented",
+      "artifacts": [
+        "UC-TRANSCRIPT-BATCH",
+        "UC-MEDIA-DOWNLOAD",
+        "QR-DESKTOP-RELIABILITY"
+      ],
+      "complete": true,
+      "note": "Admitted VD-01/02 and conditional VD-03; VD-04 release evidence remains partial."
+    },
+    {
+      "source": "E-0004",
+      "classification": "represented",
+      "artifacts": [
+        "FR-VD-001",
+        "FR-VD-002",
+        "FR-VD-003",
+        "FR-VD-004",
+        "FR-VD-005",
+        "FR-VD-006",
+        "FR-VD-007",
+        "FR-VD-008",
+        "FR-VD-009",
+        "FR-VD-010",
+        "FR-VD-011",
+        "FR-VD-012",
+        "UC-TRANSCRIPT-BATCH",
+        "QR-SECURITY",
+        "QR-DESKTOP-RELIABILITY"
+      ],
+      "complete": true,
+      "note": "All twelve explicit obligations preserved. Historical implementation-status prose is delivery evidence, not recovered product meaning."
+    },
+    {
+      "source": "E-0005",
+      "classification": "represented",
+      "artifacts": [
+        "QR-SECURITY",
+        "QR-DESKTOP-RELIABILITY"
+      ],
+      "complete": true,
+      "note": "Independent review and actual Windows installation evidence are distinct from deterministic checks."
+    },
+    {
+      "source": "E-0006",
+      "classification": "no-product-intent",
+      "reason": "Verification procedure and artifact ownership; product obligations already recovered from product/spec sources.",
+      "complete": true
+    },
+    {
+      "source": "E-0007",
+      "classification": "represented",
+      "artifacts": [
+        "QR-SECURITY",
+        "QR-DESKTOP-RELIABILITY"
+      ],
+      "complete": true,
+      "note": "Truthful PASS/FAIL/BLOCKED/NOT_RUN and manifest crosswalk refine measurable acceptance."
+    },
+    {
+      "source": "E-0008",
+      "classification": "no-product-intent",
+      "reason": "Reviewer-owned quality gate; seven markers remain unchecked. Human explicitly authorized implementation anyway.",
+      "complete": true
+    },
+    {
+      "source": "E-0009",
+      "classification": "represented",
+      "artifacts": [
+        "FR-VD-004",
+        "FR-VD-006",
+        "FR-VD-007",
+        "FR-VD-008",
+        "FR-VD-011"
+      ],
+      "complete": true,
+      "note": "Track distinctions, format semantics, durable recovery and non-overwrite obligations corroborated."
+    },
+    {
+      "source": "E-0010",
+      "classification": "no-product-intent",
+      "reason": "Technical data representation; observable obligations are already recovered from the specification and output contract.",
+      "complete": true
+    }
+  ],
+  "leads": [
+    {
+      "description": "Remaining 46 authorized sources await a later bounded recovery round; this round cannot certify the entire recovered model.",
+      "kind": "repo",
+      "source": "E-0004"
+    }
+  ],
+  "questions": [],
+  "retractions": [],
+  "familyProbes": []
+}

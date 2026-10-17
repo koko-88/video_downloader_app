@@ -1,0 +1,131 @@
+{
+  "findings": [
+    {
+      "source": "E-0041",
+      "classification": "represented",
+      "artifacts": [
+        "FR-VD-002",
+        "FR-VD-003",
+        "FR-VD-006",
+        "FR-VD-007",
+        "FR-VD-008",
+        "FR-VD-011",
+        "FR-VD-012",
+        "BR-ARCHIVE-COVERAGE",
+        "BR-EXPORT-INTEGRITY"
+      ],
+      "complete": true,
+      "acceptChanged": true,
+      "note": "Observed exhausted or explicitly incomplete discovery, exact identities, confined verified outputs, durable counts, cancellation and surfaced-rate-limit halt. Secondary code corroborates the documented batch contract; no new normative scope inferred."
+    },
+    {
+      "source": "E-0042",
+      "classification": "represented",
+      "artifacts": [
+        "FR-VD-001",
+        "FR-VD-004",
+        "FR-VD-005",
+        "FR-VD-009",
+        "FR-VD-011",
+        "QR-SECURITY"
+      ],
+      "complete": true,
+      "acceptChanged": true,
+      "note": "Observed named metadata-only extractors, exact language/preference selection, bounded caption requests, explicit unavailable/absent/error classes and no app authentication fallback after a surfaced rate limit. No rendered media or model retrieval is introduced."
+    },
+    {
+      "source": "E-0043",
+      "classification": "represented",
+      "artifacts": [
+        "FR-VD-006",
+        "FR-VD-007",
+        "FR-VD-010",
+        "FR-VD-012",
+        "QR-DESKTOP-RELIABILITY"
+      ],
+      "complete": true,
+      "acceptChanged": true,
+      "note": "Observed real Qt worker lifetime, queued compact progress, model-backed results, distinct coverage and explicit user resume/retry. Optional ASR limitation is visible and does not imply an implemented speech backend."
+    },
+    {
+      "source": "E-0044",
+      "classification": "represented",
+      "artifacts": [
+        "UC-MEDIA-DOWNLOAD",
+        "FR-VD-010",
+        "FR-VD-011",
+        "QR-SECURITY"
+      ],
+      "complete": true,
+      "acceptChanged": true,
+      "note": "Observed original quality/format options, maintained remux/audio postprocessors, bundled runtime selection and filtered cancellation-aware logging. Actual output correctness requires separate file/container evidence."
+    },
+    {
+      "source": "E-0045",
+      "classification": "represented",
+      "artifacts": [
+        "UC-MEDIA-DOWNLOAD",
+        "FR-VD-010",
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY"
+      ],
+      "complete": true,
+      "acceptChanged": true,
+      "note": "Observed native Qt entry point, privacy-filtered exception handling and explicit isolated diagnostic invocation. Source/frozen modes are reported separately; entry-point presence alone is not release proof."
+    },
+    {
+      "source": "E-0046",
+      "classification": "no-product-intent",
+      "artifacts": [],
+      "complete": true,
+      "acceptChanged": true,
+      "note": "Deterministic engineering sensor/controller plumbing, explicitly structural rather than an acceptance certificate. No independent product intent.",
+      "reason": "Deterministic engineering sensor/controller plumbing, explicitly structural rather than an acceptance certificate. No independent product intent."
+    },
+    {
+      "source": "E-0047",
+      "classification": "represented",
+      "artifacts": [
+        "FR-VD-010"
+      ],
+      "complete": true,
+      "acceptChanged": true,
+      "note": "Observed offline original-format/options smoke without provider download. Its assertions corroborate options construction only; no media or installer completeness claim."
+    },
+    {
+      "source": "E-0048",
+      "classification": "no-product-intent",
+      "artifacts": [],
+      "complete": true,
+      "acceptChanged": true,
+      "note": "Empty tests package marker; no product semantics.",
+      "reason": "Empty tests package marker; no product semantics."
+    },
+    {
+      "source": "E-0049",
+      "classification": "no-product-intent",
+      "artifacts": [],
+      "complete": true,
+      "acceptChanged": true,
+      "note": "Engineering controller contract tests for structural traceability, baseline execution and failure precedence; no independent product intent or release certification.",
+      "reason": "Engineering controller contract tests for structural traceability, baseline execution and failure precedence; no independent product intent or release certification."
+    },
+    {
+      "source": "E-0050",
+      "classification": "represented",
+      "artifacts": [
+        "FR-VD-010",
+        "FR-VD-011",
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY"
+      ],
+      "complete": true,
+      "acceptChanged": true,
+      "note": "Observed deterministic options/error/privacy/runtime and bounded fallback regression tests. Fallback success fixture creates a completed file; actual media/packaging remains separately verified."
+    }
+  ],
+  "leads": [],
+  "questions": [],
+  "retractions": [],
+  "familyProbes": []
+}

@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import json
 import logging
+import os
+import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -18,16 +20,18 @@ def history_path() -> Path:
     return app_data_dir() / "history.json"
 
 
-def _load_entries() -> list[dict]:
-    path = history_path()
-    if not path.is_file():
-        return []
+def _load_entries() -> list[dict] | None:
     try:
-        data = json.loads(path.read_text(encoding="utf-8"))
-        return data if isinstance(data, list) else []
-    except Exception as e:
-        logger.warning("Failed to load history: %s", e)
+        data = json.loads(history_path().read_text(encoding="utf-8"))
+        if not isinstance(data, list) or any(not isinstance(entry, dict) for entry in data):
+            logger.warning("Invalid history preserved; no new entry appended")
+            return None
+        return data
+    except FileNotFoundError:
         return []
+    except Exception as e:
+        logger.warning("History preserved because it could not be read: %s", e)
+        return None
 
 
 def append_entry(
@@ -38,8 +42,10 @@ def append_entry(
     output_path: str,
     status: str,
     audio_quality: str = "",
-) -> None:
+) -> bool:
     entries = _load_entries()
+    if entries is None:
+        return False
     entry = {
         "timestamp": datetime.now(timezone.utc).isoformat(),
         "url": url,
@@ -52,10 +58,22 @@ def append_entry(
         entry["audio_quality"] = audio_quality
     entries.append(entry)
     entries = entries[-MAX_ENTRIES:]
-    path = history_path()
-    tmp = path.with_suffix(".tmp")
+    name = None
     try:
-        tmp.write_text(json.dumps(entries, indent=2), encoding="utf-8")
-        tmp.replace(path)
+        path = history_path()
+        fd, name = tempfile.mkstemp(dir=path.parent, prefix=".history-", suffix=".tmp")
+        with os.fdopen(fd, "w", encoding="utf-8") as stream:
+            json.dump(entries, stream, indent=2)
+            stream.flush()
+            os.fsync(stream.fileno())
+        os.replace(name, path)
+        return True
     except Exception as e:
         logger.error("Failed to save history: %s", e)
+        return False
+    finally:
+        if name is not None:
+            try:
+                Path(name).unlink(missing_ok=True)
+            except OSError as e:
+                logger.warning("Could not remove temporary history file: %s", e)

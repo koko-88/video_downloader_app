@@ -1,0 +1,16 @@
+{
+  "schema": "product-definition-as-code/recovery-leads/v1alpha1",
+  "sessionId": "production-readiness",
+  "leads": [
+    {
+      "id": "L-0001",
+      "description": "Remaining 46 authorized sources await a later bounded recovery round; this round cannot certify the entire recovered model.",
+      "kind": "repo",
+      "status": "resolved",
+      "createdAt": "2026-10-16T10:00:40.334Z",
+      "source": "E-0004",
+      "resolution": "All sixty authorized repository sources were read and classified across six bounded rounds. Existing documented intent is represented in the same draft overlay; family probes distinguish documented behavior from unsupported invented architecture. No accepted model or release approval is implied. The Spec Kit adapter exposes addLead but no lead-resolution action; this existing generated bookkeeping entry is resolved in place and then rechecked by the CLI.",
+      "resolvedAt": "2026-10-16T11:51:10.878026Z"
+    }
+  ]
+}

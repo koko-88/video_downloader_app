@@ -24,6 +24,7 @@ from app.errors import (
 )
 from app.ffmpeg_resolver import FFmpegInfo, needs_ffmpeg, resolve_ffmpeg
 from app.formats import FORMAT_MP3, FORMAT_M4A, normalize_format_label
+from app.privacy import PrivacyFilter
 from app.ydl_options import (
     GENERIC_FALLBACK_FORMAT,
     build_ydl_opts,
@@ -32,16 +33,8 @@ from app.ydl_options import (
 )
 
 logger = logging.getLogger("videodownloader")
-
-
-def _normalize_info(info: dict[str, Any] | None) -> dict[str, Any] | None:
-    if not info:
-        return None
-    if info.get("_type") in ("playlist", "multi_video") and info.get("entries"):
-        entry = info["entries"][0]
-        if entry:
-            return entry
-    return info
+if not any(isinstance(item, PrivacyFilter) for item in logger.filters):
+    logger.addFilter(PrivacyFilter())
 
 
 def _expected_extensions(fmt_label: str) -> list[str]:
@@ -50,8 +43,8 @@ def _expected_extensions(fmt_label: str) -> list[str]:
     if fmt_label == FORMAT_M4A:
         return [".m4a"]
     if fmt_label == "WEBM Video":
-        return [".webm", ".mkv"]
-    return [".mp4", ".mkv", ".webm"]
+        return [".webm"]
+    return [".mp4"]
 
 
 def _resolve_output_path(
@@ -60,17 +53,30 @@ def _resolve_output_path(
     output_dir: Path,
     fmt: str,
 ) -> str | None:
-    info = _normalize_info(info)
-    if not info:
+    if not isinstance(info, dict) or not info:
+        return None
+    if info.get("_type") in ("playlist", "multi_video"):
+        for entry in info.get("entries") or ():
+            completed = _resolve_output_path(ydl, entry, output_dir, fmt)
+            if completed is not None:
+                return completed
         return None
 
     fmt_label = normalize_format_label(fmt)
     exts = _expected_extensions(fmt_label)
 
+    def finished_file(value):
+        try:
+            candidate = Path(value).resolve()
+            return (candidate.is_relative_to(output_dir.resolve()) and candidate.suffix.lower() in exts
+                    and candidate.is_file() and candidate.stat().st_size > 0)
+        except (OSError, TypeError, ValueError):
+            return False
+
     requested = info.get("requested_downloads") or []
     for item in reversed(requested):
         fp = item.get("filepath")
-        if fp and Path(fp).is_file():
+        if fp and finished_file(fp):
             return str(Path(fp).resolve())
 
     try:
@@ -84,15 +90,12 @@ def _resolve_output_path(
     path = Path(filepath)
     for ext in exts:
         candidate = path.with_suffix(ext)
-        if candidate.is_file():
+        if finished_file(candidate):
             return str(candidate.resolve())
-        matches = sorted(output_dir.glob(f"{path.stem}*{ext}"))
-        if matches:
-            return str(matches[0].resolve())
 
-    if path.is_file():
+    if finished_file(path):
         return str(path.resolve())
-    return str(path)
+    return None
 
 
 class DownloaderWorker:
@@ -300,6 +303,8 @@ class DownloaderWorker:
             self.output_path = _resolve_output_path(
                 ydl, info, self.output_dir, self.fmt
             )
+            if self.output_path is None:
+                raise DownloadError('No completed media output was found in the output folder.')
             logger.info(
                 "Download success url=%s output=%s",
                 self.url,

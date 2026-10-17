@@ -1,6 +1,6 @@
 # VD-02 — Transcript Extraction & Export
 
-**Status:** Product requirement contract; implementation plan and tasks to be written after live-repo and tool evaluation. **Target:** existing Windows 10 PySide6 + yt-dlp app. **Product authority:** `PRODUCT.md`. **Release checks:** `docs/verification/acceptance.md`. This is NOT proof of an implemented feature.
+**Status:** Product requirement contract with an existing implementation and production hardening. Current evidence and outstanding release gates are recorded in plan.md/tasks.md. **Target:** existing Windows 10 PySide6 + yt-dlp app. **Product authority:** `PRODUCT.md`. **Release checks:** `docs/verification/acceptance.md`. This is NOT proof of an implemented feature.
 
 ## User scenarios (acceptance dimensions)
 

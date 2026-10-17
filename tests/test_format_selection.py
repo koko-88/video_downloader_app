@@ -187,6 +187,7 @@ class RuntimeStatusTests(unittest.TestCase):
 
 class FallbackWorkerTests(unittest.TestCase):
     def test_worker_retries_once_on_format_error(self):
+        import tempfile
         from unittest.mock import patch
 
         from yt_dlp.utils import DownloadError
@@ -194,6 +195,9 @@ class FallbackWorkerTests(unittest.TestCase):
         from app.downloader_worker import DownloaderWorker
 
         calls: list[str] = []
+        temp = tempfile.TemporaryDirectory()
+        self.addCleanup(temp.cleanup)
+        completed = Path(temp.name) / 't [abc].mp4'
 
         class FakeYDL:
             def __init__(self, opts):
@@ -209,15 +213,16 @@ class FallbackWorkerTests(unittest.TestCase):
                 calls.append(self.opts["format"])
                 if self.opts["format"] == DEFAULT_VIDEO_FORMAT:
                     raise DownloadError("Requested format is not available")
+                completed.write_bytes(b'completed media fixture')
                 return {"id": "abc", "title": "t", "requested_downloads": []}
 
             def prepare_filename(self, info):
-                return str(Path("C:/out") / "t [abc].mp4")
+                return str(completed)
 
         ffmpeg = _ffmpeg()
         worker = DownloaderWorker(
             url="https://www.youtube.com/watch?v=LpMLDtejfvs",
-            output_dir=Path("C:/out"),
+            output_dir=Path(temp.name),
             fmt=FORMAT_MP4,
             video_quality="1080",
             audio_quality="Best",

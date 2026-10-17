@@ -28,7 +28,7 @@
 
 ## Stage 4 — Spec Kit plan/tasks/consistency (KOK-6)
 **Use:** installed repo Codex skill `speckit-plan` → `speckit-tasks` → `speckit-analyze` + `speckit-checklist` as appropriate; `speckit-clarify` only for genuinely unresolved details. **The existing VD-02 spec exists; do not blindly rerun `speckit-specify` to create a second spec/branch.** Read actual skill instructions. Before any write-oriented skill, verify FEATURE_DIR with paths-only script and `specify integration status --json`. Original skill adapters expect root `LOGIC_VERIFICATION.md` and `IMPLEMENTATION_VERIFICATION.md`, both supplied here.
-**Actions:** generate `specs/transcript-extraction/plan.md` and `tasks.md` with sources, design tradeoffs, dependency order, acceptance traceability and implementation ownership; run read-only analyze and reconcile problems before coding. Any skill that asks for human signoff gets a recorded PENDING_USER gate; don't claim it was approved.
+**Actions:** create or update the selected existing `specs/transcript-extraction/plan.md` and `tasks.md` as needed, preserving current work, with sources, design tradeoffs, dependency order, acceptance traceability and implementation ownership; run read-only analyze and reconcile problems before coding. Any skill that asks for human signoff gets a recorded PENDING_USER gate; don't claim it was approved.
 **Gate:** complete reviewed design, tasks and FR/SC↔task↔test mapping for authorized work; no contradiction silently bypassed.
 
 ## Stage 5 — Verified implementation loop (KOK-7)
@@ -41,12 +41,12 @@ For each independent accepted task: (1) load spec/task/affected source (2) edit 
 **Gate:** recorded PASS or precise FAIL/BLOCKED/NOT_RUN by check; no "release complete" if crucial smoke/review missing.
 
 ## Stage 7 — Delivery and Linear reconciliation (KOK-8)
-**Use:** actual test results, git diff/status, Linear project and existing KOK-5..8 issues if authenticated in the Codex runtime. ChatGPT Linear connector availability does not prove Codex availability. Update issues ONLY upon successful real tool call; otherwise provide issue-ready text in the final disposition. No commit or push.
+**Use:** actual test results, git diff/status, Linear project and existing KOK-5..8 issues if authenticated in the Codex runtime. ChatGPT Linear connector availability does not prove Codex availability. Update issues only with explicit user authorization and a successful real tool call; otherwise retain issue-ready text in the local disposition. No commit or push.
 **Gate:** per-criterion results, changed files, architectural decisions, coverage numbers with source boundaries, user-only decisions and pending reviews clearly described.
 
 ## Runnable, measured VD-02 Control Loop
 
-Read `docs/workflows/loop-engineering.md`. Implemented deterministic sensor/controller entry points are `scripts/feature_loop.py measure` and `scripts/feature_loop.py next --run-checks` using the existing app Python interpreter; the latter runs fixed compileall and unittest baseline checks. Published main initially lacks `plan.md` and `tasks.md`, so `PLAN_OR_RECONCILE` is the expected next action, **not** a code-implementation green light. Generate and verify Spec Kit plan/tasks with explicit FR/SC-to-task mappings first.
+Read `docs/workflows/loop-engineering.md`. Implemented deterministic sensor/controller entry points are `scripts/feature_loop.py measure` and `scripts/feature_loop.py next --run-checks` using the existing app Python interpreter; the latter runs fixed compileall and unittest baseline checks. Resolve the actual current feature artifacts and parse the measured controller proposal. If plan/tasks are absent, create and verify them with explicit FR/SC-to-task mappings before implementation. Continue existing artifacts when present; historical missing-file observations do not authorize duplicate generation.
 
 Every cycle: measure actual gap → select and check one dependency-safe increment → Codex implements and verifies it → remeasure, including regressions → record task evidence and move to next. Two failed fixes sharing a premise trigger Pstack's `attack-the-premise` reasoning **before** another patch. Three failed attempts is only a safety cap. `VERIFY_RELEASE` is a final verification request, not a PASS certificate.
 
@@ -61,3 +61,7 @@ Keep durable checkpoints in existing `specs/transcript-extraction/tasks.md` or `
 - External provider absent (REA/Qodo/Linear) → use documented equivalent **only** where it truly satisfies acceptance, otherwise mark NOT_RUN.
 - Pagination/API restrictions → keep partial manifest and causal error; don't label archive complete.
 - Windows packaging cannot run → NOT_RUN/BLOCKED, don't claim release.
+
+
+## Current worktree note (2026-10-16)
+Historical references above to missing plan/tasks or unimplemented transcript suites describe the initial repository assessment. The current worktree contains the implementation, plan/tasks and deterministic/native acceptance suites. Use the latest production-hardening section of specs/transcript-extraction/plan.md and its task checkpoints for actual capabilities and evidence; do not recreate artifacts or interpret historical NOT_RUN/tool absence as current state. Build entrypoints now preserve existing outputs and require fresh destinations. Pstack is configured with the human-selected inherit-parent roles; no external autonomous runner is configured.

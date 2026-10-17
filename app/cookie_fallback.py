@@ -5,7 +5,7 @@ from __future__ import annotations
 import logging
 import re
 
-from app.errors import is_youtube_url
+from app.errors import is_rate_limited_error, is_youtube_url
 
 logger = logging.getLogger("videodownloader")
 
@@ -44,6 +44,8 @@ _COOKIE_DB_LOCKED_PATTERNS = [
 
 
 def is_cookie_db_locked(exc: BaseException) -> bool:
+    if is_rate_limited_error(exc):
+        return False
     text = str(exc)
     return any(p.search(text) for p in _COOKIE_DB_LOCKED_PATTERNS)
 
@@ -56,7 +58,7 @@ def is_youtube_auth_error(exc: BaseException) -> bool:
 
 
 def should_attempt_cookie_fallback(url: str, exc: BaseException) -> bool:
-    return is_youtube_url(url) and is_youtube_auth_error(exc)
+    return not is_rate_limited_error(exc) and is_youtube_url(url) and is_youtube_auth_error(exc)
 
 
 def browsers_to_try(url: str) -> tuple[str | None, ...]:

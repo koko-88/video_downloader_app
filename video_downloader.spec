@@ -23,6 +23,8 @@ hiddenimports = [
     "app.paths",
     "app.formats",
     "app.runtime_status",
+    "app.js_runtime",
+    "app.privacy",
     "app.captions",
     "app.transcript_source",
     "app.transcript_batch",
@@ -57,11 +59,12 @@ if resources_dir.is_dir():
         if item.is_file() and item.name not in (".gitkeep",):
             datas.append((str(item), "resources"))
 
-ffmpeg_dir = spec_dir / "tools" / "ffmpeg"
-if ffmpeg_dir.is_dir():
-    for f in sorted(ffmpeg_dir.iterdir()):
-        if f.is_file() and f.suffix.lower() in (".exe", ".dll"):
-            datas.append((str(f), "tools/ffmpeg"))
+for tool in ("ffmpeg", "javascript"):
+    tool_dir = spec_dir / "tools" / tool
+    if tool_dir.is_dir():
+        for f in sorted(tool_dir.iterdir()):
+            if f.is_file() and f.suffix.lower() in (".exe", ".dll", ".txt", ".md"):
+                datas.append((str(f), f"tools/{tool}"))
 
 icon_path = resources_dir / "icon.ico"
 icon_arg = str(icon_path) if icon_path.is_file() else None

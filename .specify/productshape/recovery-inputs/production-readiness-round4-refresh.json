@@ -1,0 +1,78 @@
+{
+  "findings": [
+    {
+      "source": "E-0007",
+      "acceptChanged": true,
+      "classification": "represented",
+      "complete": true,
+      "note": "Same processed product/source evidence re-read after round-four fixes and disclosed test-isolation correction; invalidate old digest without adding another semantic batch.",
+      "artifacts": [
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY"
+      ]
+    },
+    {
+      "source": "E-0011",
+      "acceptChanged": true,
+      "classification": "represented",
+      "complete": true,
+      "note": "Same processed product/source evidence re-read after round-four fixes and disclosed test-isolation correction; invalidate old digest without adding another semantic batch.",
+      "artifacts": [
+        "BR-ARCHIVE-COVERAGE",
+        "BR-EXPORT-INTEGRITY",
+        "FR-VD-007",
+        "FR-VD-008",
+        "FR-VD-010",
+        "FR-VD-011",
+        "FR-VD-012",
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY"
+      ]
+    },
+    {
+      "source": "E-0014",
+      "acceptChanged": true,
+      "classification": "represented",
+      "complete": true,
+      "note": "Same processed product/source evidence re-read after round-four fixes and disclosed test-isolation correction; invalidate old digest without adding another semantic batch.",
+      "artifacts": [
+        "CON-LOCAL-AUTHORITY",
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY"
+      ]
+    },
+    {
+      "source": "E-0030",
+      "acceptChanged": true,
+      "classification": "represented",
+      "complete": true,
+      "note": "Same processed product/source evidence re-read after round-four fixes and disclosed test-isolation correction; invalidate old digest without adding another semantic batch.",
+      "artifacts": [
+        "FR-VD-007",
+        "FR-VD-010",
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY"
+      ]
+    },
+    {
+      "source": "E-0038",
+      "acceptChanged": true,
+      "classification": "represented",
+      "complete": true,
+      "note": "Same processed product/source evidence re-read after round-four fixes and disclosed test-isolation correction; invalidate old digest without adding another semantic batch.",
+      "artifacts": [
+        "FR-VD-006",
+        "FR-VD-010",
+        "QR-DESKTOP-RELIABILITY"
+      ]
+    },
+    {
+      "source": "E-0055",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0060",
+      "acceptChanged": true
+    }
+  ]
+}

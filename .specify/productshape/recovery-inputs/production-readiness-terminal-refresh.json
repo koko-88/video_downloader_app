@@ -1,0 +1,57 @@
+{
+  "findings": [
+    {
+      "source": "E-0003",
+      "acceptChanged": true,
+      "classification": "represented",
+      "complete": true,
+      "note": "Same classified documentation re-read after terminal handoff machine/review receipts and current acceptance reconciliation. Older digest invalidated; engineering receipts are not new product authority and no additional semantic source batch is admitted.",
+      "artifacts": [
+        "QR-DESKTOP-RELIABILITY",
+        "UC-MEDIA-DOWNLOAD",
+        "UC-TRANSCRIPT-BATCH"
+      ]
+    },
+    {
+      "source": "E-0007",
+      "acceptChanged": true,
+      "classification": "represented",
+      "complete": true,
+      "note": "Same classified documentation re-read after terminal handoff machine/review receipts and current acceptance reconciliation. Older digest invalidated; engineering receipts are not new product authority and no additional semantic source batch is admitted.",
+      "artifacts": [
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY"
+      ]
+    },
+    {
+      "source": "E-0011",
+      "acceptChanged": true,
+      "classification": "represented",
+      "complete": true,
+      "note": "Same classified documentation re-read after terminal handoff machine/review receipts and current acceptance reconciliation. Older digest invalidated; engineering receipts are not new product authority and no additional semantic source batch is admitted.",
+      "artifacts": [
+        "BR-ARCHIVE-COVERAGE",
+        "BR-EXPORT-INTEGRITY",
+        "FR-VD-007",
+        "FR-VD-008",
+        "FR-VD-010",
+        "FR-VD-011",
+        "FR-VD-012",
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY"
+      ]
+    },
+    {
+      "source": "E-0014",
+      "acceptChanged": true,
+      "classification": "represented",
+      "complete": true,
+      "note": "Same classified documentation re-read after terminal handoff machine/review receipts and current acceptance reconciliation. Older digest invalidated; engineering receipts are not new product authority and no additional semantic source batch is admitted.",
+      "artifacts": [
+        "CON-LOCAL-AUTHORITY",
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY"
+      ]
+    }
+  ]
+}

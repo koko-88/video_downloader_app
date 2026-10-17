@@ -1,0 +1,65 @@
+schema: product-definition-as-code/recovery-brief/v1alpha1
+scope: >-
+  Human confirmed 2026-10-16 in this Codex chat: review production gaps across
+  the existing Video Downloader and implement admitted PRODUCT/ROADMAP scope.
+  Preserve downloads and local work. No publishing, deployment, global installs,
+  credential changes, accepted-model writes, or user-data deletion.
+roots: ["."]
+include:
+  - PRODUCT.md
+  - ROADMAP.md
+  - AGENTS.md
+  - LOGIC_VERIFICATION.md
+  - IMPLEMENTATION_VERIFICATION.md
+  - README.md
+  - requirements.txt
+  - main.py
+  - build_exe.py
+  - build_installer.py
+  - video_downloader.spec
+  - installer/**/*.iss
+  - .specify/memory/constitution.md
+  - specs/**/*.md
+  - docs/workflows/**/*.md
+  - docs/verification/**/*.md
+  - app/**/*.py
+  - tests/**/*.py
+  - scripts/**/*.py
+forbidden:
+  - .git/**
+  - data/**
+  - logs/**
+  - build_logs/**
+  - build/**
+  - dist/**
+  - installer_output/**
+  - _backup/**
+  - video_downloader_app/**
+  - .venv/**
+  - "**/node_modules/**"
+  - "**/__pycache__/**"
+  - "**/.env*"
+  - "**/*.key"
+  - "**/*.pem"
+secondary-evidence:
+  code: true
+  tests: true
+  issues: false
+  commit-history: false
+  external: false
+batch-size: 10
+authority: [PRODUCT.md, ROADMAP.md, .specify/memory/constitution.md, specs/transcript-extraction/spec.md]
+confirm:
+  - Recovery brief explicitly confirmed by human in this chat on 2026-10-16.
+  - CLI repository-local installation explicitly approved.
+  - Implementation may proceed with seven unchecked reviewer checklist items; markers remain unchanged.
+tiers:
+  - name: product-authority
+    globs: [PRODUCT.md, ROADMAP.md, .specify/memory/constitution.md, specs/transcript-extraction/spec.md]
+  - name: contracts-and-verification
+    globs: [LOGIC_VERIFICATION.md, IMPLEMENTATION_VERIFICATION.md, docs/verification/**, specs/transcript-extraction/**]
+  - name: workflow-and-delivery
+    globs: [AGENTS.md, README.md, docs/workflows/**, requirements.txt, build_*.py, installer/**, video_downloader.spec]
+  - name: source-and-tests
+    globs: [app/**, main.py, scripts/**, tests/**]
+external-sources: []

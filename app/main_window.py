@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 
 from PySide6.QtCore import Qt
-from PySide6.QtGui import QColor, QMovie
+from PySide6.QtGui import QColor, QMovie, QTextCursor
 from PySide6.QtWidgets import (
     QAbstractItemView,
     QApplication,
@@ -46,6 +46,7 @@ from app.formats import (
 )
 from app.ffmpeg_resolver import needs_ffmpeg, resolve_ffmpeg
 from app.paths import ensure_dir, logs_dir, optional_resource
+from app.privacy import redact
 
 logger = logging.getLogger("videodownloader")
 
@@ -259,11 +260,13 @@ class MainWindow(QWidget):
             self.audio_quality_combo.addItems(["Best"])
             self.audio_quality_combo.setEnabled(False)
         elif fmt == FORMAT_MP3:
+            audio_quality = self.audio_quality_combo.currentText()
             self.audio_quality_combo.clear()
             self.audio_quality_combo.addItems(list(AUDIO_QUALITIES))
             self.audio_quality_combo.setEnabled(True)
-            if self.audio_quality_combo.findText(DEFAULT_AUDIO_QUALITY) < 0:
-                self.audio_quality_combo.setCurrentText(DEFAULT_AUDIO_QUALITY)
+            if self.audio_quality_combo.findText(audio_quality) < 0:
+                audio_quality = DEFAULT_AUDIO_QUALITY
+            self.audio_quality_combo.setCurrentText(audio_quality)
         else:
             self.audio_quality_combo.setEnabled(False)
 
@@ -511,7 +514,8 @@ class MainWindow(QWidget):
                 self._busy_cursor = False
 
     def _append_log(self, text: str) -> None:
-        self.log_box.append(text)
+        self.log_box.moveCursor(QTextCursor.MoveOperation.End)
+        self.log_box.insertPlainText(redact(text) + '\n')
 
     def closeEvent(self, event) -> None:  # noqa: N802
         if not self.transcripts.shutdown():

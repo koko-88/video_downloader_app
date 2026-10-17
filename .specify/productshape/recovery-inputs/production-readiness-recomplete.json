@@ -1,0 +1,28 @@
+{
+  "findings": [
+    {
+      "source": "E-0001",
+      "complete": true
+    },
+    {
+      "source": "E-0002",
+      "complete": true
+    },
+    {
+      "source": "E-0003",
+      "complete": true
+    },
+    {
+      "source": "E-0006",
+      "complete": true
+    },
+    {
+      "source": "E-0008",
+      "complete": true
+    },
+    {
+      "source": "E-0010",
+      "complete": true
+    }
+  ]
+}

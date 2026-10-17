@@ -1,0 +1,308 @@
+{
+  "findings": [
+    {
+      "source": "E-0001",
+      "classification": "represented",
+      "artifacts": [
+        "CON-LOCAL-AUTHORITY",
+        "QR-SECURITY",
+        "QR-DESKTOP-RELIABILITY"
+      ],
+      "complete": true,
+      "note": "High-confidence documented governing boundaries; no constitutional relaxation. Authorized engineering/documentation changes were re-read; the same product obligation remains. Prior byte-digest findings are invalidated and re-recorded.",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0002",
+      "classification": "represented",
+      "artifacts": [
+        "ACT-DESKTOP-USER",
+        "UC-TRANSCRIPT-BATCH",
+        "UC-MEDIA-DOWNLOAD",
+        "CON-LOCAL-AUTHORITY"
+      ],
+      "complete": true,
+      "note": "High-confidence explicit user outcomes and product boundaries; no new ASR capability inferred. Authorized engineering/documentation changes were re-read; the same product obligation remains. Prior byte-digest findings are invalidated and re-recorded.",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0003",
+      "classification": "represented",
+      "artifacts": [
+        "UC-TRANSCRIPT-BATCH",
+        "UC-MEDIA-DOWNLOAD",
+        "QR-DESKTOP-RELIABILITY"
+      ],
+      "complete": true,
+      "note": "Admitted VD-01/02 and conditional VD-03; VD-04 release evidence remains partial. Authorized engineering/documentation changes were re-read; the same product obligation remains. Prior byte-digest findings are invalidated and re-recorded.",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0004",
+      "classification": "represented",
+      "artifacts": [
+        "FR-VD-001",
+        "FR-VD-002",
+        "FR-VD-003",
+        "FR-VD-004",
+        "FR-VD-005",
+        "FR-VD-006",
+        "FR-VD-007",
+        "FR-VD-008",
+        "FR-VD-009",
+        "FR-VD-010",
+        "FR-VD-011",
+        "FR-VD-012",
+        "UC-TRANSCRIPT-BATCH",
+        "QR-SECURITY",
+        "QR-DESKTOP-RELIABILITY"
+      ],
+      "complete": true,
+      "note": "All twelve explicit obligations preserved. Historical implementation-status prose is delivery evidence, not recovered product meaning. Authorized engineering/documentation changes were re-read; the same product obligation remains. Prior byte-digest findings are invalidated and re-recorded.",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0005",
+      "classification": "represented",
+      "artifacts": [
+        "QR-SECURITY",
+        "QR-DESKTOP-RELIABILITY"
+      ],
+      "complete": true,
+      "note": "Independent review and actual Windows installation evidence are distinct from deterministic checks. Authorized engineering/documentation changes were re-read; the same product obligation remains. Prior byte-digest findings are invalidated and re-recorded.",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0006",
+      "classification": "no-product-intent",
+      "reason": "Verification procedure and artifact ownership; product obligations already recovered from product/spec sources.",
+      "complete": true,
+      "acceptChanged": true,
+      "note": " Authorized engineering/documentation changes were re-read; the same product obligation remains. Prior byte-digest findings are invalidated and re-recorded."
+    },
+    {
+      "source": "E-0007",
+      "classification": "represented",
+      "artifacts": [
+        "QR-SECURITY",
+        "QR-DESKTOP-RELIABILITY"
+      ],
+      "complete": true,
+      "note": "Truthful PASS/FAIL/BLOCKED/NOT_RUN and manifest crosswalk refine measurable acceptance. Authorized engineering/documentation changes were re-read; the same product obligation remains. Prior byte-digest findings are invalidated and re-recorded.",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0008",
+      "classification": "no-product-intent",
+      "reason": "Reviewer-owned quality gate; seven markers remain unchecked. Human explicitly authorized implementation anyway.",
+      "complete": true,
+      "acceptChanged": true,
+      "note": " Authorized engineering/documentation changes were re-read; the same product obligation remains. Prior byte-digest findings are invalidated and re-recorded."
+    },
+    {
+      "source": "E-0009",
+      "classification": "represented",
+      "artifacts": [
+        "FR-VD-004",
+        "FR-VD-006",
+        "FR-VD-007",
+        "FR-VD-008",
+        "FR-VD-011"
+      ],
+      "complete": true,
+      "note": "Track distinctions, format semantics, durable recovery and non-overwrite obligations corroborated. Authorized engineering/documentation changes were re-read; the same product obligation remains. Prior byte-digest findings are invalidated and re-recorded.",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0010",
+      "classification": "no-product-intent",
+      "reason": "Technical data representation; observable obligations are already recovered from the specification and output contract.",
+      "complete": true,
+      "acceptChanged": true,
+      "note": " Authorized engineering/documentation changes were re-read; the same product obligation remains. Prior byte-digest findings are invalidated and re-recorded."
+    },
+    {
+      "source": "E-0011",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0012",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0013",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0014",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0015",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0016",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0017",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0018",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0019",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0020",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0021",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0022",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0023",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0025",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0026",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0027",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0028",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0029",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0030",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0031",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0032",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0033",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0034",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0035",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0036",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0037",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0038",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0039",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0040",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0041",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0042",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0043",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0044",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0045",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0046",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0047",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0048",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0049",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0050",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0051",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0052",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0053",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0054",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0055",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0056",
+      "acceptChanged": true
+    }
+  ],
+  "questions": [],
+  "leads": [],
+  "retractions": []
+}

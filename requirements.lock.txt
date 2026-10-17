@@ -1,0 +1,25 @@
+# Captured verified Windows 10 / Python 3.14.3 environment on 2026-10-16.
+# A fresh install from this lock has not been executed by this task.
+altgraph==0.17.5
+brotli==1.2.0
+certifi==2026.7.22
+charset-normalizer==3.5.1
+idna==3.18
+mutagen==1.48.1
+packaging==26.2
+pefile==2024.8.26
+pycryptodomex==3.23.0
+pyinstaller==6.20.0
+pyinstaller-hooks-contrib==2026.5
+PySide6==6.11.1
+PySide6_Addons==6.11.1
+PySide6_Essentials==6.11.1
+pywin32-ctypes==0.2.3
+requests==2.34.2
+setuptools==82.0.1
+shiboken6==6.11.1
+urllib3==2.7.0
+websockets==17.0.1
+wheel==0.47.0
+yt-dlp==2026.8.27.231323.dev0
+yt-dlp-ejs==0.8.0

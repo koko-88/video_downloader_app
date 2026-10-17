@@ -18,7 +18,7 @@ For each VD-02 task, run targeted deterministic tests plus the existing suite af
 
 ## Packaging
 
-Existing build entrypoints are `build_exe.py` and `build_installer.py`. Build scripts can delete/recreate `build/` and `dist/`; first inspect local outputs and obtain permission if they could contain user-owned artifacts. Run package checks on actual Windows installation and smoke-test the installed EXE/optional ASR model. Missing Inno Setup/FFmpeg is a separately documented blocker, never silently installed. PyInstaller success alone does not prove feature runtime behavior.
+Existing build entrypoints are `build_exe.py` and `build_installer.py`. Build scripts preserve existing build/dist/installer artifacts and refuse collisions. Choose fresh `--output-root` and `--output-dir` destinations inside the workspace; use the matching explicit `--source-dir` when building an installer. Run package checks on actual Windows installation and smoke-test the installed EXE/optional ASR model. Missing Inno Setup/FFmpeg is a separately documented blocker, never silently installed. PyInstaller success alone does not prove feature runtime behavior.
 
 ## Review and result policy
 

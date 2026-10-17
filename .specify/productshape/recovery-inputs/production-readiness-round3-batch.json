@@ -1,0 +1,118 @@
+{
+  "findings": [
+    {
+      "source": "E-0021",
+      "classification": "represented",
+      "complete": true,
+      "acceptChanged": true,
+      "artifacts": [
+        "CON-LOCAL-AUTHORITY",
+        "QR-DESKTOP-RELIABILITY",
+        "BR-ARCHIVE-COVERAGE"
+      ],
+      "note": "Documented measured verification, truthful structural-versus-behavior proof and human release gates. Corrected stale current-plan assumptions while retaining the initial gap register as history."
+    },
+    {
+      "source": "E-0022",
+      "classification": "represented",
+      "complete": true,
+      "acceptChanged": true,
+      "artifacts": [
+        "CON-LOCAL-AUTHORITY",
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY",
+        "BR-ARCHIVE-COVERAGE"
+      ],
+      "note": "Documented end-to-end procedure and evidence boundaries. Current artifacts are continued; external tracker writes require explicit user authorization; provider restrictions never become archive success."
+    },
+    {
+      "source": "E-0023",
+      "classification": "represented",
+      "complete": true,
+      "acceptChanged": true,
+      "artifacts": [
+        "FR-VD-010",
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY"
+      ],
+      "note": "Observed packaging: real onedir source, explicit current-user override, optional links, no recursive user-added tools deletion. Installed/uninstall proof remains distinct from source inspection."
+    },
+    {
+      "source": "E-0024",
+      "classification": "no-product-intent",
+      "complete": true,
+      "acceptChanged": true,
+      "reason": "Dependency declarations and version constraints are technical implementation metadata, not independent product obligations."
+    },
+    {
+      "source": "E-0025",
+      "classification": "represented",
+      "complete": true,
+      "acceptChanged": true,
+      "artifacts": [
+        "FR-VD-010",
+        "QR-DESKTOP-RELIABILITY"
+      ],
+      "note": "Observed PyInstaller analysis includes existing app/transcript modules, local yt-dlp/EJS packages, runtimes and notices. No capability is inferred from file presence alone."
+    },
+    {
+      "source": "E-0026",
+      "classification": "no-product-intent",
+      "complete": true,
+      "acceptChanged": true,
+      "reason": "Package marker and version only; no product intent."
+    },
+    {
+      "source": "E-0027",
+      "classification": "represented",
+      "complete": true,
+      "acceptChanged": true,
+      "artifacts": [
+        "FR-VD-006",
+        "FR-VD-011",
+        "QR-SECURITY"
+      ],
+      "note": "Observed bounded canonical cues, strict timestamp/UTF-8 parsing, paragraph-safe timed export and escaped Markdown. Corroborates existing documented semantics; no new feature inferred."
+    },
+    {
+      "source": "E-0028",
+      "classification": "represented",
+      "complete": true,
+      "acceptChanged": true,
+      "artifacts": [
+        "FR-VD-010",
+        "QR-DESKTOP-RELIABILITY"
+      ],
+      "note": "Observed saved download fields could reach Qt with invalid types. RED loader/native startup regressions reproduced failures; per-field normalization repaired them while preserving valid transcript settings and legacy resolution migration. Delivery must be rebuilt after remaining audit."
+    },
+    {
+      "source": "E-0029",
+      "classification": "represented",
+      "complete": true,
+      "acceptChanged": true,
+      "artifacts": [
+        "FR-VD-010",
+        "FR-VD-011",
+        "QR-SECURITY"
+      ],
+      "note": "Observed existing anonymous-first YouTube auth fallback. Mixed explicit-429/auth/database messages previously triggered browser retries; RED/GREEN regressions now give surfaced rate limits priority without disabling ordinary fallback."
+    },
+    {
+      "source": "E-0030",
+      "classification": "represented",
+      "complete": true,
+      "acceptChanged": true,
+      "artifacts": [
+        "FR-VD-007",
+        "FR-VD-010",
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY"
+      ],
+      "note": "Observed GUI-affinity sequential queue and cancellation. RED/GREEN real Qt regression proved continued jobs after a surfaced limit; now remaining jobs are visibly not attempted, retained for explicit failed-only retry and never added to successful history."
+    }
+  ],
+  "leads": [],
+  "questions": [],
+  "retractions": [],
+  "familyProbes": []
+}

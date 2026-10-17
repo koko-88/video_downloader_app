@@ -1,0 +1,34 @@
+{
+  "findings": [
+    {
+      "acceptChanged": true,
+      "complete": true,
+      "source": "E-0011",
+      "artifacts": [
+        "BR-ARCHIVE-COVERAGE",
+        "BR-EXPORT-INTEGRITY",
+        "FR-VD-007",
+        "FR-VD-008",
+        "FR-VD-010",
+        "FR-VD-011",
+        "FR-VD-012",
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY"
+      ],
+      "note": "Previously classified plan reread after 2026-10-17 resume checks. Only engineering receipt update: same product intent, local source/artifact identity verified, live captions remain limited and human acceptance pending. No new semantic recovery batch.",
+      "classification": "represented"
+    },
+    {
+      "acceptChanged": true,
+      "complete": true,
+      "source": "E-0014",
+      "artifacts": [
+        "CON-LOCAL-AUTHORITY",
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY"
+      ],
+      "note": "Previously classified tasks reread after resume checkpoint. Existing completed local tasks and three external/human gates remain unchanged; same product scope and no new recovery evidence tier.",
+      "classification": "represented"
+    }
+  ]
+}

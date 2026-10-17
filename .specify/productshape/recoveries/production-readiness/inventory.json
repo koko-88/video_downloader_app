@@ -1,0 +1,1354 @@
+{
+  "schema": "product-definition-as-code/recovery-inventory/v1alpha1",
+  "sessionId": "production-readiness",
+  "items": [
+    {
+      "id": "E-0001",
+      "kind": "repo-file",
+      "path": ".specify/memory/constitution.md",
+      "digest": "sha256:6c16ad8906dc72ece1af159f5edfb138c06419944c5ddf8bcba100130373c34e",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T10:00:40.498Z",
+          "artifacts": [
+            "CON-LOCAL-AUTHORITY",
+            "QR-DESKTOP-RELIABILITY",
+            "QR-SECURITY"
+          ],
+          "note": "High-confidence documented governing boundaries; no constitutional relaxation."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T10:34:28.212Z"
+    },
+    {
+      "id": "E-0002",
+      "kind": "repo-file",
+      "path": "PRODUCT.md",
+      "digest": "sha256:5caf52f2c8b4b6bbe573009c0ebcdefb833a0d03f3f8e0cf1021a71c99ea9946",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T10:00:40.621Z",
+          "artifacts": [
+            "ACT-DESKTOP-USER",
+            "CON-LOCAL-AUTHORITY",
+            "UC-MEDIA-DOWNLOAD",
+            "UC-TRANSCRIPT-BATCH"
+          ],
+          "note": "High-confidence explicit user outcomes and product boundaries; no new ASR capability inferred."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T10:34:28.486Z"
+    },
+    {
+      "id": "E-0003",
+      "kind": "repo-file",
+      "path": "ROADMAP.md",
+      "digest": "sha256:f71083505d3fe8b41d1d7c2fd974492638a5d8cf3163acf7ed572ac01f13295f",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T16:55:44.594Z",
+          "artifacts": [
+            "QR-DESKTOP-RELIABILITY",
+            "UC-MEDIA-DOWNLOAD",
+            "UC-TRANSCRIPT-BATCH"
+          ],
+          "note": "Same classified documentation re-read after terminal handoff machine/review receipts and current acceptance reconciliation. Older digest invalidated; engineering receipts are not new product authority and no additional semantic source batch is admitted."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T16:55:44.596Z"
+    },
+    {
+      "id": "E-0004",
+      "kind": "repo-file",
+      "path": "specs/transcript-extraction/spec.md",
+      "digest": "sha256:3c81ef14791a0d007c167cfea92005f8c734dfa146988722b804c7f40186912d",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T10:33:31.972Z",
+          "artifacts": [
+            "FR-VD-001",
+            "FR-VD-002",
+            "FR-VD-003",
+            "FR-VD-004",
+            "FR-VD-005",
+            "FR-VD-006",
+            "FR-VD-007",
+            "FR-VD-008",
+            "FR-VD-009",
+            "FR-VD-010",
+            "FR-VD-011",
+            "FR-VD-012",
+            "QR-DESKTOP-RELIABILITY",
+            "QR-SECURITY",
+            "UC-TRANSCRIPT-BATCH"
+          ],
+          "note": "All twelve explicit obligations preserved. Historical implementation-status prose is delivery evidence, not recovered product meaning. Authorized engineering/documentation changes were re-read; the same product obligation remains. Prior byte-digest findings are invalidated and re-recorded."
+        },
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:51:12.040Z",
+          "artifacts": [
+            "SB-CAPTIONS-ABSENT",
+            "SB-DISCOVERY-INTERRUPTED",
+            "SB-LANGUAGE-UNAVAILABLE",
+            "SB-RESUME-VERIFIED"
+          ],
+          "note": "Refinement explicitly maps already reviewed documented FR-002/004/005/007/008/009 scenarios to four structured examples. This supplements existing mappings without another semantic evidence batch."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:51:12.042Z"
+    },
+    {
+      "id": "E-0005",
+      "kind": "repo-file",
+      "path": "IMPLEMENTATION_VERIFICATION.md",
+      "digest": "sha256:2a977c0100d8595a51180d3de87bc579366e4b66e0ceb735057fef6bdaa22dd9",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T10:33:32.113Z",
+          "artifacts": [
+            "QR-DESKTOP-RELIABILITY",
+            "QR-SECURITY"
+          ],
+          "note": "Independent review and actual Windows installation evidence are distinct from deterministic checks. Authorized engineering/documentation changes were re-read; the same product obligation remains. Prior byte-digest findings are invalidated and re-recorded."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T10:33:32.113Z"
+    },
+    {
+      "id": "E-0006",
+      "kind": "repo-file",
+      "path": "LOGIC_VERIFICATION.md",
+      "digest": "sha256:7e6b81bf8ee237b0339af7e852057fb24d601977d9ec8673bffba13e240955c4",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "no-product-intent",
+          "recordedAt": "2026-10-16T10:00:41.177Z",
+          "reason": "Verification procedure and artifact ownership; product obligations already recovered from product/spec sources."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T10:34:28.823Z"
+    },
+    {
+      "id": "E-0007",
+      "kind": "repo-file",
+      "path": "docs/verification/acceptance.md",
+      "digest": "sha256:7a1252300f656073cbf1dcc55b8afcf3ee71c73a94b73375bd1f0af0712bea68",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T16:55:44.854Z",
+          "artifacts": [
+            "QR-DESKTOP-RELIABILITY",
+            "QR-SECURITY"
+          ],
+          "note": "Same classified documentation re-read after terminal handoff machine/review receipts and current acceptance reconciliation. Older digest invalidated; engineering receipts are not new product authority and no additional semantic source batch is admitted."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T16:55:44.854Z"
+    },
+    {
+      "id": "E-0008",
+      "kind": "repo-file",
+      "path": "specs/transcript-extraction/checklists/requirements.md",
+      "digest": "sha256:6fb4dd6aee553bacc6185d6a401d19b052fad34f7e69cc9364631f427e9b06b8",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "no-product-intent",
+          "recordedAt": "2026-10-16T10:00:41.487Z",
+          "reason": "Reviewer-owned quality gate; seven markers remain unchecked. Human explicitly authorized implementation anyway."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T10:34:28.976Z"
+    },
+    {
+      "id": "E-0009",
+      "kind": "repo-file",
+      "path": "specs/transcript-extraction/contracts/transcripts.md",
+      "digest": "sha256:184d9fc7c424192ffece9bede153aa7fc156c62e2acb06432cdc6a72b5bb1377",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T10:53:28.622Z",
+          "artifacts": [
+            "FR-VD-004",
+            "FR-VD-006",
+            "FR-VD-007",
+            "FR-VD-008",
+            "FR-VD-011"
+          ],
+          "note": "Re-read changed authorized engineering evidence; original documented product obligations remain. Invalidate old digest; same original ten-source semantic boundary."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T10:53:28.622Z"
+    },
+    {
+      "id": "E-0010",
+      "kind": "repo-file",
+      "path": "specs/transcript-extraction/data-model.md",
+      "digest": "sha256:28bf88362f97dee83cbdd950ab26414aa898f7d06afdf7d56c6bc45d49c96111",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "no-product-intent",
+          "recordedAt": "2026-10-16T10:00:41.763Z",
+          "reason": "Technical data representation; observable obligations are already recovered from the specification and output contract."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T10:34:29.119Z"
+    },
+    {
+      "id": "E-0011",
+      "kind": "repo-file",
+      "path": "specs/transcript-extraction/plan.md",
+      "digest": "sha256:0d3297f2022eff78d41588068b945af3788d2c79e10b65c059edb33007669b88",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-17T06:37:33.543Z",
+          "artifacts": [
+            "BR-ARCHIVE-COVERAGE",
+            "BR-EXPORT-INTEGRITY",
+            "FR-VD-007",
+            "FR-VD-008",
+            "FR-VD-010",
+            "FR-VD-011",
+            "FR-VD-012",
+            "QR-DESKTOP-RELIABILITY",
+            "QR-SECURITY"
+          ],
+          "note": "Previously classified plan reread after 2026-10-17 resume checks. Only engineering receipt update: same product intent, local source/artifact identity verified, live captions remain limited and human acceptance pending. No new semantic recovery batch."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-17T06:37:33.765Z"
+    },
+    {
+      "id": "E-0012",
+      "kind": "repo-file",
+      "path": "specs/transcript-extraction/quickstart.md",
+      "digest": "sha256:5a8980fb0f9e723d8225de7969f9aa117f9c156708d9d9e2e33e1153bde51046",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:02:47.197Z",
+          "artifacts": [
+            "BR-ARCHIVE-COVERAGE",
+            "BR-EXPORT-INTEGRITY",
+            "FR-VD-004",
+            "FR-VD-006",
+            "FR-VD-007",
+            "FR-VD-008",
+            "FR-VD-010",
+            "UC-TRANSCRIPT-BATCH"
+          ],
+          "note": "Documented user flow: same choices resume verified successes, failed-only retry, distinct discovery/results and original downloads. Validation examples do not establish release acceptance."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:02:47.197Z"
+    },
+    {
+      "id": "E-0013",
+      "kind": "repo-file",
+      "path": "specs/transcript-extraction/research.md",
+      "digest": "sha256:c42569f591706311d471098fc29d5fb21ccb80ade33a2d393e58a50388b634db",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:02:47.375Z",
+          "artifacts": [
+            "BR-ARCHIVE-COVERAGE",
+            "BR-EXPORT-INTEGRITY",
+            "FR-VD-001",
+            "FR-VD-002",
+            "FR-VD-004",
+            "FR-VD-005",
+            "FR-VD-007",
+            "FR-VD-008",
+            "FR-VD-009",
+            "FR-VD-011",
+            "QR-SECURITY"
+          ],
+          "note": "Design rationale corroborates metadata-only captions, exact-language tracks, exhausted iterators, safe durable products and unavailable local ASR. Historical Inno absence clarified against current evidence."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:02:47.375Z"
+    },
+    {
+      "id": "E-0014",
+      "kind": "repo-file",
+      "path": "specs/transcript-extraction/tasks.md",
+      "digest": "sha256:d57b8ee55f1c591398333ed35cafd799629d3ef56e5599442becf42ae911f214",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-17T06:37:33.943Z",
+          "artifacts": [
+            "CON-LOCAL-AUTHORITY",
+            "QR-DESKTOP-RELIABILITY",
+            "QR-SECURITY"
+          ],
+          "note": "Previously classified tasks reread after resume checkpoint. Existing completed local tasks and three external/human gates remain unchanged; same product scope and no new recovery evidence tier."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-17T06:37:33.943Z"
+    },
+    {
+      "id": "E-0015",
+      "kind": "repo-file",
+      "path": "AGENTS.md",
+      "digest": "sha256:595e66ee86194b173b29d1fce2408a3d9400969b28e1ab994ead132321d252b7",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:02:47.689Z",
+          "artifacts": [
+            "CON-LOCAL-AUTHORITY",
+            "QR-DESKTOP-RELIABILITY",
+            "QR-SECURITY"
+          ],
+          "note": "Explicit governing authority for local edits, non-destructive bounded verification, no unapproved Git/tools/account actions and truthful capability levels."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:02:47.689Z"
+    },
+    {
+      "id": "E-0016",
+      "kind": "repo-file",
+      "path": "README.md",
+      "digest": "sha256:b5bd3ae74c335bf756876a17244cb49f0b3deef4a9ec318105dee20e6c007fdb",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:19:43.311Z",
+          "artifacts": [
+            "BR-ARCHIVE-COVERAGE",
+            "BR-EXPORT-INTEGRITY",
+            "FR-VD-010",
+            "QR-DESKTOP-RELIABILITY",
+            "QR-SECURITY",
+            "UC-MEDIA-DOWNLOAD",
+            "UC-TRANSCRIPT-BATCH"
+          ],
+          "note": "Already processed evidence re-read after round-three implementation and current-delivery reconciliation; invalidates its old digest without processing another semantic batch."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:19:43.311Z"
+    },
+    {
+      "id": "E-0017",
+      "kind": "repo-file",
+      "path": "build_exe.py",
+      "digest": "sha256:da9baa6fb0c9d7bb49451db1003b542e81201908708f9a2fbff519cad37f5b9e",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:02:47.999Z",
+          "artifacts": [
+            "CON-LOCAL-AUTHORITY",
+            "QR-DESKTOP-RELIABILITY"
+          ],
+          "note": "Observed build implementation: isolated workspace destination, collision refusal, optional asset checks and existing dependency use. Supports documented preservation; code is secondary evidence, not new product intent."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:02:47.999Z"
+    },
+    {
+      "id": "E-0018",
+      "kind": "repo-file",
+      "path": "build_installer.py",
+      "digest": "sha256:275f1a6268715cb8ca10e2eabbb6306fad939172e5fab1cf7f620793923f3be4",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:02:48.161Z",
+          "artifacts": [
+            "CON-LOCAL-AUTHORITY",
+            "QR-DESKTOP-RELIABILITY"
+          ],
+          "note": "Observed installer build implementation selects source/output, preserves existing setup and uses existing compiler. A stub build would not prove installed behavior; actual release gates remain separate."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:02:48.161Z"
+    },
+    {
+      "id": "E-0019",
+      "kind": "repo-file",
+      "path": "docs/workflows/CODEX_PROMPT.md",
+      "digest": "sha256:ac42ede51d7495b5eb443daa659a9d82407ca0a4882cf536c6a984dc3105ea22",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:05:19.457Z",
+          "artifacts": [
+            "CON-LOCAL-AUTHORITY",
+            "QR-DESKTOP-RELIABILITY"
+          ],
+          "note": "Same original round-two evidence re-read after documentation reconciliation; product scope unchanged and old digest invalidated."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:05:19.457Z"
+    },
+    {
+      "id": "E-0020",
+      "kind": "repo-file",
+      "path": "docs/workflows/capabilities.md",
+      "digest": "sha256:1f06bba74940af1e44c83ab29d34cf754df866d491162c6c7685f2d3706e8de6",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:02:48.459Z",
+          "artifacts": [
+            "CON-LOCAL-AUTHORITY",
+            "QR-DESKTOP-RELIABILITY",
+            "QR-SECURITY"
+          ],
+          "note": "Capability routing preserves present/callable/authenticated/operational/verified distinctions. Replaced stale missing-plan/tasks assertion; service authentication is not completed independent review."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:02:48.459Z"
+    },
+    {
+      "id": "E-0021",
+      "kind": "repo-file",
+      "path": "docs/workflows/loop-engineering.md",
+      "digest": "sha256:f9d3be9a899334e6f73f0a397a3275ac9de7f584fc1d0d1e469520e6c5b15a30",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:16:15.996Z",
+          "artifacts": [
+            "BR-ARCHIVE-COVERAGE",
+            "CON-LOCAL-AUTHORITY",
+            "QR-DESKTOP-RELIABILITY"
+          ],
+          "note": "Documented measured verification, truthful structural-versus-behavior proof and human release gates. Corrected stale current-plan assumptions while retaining the initial gap register as history."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:16:15.998Z"
+    },
+    {
+      "id": "E-0022",
+      "kind": "repo-file",
+      "path": "docs/workflows/transcript-feature.md",
+      "digest": "sha256:d40bb8cafdebd789d2ea027c45ac0d4a40ec72961648f29cc70631c4729be4c8",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:16:16.177Z",
+          "artifacts": [
+            "BR-ARCHIVE-COVERAGE",
+            "CON-LOCAL-AUTHORITY",
+            "QR-DESKTOP-RELIABILITY",
+            "QR-SECURITY"
+          ],
+          "note": "Documented end-to-end procedure and evidence boundaries. Current artifacts are continued; external tracker writes require explicit user authorization; provider restrictions never become archive success."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:16:16.177Z"
+    },
+    {
+      "id": "E-0023",
+      "kind": "repo-file",
+      "path": "installer/VideoDownloader.iss",
+      "digest": "sha256:545e2f9a9953ae5d7e947108c9a31362812aa8d4bde8fd9439600c842aadcbb5",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:16:16.316Z",
+          "artifacts": [
+            "FR-VD-010",
+            "QR-DESKTOP-RELIABILITY",
+            "QR-SECURITY"
+          ],
+          "note": "Observed packaging: real onedir source, explicit current-user override, optional links, no recursive user-added tools deletion. Installed/uninstall proof remains distinct from source inspection."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:16:16.316Z"
+    },
+    {
+      "id": "E-0024",
+      "kind": "repo-file",
+      "path": "requirements.txt",
+      "digest": "sha256:0b70c9696b54c2980fb42ca1081c98fff9f8d246577925ff508a5090564c8523",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "no-product-intent",
+          "recordedAt": "2026-10-16T11:16:16.460Z",
+          "reason": "Dependency declarations and version constraints are technical implementation metadata, not independent product obligations."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:16:16.460Z"
+    },
+    {
+      "id": "E-0025",
+      "kind": "repo-file",
+      "path": "video_downloader.spec",
+      "digest": "sha256:2cd097314215806f7f1963207f24d6c9547033e0bd292b1d6efe2c4fdafef79a",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:16:16.606Z",
+          "artifacts": [
+            "FR-VD-010",
+            "QR-DESKTOP-RELIABILITY"
+          ],
+          "note": "Observed PyInstaller analysis includes existing app/transcript modules, local yt-dlp/EJS packages, runtimes and notices. No capability is inferred from file presence alone."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:16:16.606Z"
+    },
+    {
+      "id": "E-0026",
+      "kind": "repo-file",
+      "path": "app/__init__.py",
+      "digest": "sha256:e70178153278f835eaaba8ee137bdb52f6bfa2dfeb63db733f39e1c47dc30d5b",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "no-product-intent",
+          "recordedAt": "2026-10-16T11:16:16.753Z",
+          "reason": "Package marker and version only; no product intent."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:16:16.753Z"
+    },
+    {
+      "id": "E-0027",
+      "kind": "repo-file",
+      "path": "app/captions.py",
+      "digest": "sha256:68e24a828e12bbb3d417423e73c3db9f178d0eabeebf4feff7cecee8bad64786",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T12:27:00.435Z",
+          "artifacts": [
+            "FR-VD-006",
+            "FR-VD-011",
+            "QR-SECURITY"
+          ],
+          "note": "Same processed code/documentation re-read after three independently diagnosed engineering corrections; old bytes invalidated, existing documented intent and twenty-four drafts retained. External review receipts are operational verification, not new product authority."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T12:27:00.435Z"
+    },
+    {
+      "id": "E-0028",
+      "kind": "repo-file",
+      "path": "app/config.py",
+      "digest": "sha256:1fd28e012c617def89e0e09d497badfc4d9f2150c83b4d68c116cdb242b88064",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:16:17.125Z",
+          "artifacts": [
+            "FR-VD-010",
+            "QR-DESKTOP-RELIABILITY"
+          ],
+          "note": "Observed saved download fields could reach Qt with invalid types. RED loader/native startup regressions reproduced failures; per-field normalization repaired them while preserving valid transcript settings and legacy resolution migration. Delivery must be rebuilt after remaining audit."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:16:17.125Z"
+    },
+    {
+      "id": "E-0029",
+      "kind": "repo-file",
+      "path": "app/cookie_fallback.py",
+      "digest": "sha256:e0134dacee5d228c376cb9c910f06b0644f125904a9e8fc35078c2e172dac77d",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:16:17.386Z",
+          "artifacts": [
+            "FR-VD-010",
+            "FR-VD-011",
+            "QR-SECURITY"
+          ],
+          "note": "Observed existing anonymous-first YouTube auth fallback. Mixed explicit-429/auth/database messages previously triggered browser retries; RED/GREEN regressions now give surfaced rate limits priority without disabling ordinary fallback."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:16:17.386Z"
+    },
+    {
+      "id": "E-0030",
+      "kind": "repo-file",
+      "path": "app/download_queue.py",
+      "digest": "sha256:6f05ebdcd70e6ec3398582b8fed1e53080c46b841662680e9c77119cdb1a11a6",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:37:08.109Z",
+          "artifacts": [
+            "FR-VD-007",
+            "FR-VD-010",
+            "QR-DESKTOP-RELIABILITY",
+            "QR-SECURITY"
+          ],
+          "note": "Same processed product/source evidence re-read after round-four fixes and disclosed test-isolation correction; invalidate old digest without adding another semantic batch."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:37:08.109Z"
+    },
+    {
+      "id": "E-0031",
+      "kind": "repo-file",
+      "path": "app/downloader_worker.py",
+      "digest": "sha256:2bca420f369e7155ac810e3b819a35fdbf2be44d5f7bad0940ffb809b2c527fc",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T12:27:00.754Z",
+          "artifacts": [
+            "FR-VD-010",
+            "FR-VD-011",
+            "QR-SECURITY",
+            "UC-MEDIA-DOWNLOAD"
+          ],
+          "note": "Same processed code/documentation re-read after three independently diagnosed engineering corrections; old bytes invalidated, existing documented intent and twenty-four drafts retained. External review receipts are operational verification, not new product authority."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T12:27:00.754Z"
+    },
+    {
+      "id": "E-0032",
+      "kind": "repo-file",
+      "path": "app/errors.py",
+      "digest": "sha256:435ce30d9fff676f68c8dc1cfe034f34f66360c03a66e43f2b7ae4f3b53c4bdc",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T12:37:48.655Z",
+          "artifacts": [
+            "FR-VD-001",
+            "FR-VD-010",
+            "FR-VD-011",
+            "QR-SECURITY"
+          ],
+          "note": "Already processed evidence re-read after explicit provider-request throttle restoration and source verification; invalidate prior bytes while retaining documented intent, not using external review as new product authority."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T12:37:48.655Z"
+    },
+    {
+      "id": "E-0033",
+      "kind": "repo-file",
+      "path": "app/ffmpeg_resolver.py",
+      "digest": "sha256:9decd87e56472195c656911b6eb1a460fbabe19b7e8afc4a53adaac0646745e3",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:26:40.273Z",
+          "artifacts": [
+            "FR-VD-010",
+            "QR-DESKTOP-RELIABILITY"
+          ],
+          "note": "Observed deterministic existing/bundled FFmpeg resolution and typed status; presence is not execution proof, which is separately recorded for exact artifacts."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:26:40.273Z"
+    },
+    {
+      "id": "E-0034",
+      "kind": "repo-file",
+      "path": "app/formats.py",
+      "digest": "sha256:6ed530203c2e97f50802188e0d9b6a23ceac6e72340b310c36df121eab306e3b",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:26:40.428Z",
+          "artifacts": [
+            "FR-VD-010",
+            "UC-MEDIA-DOWNLOAD"
+          ],
+          "note": "Observed supported MP4/WEBM/MP3/M4A labels, exact quality choices and legacy label migration, corroborating documented downloads."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:26:40.428Z"
+    },
+    {
+      "id": "E-0035",
+      "kind": "repo-file",
+      "path": "app/history.py",
+      "digest": "sha256:b329202c91724cedc53e5498b551ec91e7b6f49d511ed6e89f7834cb72f36095",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:26:40.577Z",
+          "artifacts": [
+            "FR-VD-010",
+            "FR-VD-011",
+            "QR-DESKTOP-RELIABILITY",
+            "QR-SECURITY"
+          ],
+          "note": "Observed malformed/unreadable history could be overwritten or interrupt queue completion. RED proved changed old bytes, leftover temp and stalled queue; repaired preservation, unique atomic publication/cleanup and explicit save outcome while retaining valid legacy records."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:26:40.577Z"
+    },
+    {
+      "id": "E-0036",
+      "kind": "repo-file",
+      "path": "app/logger_setup.py",
+      "digest": "sha256:2218cb7f13a359fe1d68c605af8857b85daa4314746cdab2d80336e3f337403f",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:26:40.730Z",
+          "artifacts": [
+            "FR-VD-011",
+            "QR-SECURITY"
+          ],
+          "note": "Observed privacy filtering before handlers plus bounded rotating file logs. No generated log contents or private user data were recovery evidence."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:26:40.730Z"
+    },
+    {
+      "id": "E-0037",
+      "kind": "repo-file",
+      "path": "app/main_window.py",
+      "digest": "sha256:ffd3edc23520433dd07b61e88431f0b653222fbdebf2ff77d00217f5afe456ec",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:26:40.876Z",
+          "artifacts": [
+            "FR-VD-007",
+            "FR-VD-010",
+            "QR-DESKTOP-RELIABILITY"
+          ],
+          "note": "Observed real Qt controls, queue, plain-text logs and safe thread-aware close. RED proved MP3 quality resetting to Best through normal settings/busy transitions; repaired retention for every supported quality. History warnings now preserve successful queue completion."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:26:40.876Z"
+    },
+    {
+      "id": "E-0038",
+      "kind": "repo-file",
+      "path": "app/packaged_smoke.py",
+      "digest": "sha256:33ce74cc58072750570995aef497b59bb5a4c243bccdd757b3d6c5c7200a1ac1",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:37:08.281Z",
+          "artifacts": [
+            "FR-VD-006",
+            "FR-VD-010",
+            "QR-DESKTOP-RELIABILITY"
+          ],
+          "note": "Same processed product/source evidence re-read after round-four fixes and disclosed test-isolation correction; invalidate old digest without adding another semantic batch."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:37:08.281Z"
+    },
+    {
+      "id": "E-0039",
+      "kind": "repo-file",
+      "path": "app/paths.py",
+      "digest": "sha256:1412bbde0bdae3065638abcc5f79231216f169812bfa414702a58e6292f5d124",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:26:41.158Z",
+          "artifacts": [
+            "FR-VD-010",
+            "FR-VD-011",
+            "QR-SECURITY"
+          ],
+          "note": "Observed dev/frozen resource and user-data ownership paths plus filename sanitization; transcript root confinement has separate manifest/path validation and hostile-path evidence."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:26:41.158Z"
+    },
+    {
+      "id": "E-0040",
+      "kind": "repo-file",
+      "path": "app/runtime_status.py",
+      "digest": "sha256:ff58fe82ae30a3d4aa9b10dbfc3f140c3f2d23e0931a78525fce086d2ecb9838",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:26:41.292Z",
+          "artifacts": [
+            "FR-VD-010",
+            "QR-DESKTOP-RELIABILITY"
+          ],
+          "note": "Observed diagnostics report actual local versions/paths/runtime detection. Callable/authenticated/reviewed/verified remain separate; file detection alone is not operational acceptance."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:26:41.292Z"
+    },
+    {
+      "id": "E-0041",
+      "kind": "repo-file",
+      "path": "app/transcript_batch.py",
+      "digest": "sha256:15b540369ca450739051b0e73c4a786cd1712e8025aef8733ba6e185c27f39bf",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:43:38.028Z",
+          "artifacts": [
+            "BR-ARCHIVE-COVERAGE",
+            "BR-EXPORT-INTEGRITY",
+            "FR-VD-002",
+            "FR-VD-003",
+            "FR-VD-006",
+            "FR-VD-007",
+            "FR-VD-008",
+            "FR-VD-011",
+            "FR-VD-012"
+          ],
+          "note": "Observed exhausted or explicitly incomplete discovery, exact identities, confined verified outputs, durable counts, cancellation and surfaced-rate-limit halt. Secondary code corroborates the documented batch contract; no new normative scope inferred."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:43:38.030Z"
+    },
+    {
+      "id": "E-0042",
+      "kind": "repo-file",
+      "path": "app/transcript_source.py",
+      "digest": "sha256:3b19e0cbfe0c7cdc702bb09b9fb71d06b5cc01649d7557706573ad07a270097c",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:43:38.212Z",
+          "artifacts": [
+            "FR-VD-001",
+            "FR-VD-004",
+            "FR-VD-005",
+            "FR-VD-009",
+            "FR-VD-011",
+            "QR-SECURITY"
+          ],
+          "note": "Observed named metadata-only extractors, exact language/preference selection, bounded caption requests, explicit unavailable/absent/error classes and no app authentication fallback after a surfaced rate limit. No rendered media or model retrieval is introduced."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:43:38.212Z"
+    },
+    {
+      "id": "E-0043",
+      "kind": "repo-file",
+      "path": "app/transcript_ui.py",
+      "digest": "sha256:7551c80e13e54c79bd316b83377b1216088fa1ede1b76db08f24c78148be37c0",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:43:38.375Z",
+          "artifacts": [
+            "FR-VD-006",
+            "FR-VD-007",
+            "FR-VD-010",
+            "FR-VD-012",
+            "QR-DESKTOP-RELIABILITY"
+          ],
+          "note": "Observed real Qt worker lifetime, queued compact progress, model-backed results, distinct coverage and explicit user resume/retry. Optional ASR limitation is visible and does not imply an implemented speech backend."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:43:38.375Z"
+    },
+    {
+      "id": "E-0044",
+      "kind": "repo-file",
+      "path": "app/ydl_options.py",
+      "digest": "sha256:f8887fe2b7dbc869b06dd38dfe7775c46606445746fb8ae14d9d9bc82583eff3",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:43:38.530Z",
+          "artifacts": [
+            "FR-VD-010",
+            "FR-VD-011",
+            "QR-SECURITY",
+            "UC-MEDIA-DOWNLOAD"
+          ],
+          "note": "Observed original quality/format options, maintained remux/audio postprocessors, bundled runtime selection and filtered cancellation-aware logging. Actual output correctness requires separate file/container evidence."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:43:38.530Z"
+    },
+    {
+      "id": "E-0045",
+      "kind": "repo-file",
+      "path": "main.py",
+      "digest": "sha256:3a6689ca90332c3a06d84c25c21244ea7eed4e04213dbf6a1fe314de10290663",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T12:27:00.951Z",
+          "artifacts": [
+            "FR-VD-010",
+            "QR-DESKTOP-RELIABILITY",
+            "QR-SECURITY",
+            "UC-MEDIA-DOWNLOAD"
+          ],
+          "note": "Same processed code/documentation re-read after three independently diagnosed engineering corrections; old bytes invalidated, existing documented intent and twenty-four drafts retained. External review receipts are operational verification, not new product authority."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T12:27:00.951Z"
+    },
+    {
+      "id": "E-0046",
+      "kind": "repo-file",
+      "path": "scripts/feature_loop.py",
+      "digest": "sha256:812bc5bd25eeab975d468d6b13e1772b60cb016c4df4f9c2b9462725e101289d",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "no-product-intent",
+          "recordedAt": "2026-10-16T11:44:03.388Z",
+          "reason": "Deterministic engineering sensor/controller plumbing, explicitly structural rather than an acceptance certificate. No independent product intent.",
+          "note": "Deterministic engineering sensor/controller plumbing, explicitly structural rather than an acceptance certificate. No independent product intent."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:44:03.390Z"
+    },
+    {
+      "id": "E-0047",
+      "kind": "repo-file",
+      "path": "scripts/smoke_check.py",
+      "digest": "sha256:c7d11ebd20ef92d2af68a05f105741cde1d194614f72dcb8defa8a0273f24c53",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:44:03.584Z",
+          "artifacts": [
+            "FR-VD-010"
+          ],
+          "note": "Observed offline original-format/options smoke without provider download. Its assertions corroborate options construction only; no media or installer completeness claim."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:44:03.585Z"
+    },
+    {
+      "id": "E-0048",
+      "kind": "repo-file",
+      "path": "tests/__init__.py",
+      "digest": "sha256:01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "no-product-intent",
+          "recordedAt": "2026-10-16T11:44:03.730Z",
+          "reason": "Empty tests package marker; no product semantics.",
+          "note": "Empty tests package marker; no product semantics."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:44:03.730Z"
+    },
+    {
+      "id": "E-0049",
+      "kind": "repo-file",
+      "path": "tests/test_feature_loop.py",
+      "digest": "sha256:5540b66c4f6b4444a0488c24cfca1fb8f1ff3a4f2d6fe5310c441386811cfcdf",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "no-product-intent",
+          "recordedAt": "2026-10-16T11:44:03.904Z",
+          "reason": "Engineering controller contract tests for structural traceability, baseline execution and failure precedence; no independent product intent or release certification.",
+          "note": "Engineering controller contract tests for structural traceability, baseline execution and failure precedence; no independent product intent or release certification."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:44:03.904Z"
+    },
+    {
+      "id": "E-0050",
+      "kind": "repo-file",
+      "path": "tests/test_format_selection.py",
+      "digest": "sha256:54a4b1a0337186661025a9bede113c6c3577d0a8ed6675c5cd711b87263f685e",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:44:04.038Z",
+          "artifacts": [
+            "FR-VD-010",
+            "FR-VD-011",
+            "QR-DESKTOP-RELIABILITY",
+            "QR-SECURITY"
+          ],
+          "note": "Observed deterministic options/error/privacy/runtime and bounded fallback regression tests. Fallback success fixture creates a completed file; actual media/packaging remains separately verified."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:44:04.038Z"
+    },
+    {
+      "id": "E-0051",
+      "kind": "repo-file",
+      "path": "tests/test_transcript_batch.py",
+      "digest": "sha256:50e4075ef045283da9c0089c4c416ba9846873e22437c76ac3a48865d0367842",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:49:57.540Z",
+          "artifacts": [
+            "FR-VD-002",
+            "FR-VD-003",
+            "FR-VD-007",
+            "FR-VD-008",
+            "FR-VD-011",
+            "FR-VD-012",
+            "SB-DISCOVERY-INTERRUPTED",
+            "SB-RESUME-VERIFIED"
+          ],
+          "note": "Observed independent fixture outcomes for pagination exhaustion, nested/mixed deduplication, interrupted scans, exact retries, verified reuse, lock/path safety and integrity-conflict preservation. New structured examples recover existing documented scenarios; tests corroborate rather than establish new product intent."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:49:57.542Z"
+    },
+    {
+      "id": "E-0052",
+      "kind": "repo-file",
+      "path": "tests/test_transcript_captions.py",
+      "digest": "sha256:c7174ba11bb5e1062f08298aa50fe766f2194676d775d253a47ca22b11e268e9",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:49:57.756Z",
+          "artifacts": [
+            "FR-VD-006",
+            "FR-VD-011"
+          ],
+          "note": "Observed exact golden cue/text/Markdown/JSON exports, Unicode/overlap preservation, timed round trips and malformed/oversized payload refusal; technical limits are not a complete external-format compliance claim."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:49:57.756Z"
+    },
+    {
+      "id": "E-0053",
+      "kind": "repo-file",
+      "path": "tests/test_transcript_packaging.py",
+      "digest": "sha256:f6c28b705e36d05f9bd962f5d5a75ab9dc336f9095dce80d99f8d84e8b411153",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:49:57.983Z",
+          "artifacts": [
+            "FR-VD-010",
+            "QR-DESKTOP-RELIABILITY",
+            "QR-SECURITY"
+          ],
+          "note": "Observed build destination/output collision preservation and exact installer-source plumbing. Stub compiler checks are explicitly distinct from real frozen/install/uninstall acceptance."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:49:57.983Z"
+    },
+    {
+      "id": "E-0054",
+      "kind": "repo-file",
+      "path": "tests/test_transcript_source.py",
+      "digest": "sha256:2fc0e743afef9e69560996c076e425c2ef91ff3ec8505daea519f5439db5ef9a",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:49:58.152Z",
+          "artifacts": [
+            "FR-VD-001",
+            "FR-VD-002",
+            "FR-VD-004",
+            "FR-VD-005",
+            "FR-VD-011",
+            "SB-CAPTIONS-ABSENT",
+            "SB-LANGUAGE-UNAVAILABLE"
+          ],
+          "note": "Observed metadata-only source contract, actual local HTTP track headers, exact language/track preferences, sanitized errors and installed extractor continuation shapes. Language and absent-caption examples derive from existing FR-004/005/009, not mocked success alone."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:49:58.152Z"
+    },
+    {
+      "id": "E-0055",
+      "kind": "repo-file",
+      "path": "tests/test_transcript_ui.py",
+      "digest": "sha256:f9e6ceeaa18e61e9139f4664014b04e11b7b5e4e290cbc1583b6c68326270128",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:49:58.287Z",
+          "artifacts": [
+            "FR-VD-007",
+            "FR-VD-010",
+            "FR-VD-012",
+            "QR-DESKTOP-RELIABILITY",
+            "QR-SECURITY"
+          ],
+          "note": "Observed native Qt event-loop, thread affinity/lifetime, settings isolation/normalization, bitrate preservation, queue stop/retry/history warnings, large result model and bounded delta-volume checks. Ordinary config/history preservation is separately measured around the full suite."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:49:58.287Z"
+    },
+    {
+      "id": "E-0056",
+      "kind": "repo-file",
+      "path": "tests/test_youtube_smoke.py",
+      "digest": "sha256:b82d3886e9e8dfe96dc7fa0a2be8a251c27abba9b22825b20371573bc417bd86",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:49:58.451Z",
+          "artifacts": [
+            "FR-VD-010"
+          ],
+          "note": "Observed explicit opt-in external media regression, with real nonempty output assertions. Its default skip is not live PASS and it does not certify a complete channel caption archive."
+        }
+      ],
+      "addedAt": "2026-10-16T09:54:14.473Z",
+      "processedAt": "2026-10-16T11:49:58.451Z"
+    },
+    {
+      "id": "E-0057",
+      "kind": "repo-file",
+      "path": "app/js_runtime.py",
+      "digest": "sha256:870e8da696533b01688e8a4b6e169df2657d645e0ab50e072dc5bb53d1295dab",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:49:58.600Z",
+          "artifacts": [
+            "FR-VD-010",
+            "QR-DESKTOP-RELIABILITY"
+          ],
+          "note": "Observed existing bundled local Deno/Node then PATH discovery without remote component retrieval. File presence selects a candidate runtime; actual frozen execution remains independently checked."
+        }
+      ],
+      "addedAt": "2026-10-16T10:33:40.443Z",
+      "processedAt": "2026-10-16T11:49:58.600Z"
+    },
+    {
+      "id": "E-0058",
+      "kind": "repo-file",
+      "path": "app/privacy.py",
+      "digest": "sha256:a58cead733a0cc7e52e3b90102080bbf1307a3e04b85834dc897149df26977e5",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:49:58.745Z",
+          "artifacts": [
+            "FR-VD-011",
+            "QR-SECURITY"
+          ],
+          "note": "Observed shared URL/userinfo/query/header/secret redaction before message/exception/stack handling. Existing behavior and hostile fixtures corroborate documented credential protection; no private data used as recovery evidence."
+        }
+      ],
+      "addedAt": "2026-10-16T10:33:40.443Z",
+      "processedAt": "2026-10-16T11:49:58.745Z"
+    },
+    {
+      "id": "E-0059",
+      "kind": "repo-file",
+      "path": "tests/test_media_integration.py",
+      "digest": "sha256:7e9c49a94eec156ba321a8e80ee51613c6d04aba1e5148510fbd8cf269e46842",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T11:49:58.879Z",
+          "artifacts": [
+            "FR-VD-010",
+            "QR-DESKTOP-RELIABILITY"
+          ],
+          "note": "Observed real local HTTP WebM download and FFmpeg MP4 remux validated with FFprobe, isolated temporary storage and bounded server/process cleanup. No provider live acceptance inferred from this fixture."
+        }
+      ],
+      "addedAt": "2026-10-16T10:33:40.443Z",
+      "processedAt": "2026-10-16T11:49:58.879Z"
+    },
+    {
+      "id": "E-0060",
+      "kind": "repo-file",
+      "path": "tests/test_production_regressions.py",
+      "digest": "sha256:6f71ba1209d4ac5c489fca4a62cbe62f37c74e6a8fb1dac94481819199d1d50d",
+      "authorization": "brief",
+      "status": "processed",
+      "findings": [
+        {
+          "classification": "represented",
+          "recordedAt": "2026-10-16T12:37:48.796Z",
+          "artifacts": [
+            "FR-VD-003",
+            "FR-VD-006",
+            "FR-VD-007",
+            "FR-VD-008",
+            "FR-VD-010",
+            "FR-VD-011",
+            "QR-DESKTOP-RELIABILITY",
+            "QR-SECURITY"
+          ],
+          "note": "Already processed evidence re-read after explicit provider-request throttle restoration and source verification; invalidate prior bytes while retaining documented intent, not using external review as new product authority."
+        }
+      ],
+      "addedAt": "2026-10-16T10:33:40.443Z",
+      "processedAt": "2026-10-16T12:37:48.796Z"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "retractions": [
+    {
+      "source": "E-0001",
+      "last": true
+    },
+    {
+      "source": "E-0002",
+      "last": true
+    },
+    {
+      "source": "E-0003",
+      "last": true
+    },
+    {
+      "source": "E-0006",
+      "last": true
+    },
+    {
+      "source": "E-0008",
+      "last": true
+    },
+    {
+      "source": "E-0010",
+      "last": true
+    }
+  ]
+}

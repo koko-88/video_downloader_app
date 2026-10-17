@@ -2,11 +2,11 @@
 
 from __future__ import annotations
 
-import shutil
 import sys
 from dataclasses import dataclass
 
 from app.ffmpeg_resolver import resolve_ffmpeg
+from app.js_runtime import resolve_js_runtimes
 
 
 @dataclass
@@ -45,11 +45,8 @@ def collect_runtime_status() -> RuntimeStatus:
     except Exception:
         ytdlp_ejs = "not found"
 
-    for name in ("deno", "node", "bun"):
-        path = shutil.which(name)
-        if path:
-            js_runtime = f"{name} ({path})"
-            break
+    for name, configuration in resolve_js_runtimes().items():
+        js_runtime = f"{name} ({configuration['path']})"
 
     info = resolve_ffmpeg()
     ffmpeg = str(info.ffmpeg_path) if info.found and info.ffmpeg_path else "not found"

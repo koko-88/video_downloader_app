@@ -8,8 +8,11 @@ from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
 from app.formats import (
+    ALL_FORMATS,
+    AUDIO_QUALITIES,
     DEFAULT_AUDIO_QUALITY,
     FORMAT_MP4,
+    VIDEO_QUALITIES,
     normalize_format_label,
 )
 from app.paths import app_data_dir
@@ -40,7 +43,19 @@ class Settings:
             return cls()
         try:
             data = json.loads(path.read_text(encoding="utf-8"))
-            fmt = normalize_format_label(data.get("last_format", FORMAT_MP4))
+            raw_format = data.get("last_format", FORMAT_MP4)
+            fmt = normalize_format_label(raw_format) if isinstance(raw_format, str) else FORMAT_MP4
+            if fmt not in ALL_FORMATS:
+                fmt = FORMAT_MP4
+            last_output_dir = data.get("last_output_dir", "")
+            if not isinstance(last_output_dir, str):
+                last_output_dir = ""
+            video_quality = data.get("last_video_quality", data.get("last_resolution", "720"))
+            if not isinstance(video_quality, str) or video_quality not in VIDEO_QUALITIES:
+                video_quality = "720"
+            audio_quality = data.get("last_audio_quality", DEFAULT_AUDIO_QUALITY)
+            if not isinstance(audio_quality, str) or audio_quality not in AUDIO_QUALITIES:
+                audio_quality = DEFAULT_AUDIO_QUALITY
             transcript_formats = data.get("transcript_formats", ["txt"])
             if not isinstance(transcript_formats, list):
                 transcript_formats = ["txt"]
@@ -55,17 +70,14 @@ class Settings:
             if not isinstance(transcript_output_dir, str):
                 transcript_output_dir = ""
             return cls(
-                last_output_dir=data.get("last_output_dir", ""),
+                last_output_dir=last_output_dir,
                 transcript_output_dir=transcript_output_dir,
                 transcript_language=transcript_language,
                 transcript_preference=transcript_preference,
                 transcript_formats=transcript_formats,
                 last_format=fmt,
-                last_video_quality=data.get(
-                    "last_video_quality",
-                    data.get("last_resolution", "720"),
-                ),
-                last_audio_quality=data.get("last_audio_quality", DEFAULT_AUDIO_QUALITY),
+                last_video_quality=video_quality,
+                last_audio_quality=audio_quality,
             )
         except Exception as e:
             logger.warning("Failed to load config: %s", e)

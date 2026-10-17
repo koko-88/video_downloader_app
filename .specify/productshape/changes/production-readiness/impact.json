@@ -1,0 +1,32 @@
+{
+  "schema": "product-definition-as-code/product-change-impact/v1alpha1",
+  "checked": [
+    "ACT-DESKTOP-USER",
+    "BR-ARCHIVE-COVERAGE",
+    "BR-EXPORT-INTEGRITY",
+    "CON-LOCAL-AUTHORITY",
+    "FR-VD-001",
+    "FR-VD-002",
+    "FR-VD-003",
+    "FR-VD-004",
+    "FR-VD-005",
+    "FR-VD-006",
+    "FR-VD-007",
+    "FR-VD-008",
+    "FR-VD-009",
+    "FR-VD-010",
+    "FR-VD-011",
+    "FR-VD-012",
+    "QR-DESKTOP-RELIABILITY",
+    "QR-SECURITY",
+    "SB-CAPTIONS-ABSENT",
+    "SB-DISCOVERY-INTERRUPTED",
+    "SB-LANGUAGE-UNAVAILABLE",
+    "SB-RESUME-VERIFIED",
+    "UC-MEDIA-DOWNLOAD",
+    "UC-TRANSCRIPT-BATCH"
+  ],
+  "excluded": [],
+  "impacts": {}
+}
+

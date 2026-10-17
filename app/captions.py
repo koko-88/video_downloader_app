@@ -135,7 +135,9 @@ def export_captions(cues: list[Cue], fmt: str, provenance: dict) -> bytes:
         separator = ',' if fmt == 'srt' else '.'
         for number, cue in enumerate(cues, 1):
             timing = f'{timestamp(cue.start_ms, separator)} --> {timestamp(cue.end_ms, separator)}'
-            body = html.escape(cue.text, quote=False)
+            # Blank lines delimit subtitle cues. Plain text/JSON retain paragraphs;
+            # timed formats collapse paragraph separators to a single line break.
+            body = html.escape('\n'.join(line for line in cue.text.split('\n') if line.strip()), quote=False)
             blocks.append((f'{number}\n' if fmt == 'srt' else '') + timing + '\n' + body)
         content = ('WEBVTT\n\n' if fmt == 'vtt' else '') + '\n\n'.join(blocks) + '\n'
     else:

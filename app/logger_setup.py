@@ -6,10 +6,13 @@ import logging
 from logging.handlers import RotatingFileHandler
 
 from app.paths import logs_dir
+from app.privacy import PrivacyFilter
 
 
 def setup_logging() -> logging.Logger:
     logger = logging.getLogger("videodownloader")
+    if not any(isinstance(item, PrivacyFilter) for item in logger.filters):
+        logger.addFilter(PrivacyFilter())
     if logger.handlers:
         return logger
 

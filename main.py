@@ -11,6 +11,7 @@ from PySide6.QtWidgets import QApplication
 
 from app.logger_setup import setup_logging
 from app.main_window import MainWindow
+from app.privacy import redact
 
 
 def _excepthook(exc_type, exc_value, exc_tb) -> None:
@@ -18,7 +19,11 @@ def _excepthook(exc_type, exc_value, exc_tb) -> None:
         "Uncaught exception",
         exc_info=(exc_type, exc_value, exc_tb),
     )
-    traceback.print_exception(exc_type, exc_value, exc_tb)
+    if sys.stderr is not None:
+        try:
+            sys.stderr.write(redact(''.join(traceback.format_exception(exc_type, exc_value, exc_tb))))
+        except (OSError, ValueError):
+            pass  # Windowed builds may have no usable console; the primary error is logged.
 
 
 def _dark_palette() -> QPalette:
@@ -42,10 +47,15 @@ def _dark_palette() -> QPalette:
 
 
 def main() -> int:
-    if len(sys.argv) == 3 and sys.argv[1] == "--smoke-report":
+    if len(sys.argv) > 1 and sys.argv[1] == "--smoke-report":
+        import argparse
         from pathlib import Path
         from app.packaged_smoke import run
-        return run(Path(sys.argv[2]))
+        parser=argparse.ArgumentParser(description='Isolated native application acceptance')
+        parser.add_argument('--smoke-report',type=Path,required=True)
+        parser.add_argument('--download-url',help='Explicit public URL for live download acceptance')
+        options=parser.parse_args()
+        return run(options.smoke_report,download_url=options.download_url)
     setup_logging()
     sys.excepthook = _excepthook
 

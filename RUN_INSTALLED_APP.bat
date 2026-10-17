@@ -1,4 +1,9 @@
 @echo off
+set "APP=%LOCALAPPDATA%\Programs\Video Downloader\VideoDownloader.exe"
+if exist "%APP%" (
+    start "" "%APP%"
+    exit /b 0
+)
 set "APP=%ProgramFiles%\Video Downloader\VideoDownloader.exe"
 if exist "%APP%" (
     start "" "%APP%"

@@ -1,19 +1,69 @@
 """Transcript desktop controls and a worker whose lifetime follows native QThread finish."""
 from __future__ import annotations
 
-import copy
 import os
 import threading
 from pathlib import Path
 
-from PySide6.QtCore import QThread, Signal, Slot
+from PySide6.QtCore import QAbstractTableModel, QModelIndex, Qt, QThread, Signal, Slot
 from PySide6.QtWidgets import (QCheckBox, QComboBox, QFileDialog, QHBoxLayout, QHeaderView,
                                QLabel, QLineEdit, QMessageBox, QProgressBar, QPushButton,
-                               QTableWidget, QTableWidgetItem, QTextEdit, QVBoxLayout, QWidget)
+                               QTableView, QTextEdit, QVBoxLayout, QWidget)
 
 from app.captions import FORMATS
 from app.transcript_batch import Choices, TranscriptBatch
 from app.transcript_source import SourceError
+
+
+class ResultModel(QAbstractTableModel):
+    """Keep archive rows as values; Qt paints only visible cells."""
+    def __init__(self, headers, parent=None):
+        super().__init__(parent)
+        self.headers = headers
+        self.rows = []
+        self.positions = {}
+
+    def rowCount(self, parent=QModelIndex()):
+        return 0 if parent.isValid() else len(self.rows)
+
+    def columnCount(self, parent=QModelIndex()):
+        return 0 if parent.isValid() else len(self.headers)
+
+    def data(self, index, role=Qt.ItemDataRole.DisplayRole):
+        if (index.isValid() and 0 <= index.row() < len(self.rows)
+                and 0 <= index.column() < len(self.headers)
+                and role in (Qt.ItemDataRole.DisplayRole, Qt.ItemDataRole.ToolTipRole)):
+            return self.rows[index.row()][index.column()]
+        return None
+
+    def headerData(self, section, orientation, role=Qt.ItemDataRole.DisplayRole):
+        if role == Qt.ItemDataRole.DisplayRole and orientation == Qt.Orientation.Horizontal:
+            return self.headers[section] if 0 <= section < len(self.headers) else None
+        return super().headerData(section, orientation, role)
+
+    def clear(self):
+        self.beginResetModel()
+        self.rows.clear()
+        self.positions.clear()
+        self.endResetModel()
+
+    def upsert(self, changes):
+        additions = []
+        for key, values in changes.items():
+            values = tuple(str(value) for value in values)
+            row = self.positions.get(key)
+            if row is None:
+                additions.append((key, values))
+            elif self.rows[row] != values:
+                self.rows[row] = values
+                self.dataChanged.emit(self.index(row, 0), self.index(row, len(self.headers)-1))
+        if additions:
+            first = len(self.rows)
+            self.beginInsertRows(QModelIndex(), first, first + len(additions)-1)
+            for key, values in additions:
+                self.positions[key] = len(self.rows)
+                self.rows.append(values)
+            self.endInsertRows()
 
 
 class TranscriptThread(QThread):
@@ -35,7 +85,7 @@ class TranscriptThread(QThread):
         try:
             batch = self.batch_factory(self.urls, self.folder, choices=self.choices,
                                        cancelled=self.cancelled.is_set,
-                                       progress=lambda stage, data: self.update.emit(stage, copy.deepcopy(data)))
+                                       progress=lambda stage, data: self.update.emit(stage, batch.progress_snapshot()))
             self.output_root = batch.root
             self.result.emit(batch.run(retry_failed=self.retry))
         except SourceError as exc:
@@ -79,13 +129,15 @@ class TranscriptPanel(QWidget):
         self.scan_summary = QLabel('Discovery has not started.'); self.scan_summary.setWordWrap(True)
         layout.addWidget(self.summary); layout.addWidget(self.scan_summary)
         self.progress = QProgressBar(); layout.addWidget(self.progress)
-        self.inputs = QTableWidget(0,3); self.inputs.setHorizontalHeaderLabels(['Input / target','Discovery','Reason'])
+        self.inputs = QTableView()
+        self.inputs.setModel(ResultModel(['Input / target','Discovery','Reason'], self.inputs))
         self.inputs.horizontalHeader().setSectionResizeMode(0,QHeaderView.ResizeMode.Stretch)
         self.inputs.setMaximumHeight(120); layout.addWidget(self.inputs)
-        self.results = QTableWidget(0,4); self.results.setHorizontalHeaderLabels(['Video','Status','Track','Reason'])
+        self.results = QTableView()
+        self.results.setModel(ResultModel(['Video','Status','Track','Reason'], self.results))
         self.results.horizontalHeader().setSectionResizeMode(0,QHeaderView.ResizeMode.Stretch)
         for table in (self.inputs,self.results):
-            table.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
+            table.setEditTriggers(QTableView.EditTrigger.NoEditTriggers)
         layout.addWidget(self.results)
         row=QHBoxLayout(); self.start=QPushButton('Extract / Resume'); self.retry=QPushButton('Retry failed')
         self.cancel=QPushButton('Cancel'); self.open_folder=QPushButton('Open folder')
@@ -126,7 +178,7 @@ class TranscriptPanel(QWidget):
             QMessageBox.warning(self,'Choices changed','Use Extract / Resume after changing inputs or export choices.'); return
         if identity != self._run_identity:
             self._result=None; self._output_root=None
-            self.inputs.setRowCount(0); self.results.setRowCount(0)
+            self.inputs.model().clear(); self.results.model().clear()
             self.scan_summary.setText("Discovery has not started for these inputs.")
         self._run_identity=identity
         if self.settings:
@@ -151,26 +203,30 @@ class TranscriptPanel(QWidget):
     @Slot(str,object)
     def _update(self,stage,data):
         self._result=data
-        counts=data['counts']; complete=sum(i['state']=='complete' for i in data['inputs'])
-        self.scan_summary.setText(f'Discovery complete for {complete}/{len(data["inputs"])} inputs. Coverage is limited to accessible entries returned by each source.')
+        counts=data['counts']
+        if 'video_rows' in data:
+            input_count=data['input_count']; complete=data['complete_inputs']
+            input_rows=data['input_rows']; video_rows=data['video_rows']
+        else:
+            input_count=len(data['inputs']); complete=sum(i['state']=='complete' for i in data['inputs'])
+            input_rows={i:(record['target'] or record['url'],record['state'],record['reason'])
+                        for i,record in enumerate(data['inputs'])}
+            video_rows={key:(record['title'],record['status'],
+                             f'{record.get("track",{}).get("language", "")} {record.get("track",{}).get("kind", "")}',record['reason'])
+                        for key,record in data['videos'].items()}
+        self.scan_summary.setText(f'Discovery complete for {complete}/{input_count} inputs. Coverage is limited to accessible entries returned by each source.')
         self.summary.setText(f'{stage}: discovered {counts["discovered"]}; attempted {counts["attempted"]}; exported {counts["exported"]}; absent {counts["caption_absent"]}; inaccessible {counts["inaccessible"]}; failed {counts["failed"]}; pending {counts["pending"]}')
         if stage=='Scanning': self.progress.setRange(0,0)
         else:
             self.progress.setRange(0,100)
             total=counts['discovered']; self.progress.setValue(int((total-counts['pending'])*100/total) if total else 0)
-        self.inputs.setRowCount(len(data['inputs']))
-        for row,record in enumerate(data['inputs']):
-            for col,value in enumerate((record['target'] or record['url'],record['state'],record['reason'])):
-                self.inputs.setItem(row,col,QTableWidgetItem(str(value)))
-        self.results.setRowCount(len(data['videos']))
-        for row,record in enumerate(data['videos'].values()):
-            track=record.get('track') or {}
-            for col,value in enumerate((record['title'],record['status'],f'{track.get("language", "")} {track.get("kind", "")}',record['reason'])):
-                item=QTableWidgetItem(str(value)); item.setToolTip(str(value)); self.results.setItem(row,col,item)
+        self.inputs.model().upsert(input_rows)
+        self.results.model().upsert(video_rows)
 
     @Slot(object)
     def _finished_result(self,data):
-        self._update('Cancelled' if data['cancelled'] else 'Finished',data)
+        self._update('Cancelled' if data['cancelled'] else
+                     'Rate limited' if data.get('halt_reason') else 'Finished',data)
 
     @Slot(str)
     def _error(self,message):

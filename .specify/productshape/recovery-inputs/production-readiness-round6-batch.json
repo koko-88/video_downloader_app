@@ -1,0 +1,138 @@
+{
+  "findings": [
+    {
+      "source": "E-0051",
+      "classification": "represented",
+      "artifacts": [
+        "FR-VD-002",
+        "FR-VD-003",
+        "FR-VD-007",
+        "FR-VD-008",
+        "FR-VD-011",
+        "FR-VD-012",
+        "SB-RESUME-VERIFIED",
+        "SB-DISCOVERY-INTERRUPTED"
+      ],
+      "complete": true,
+      "acceptChanged": true,
+      "note": "Observed independent fixture outcomes for pagination exhaustion, nested/mixed deduplication, interrupted scans, exact retries, verified reuse, lock/path safety and integrity-conflict preservation. New structured examples recover existing documented scenarios; tests corroborate rather than establish new product intent."
+    },
+    {
+      "source": "E-0052",
+      "classification": "represented",
+      "artifacts": [
+        "FR-VD-006",
+        "FR-VD-011"
+      ],
+      "complete": true,
+      "acceptChanged": true,
+      "note": "Observed exact golden cue/text/Markdown/JSON exports, Unicode/overlap preservation, timed round trips and malformed/oversized payload refusal; technical limits are not a complete external-format compliance claim."
+    },
+    {
+      "source": "E-0053",
+      "classification": "represented",
+      "artifacts": [
+        "FR-VD-010",
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY"
+      ],
+      "complete": true,
+      "acceptChanged": true,
+      "note": "Observed build destination/output collision preservation and exact installer-source plumbing. Stub compiler checks are explicitly distinct from real frozen/install/uninstall acceptance."
+    },
+    {
+      "source": "E-0054",
+      "classification": "represented",
+      "artifacts": [
+        "FR-VD-001",
+        "FR-VD-002",
+        "FR-VD-004",
+        "FR-VD-005",
+        "FR-VD-011",
+        "SB-LANGUAGE-UNAVAILABLE",
+        "SB-CAPTIONS-ABSENT"
+      ],
+      "complete": true,
+      "acceptChanged": true,
+      "note": "Observed metadata-only source contract, actual local HTTP track headers, exact language/track preferences, sanitized errors and installed extractor continuation shapes. Language and absent-caption examples derive from existing FR-004/005/009, not mocked success alone."
+    },
+    {
+      "source": "E-0055",
+      "classification": "represented",
+      "artifacts": [
+        "FR-VD-007",
+        "FR-VD-010",
+        "FR-VD-012",
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY"
+      ],
+      "complete": true,
+      "acceptChanged": true,
+      "note": "Observed native Qt event-loop, thread affinity/lifetime, settings isolation/normalization, bitrate preservation, queue stop/retry/history warnings, large result model and bounded delta-volume checks. Ordinary config/history preservation is separately measured around the full suite."
+    },
+    {
+      "source": "E-0056",
+      "classification": "represented",
+      "artifacts": [
+        "FR-VD-010"
+      ],
+      "complete": true,
+      "acceptChanged": true,
+      "note": "Observed explicit opt-in external media regression, with real nonempty output assertions. Its default skip is not live PASS and it does not certify a complete channel caption archive."
+    },
+    {
+      "source": "E-0057",
+      "classification": "represented",
+      "artifacts": [
+        "FR-VD-010",
+        "QR-DESKTOP-RELIABILITY"
+      ],
+      "complete": true,
+      "acceptChanged": true,
+      "note": "Observed existing bundled local Deno/Node then PATH discovery without remote component retrieval. File presence selects a candidate runtime; actual frozen execution remains independently checked."
+    },
+    {
+      "source": "E-0058",
+      "classification": "represented",
+      "artifacts": [
+        "FR-VD-011",
+        "QR-SECURITY"
+      ],
+      "complete": true,
+      "acceptChanged": true,
+      "note": "Observed shared URL/userinfo/query/header/secret redaction before message/exception/stack handling. Existing behavior and hostile fixtures corroborate documented credential protection; no private data used as recovery evidence."
+    },
+    {
+      "source": "E-0059",
+      "classification": "represented",
+      "artifacts": [
+        "FR-VD-010",
+        "QR-DESKTOP-RELIABILITY"
+      ],
+      "complete": true,
+      "acceptChanged": true,
+      "note": "Observed real local HTTP WebM download and FFmpeg MP4 remux validated with FFprobe, isolated temporary storage and bounded server/process cleanup. No provider live acceptance inferred from this fixture."
+    },
+    {
+      "source": "E-0060",
+      "classification": "represented",
+      "artifacts": [
+        "FR-VD-003",
+        "FR-VD-006",
+        "FR-VD-007",
+        "FR-VD-008",
+        "FR-VD-010",
+        "FR-VD-011",
+        "QR-DESKTOP-RELIABILITY",
+        "QR-SECURITY"
+      ],
+      "complete": true,
+      "acceptChanged": true,
+      "note": "Observed behavioral regressions for resumable request identity, strict manifests, non-overwrite, surfaced limit stops, history integrity, timed paragraph semantics, actual-file refusal, runtime enablement and privacy. Existing production constraints remain the authority."
+    }
+  ],
+  "leads": [],
+  "questions": [],
+  "retractions": [],
+  "familyProbes": []
+}

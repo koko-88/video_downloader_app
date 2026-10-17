@@ -8,7 +8,7 @@ Canonical product intent: `PRODUCT.md`; feature contract: `specs/transcript-extr
 | VD-01 | Existing video/audio download behavior | EXISTING — preserve | Regression coverage for format selection, queue, cancellation, cookies, packaging |
 | VD-02 | Transcript extraction + multi-format export | IMPLEMENTED — acceptance partial; see feature plan | Product scenarios and acceptance matrix; URL discovery, track acquisition, format conversion, UI/queue integration |
 | VD-03 | Optional local ASR fallback | CONDITIONAL PART OF VD-02 | Verified backend, storage, model licensing/performance, cancellation, offline and packaging behavior; must not be silently assumed |
-| VD-04 | Release verification & packaged desktop delivery | PARTIAL — frozen Windows runtime and shortcut verified; installer/review pending | VD-02/03 scope, Windows runtime, installer checks, independent review and receipt |
+| VD-04 | Release verification & packaged desktop delivery | PARTIAL — source/frozen/installer machine checks and independent issue review recorded; live captions and human acceptance pending | VD-02/03 scope, Windows runtime, installer checks, independent review and receipt |
 
 ## Dependencies
 VD-02 cannot be called complete until all accessible videos in supported target inputs are accounted for, not just returned first-page entries. VD-03, if admitted into scope, needs explicit technical acceptance and verified local resources. Features involving existing downloader changes require VD-01 regression pass. Scope changes update PRODUCT first and affected specification; no drift allowed.

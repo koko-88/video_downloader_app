@@ -21,7 +21,7 @@
 
 ### Actual control-loop entry points (no new packages)
 
-`scripts/feature_loop.py` is a runnable standard-library-only deterministic Sensor/Controller. Call it with the existing Python interpreter. `measure` inspects FR/SC structural traceability and presence of plan/tasks; `next --run-checks` runs fixed compileall/unittest checks and issues an action (BLOCKED / PLAN_OR_RECONCILE / DIAGNOSE / IMPLEMENT_ONE / VERIFY_RELEASE). It does not write production code or run a background daemon. Current repo missing plan/tasks is deliberate and visible; Codex generates those with existing Spec Kit skills. `docs/workflows/loop-engineering.md` contains complete expected signals, proof limits, source principles, capability gaps and tomorrow's optional installation queue.
+`scripts/feature_loop.py` is a runnable standard-library-only deterministic Sensor/Controller. Call it with the existing Python interpreter. `measure` inspects FR/SC structural traceability and presence of plan/tasks; `next --run-checks` runs fixed compileall/unittest checks and issues an action (BLOCKED / PLAN_OR_RECONCILE / DIAGNOSE / IMPLEMENT_ONE / VERIFY_RELEASE). It does not write production code or run a background daemon. Continue the plan/tasks selected by the current feature pointer; generate missing artifacts only after checking actual state. `docs/workflows/loop-engineering.md` contains expected signals, proof limits, source principles and the original capability-gap assessment. Current capability evidence belongs in the feature plan.
 
 ```powershell
 .\.venv\Scripts\python.exe scripts\feature_loop.py measure
@@ -73,3 +73,7 @@ No unverified tool is mandatory merely because it is installed or popular. A cap
 - REA: https://github.com/morluto/rea
 - Linear MCP for Codex: https://linear.app/docs/mcp
 - Existing project tests, scripts and package metadata are the local authority for the installed application.
+
+
+## Current worktree note (2026-10-16)
+Historical references above to missing plan/tasks or unimplemented transcript suites describe the initial repository assessment. The current worktree contains the implementation, plan/tasks and deterministic/native acceptance suites. Use the latest production-hardening section of specs/transcript-extraction/plan.md and its task checkpoints for actual capabilities and evidence; do not recreate artifacts or interpret historical NOT_RUN/tool absence as current state. Build entrypoints now preserve existing outputs and require fresh destinations. Pstack is configured with the human-selected inherit-parent roles; no external autonomous runner is configured.

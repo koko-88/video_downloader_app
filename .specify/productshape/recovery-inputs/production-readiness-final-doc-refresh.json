@@ -1,0 +1,12 @@
+{
+  "findings": [
+    {
+      "source": "E-0011",
+      "acceptChanged": true
+    },
+    {
+      "source": "E-0014",
+      "acceptChanged": true
+    }
+  ]
+}

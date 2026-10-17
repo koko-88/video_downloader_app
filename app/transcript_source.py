@@ -9,6 +9,8 @@ from yt_dlp.extractor import gen_extractor_classes
 from yt_dlp.networking import Request
 
 from app.captions import MAX_BYTES, parse_captions
+from app.errors import is_rate_limited_error
+from app.js_runtime import resolve_js_runtimes
 from app.cookie_fallback import browsers_to_try, should_attempt_cookie_fallback
 
 
@@ -28,7 +30,7 @@ def classified_error(exc: Exception) -> SourceError:
     text = str(exc).lower()
     if '10013' in text or 'network access is denied' in text:
         return SourceError('network_access_denied')
-    if any(x in text for x in ('429', 'too many requests', 'rate limit', 'throttl')):
+    if is_rate_limited_error(exc):
         return SourceError('rate_limited')
     if any(x in text for x in ('private', 'deleted', 'unavailable', 'not available', '403', '401', 'sign in', 'permission', 'drm', 'geo', 'region', 'members-only', 'login required')):
         return SourceError('inaccessible', 'inaccessible')
@@ -111,7 +113,8 @@ class TranscriptSource:
     def _options(self, browser=None):
         opts = dict(skip_download=True, ignoreerrors=False, extract_flat=False,
                     quiet=True, no_warnings=False, logger=self.log, socket_timeout=20,
-                    retries=1, extractor_retries=1, noplaylist=False, cachedir=False)
+                    retries=1, extractor_retries=1, noplaylist=False, cachedir=False,
+                    js_runtimes=resolve_js_runtimes(), remote_components=[])
         if browser:
             opts['cookiesfrombrowser'] = (browser,)
         return opts
@@ -155,7 +158,9 @@ class TranscriptSource:
                     return self.ydl.extract_info(target, download=False, process=False, ie_key=ie_key)
                 except Cancelled:
                     raise
-                except Exception:
+                except Exception as fallback_error:
+                    if is_rate_limited_error(fallback_error):
+                        raise classified_error(fallback_error) from None
                     continue
             raise SourceError('authentication_unavailable', 'inaccessible') from None
 

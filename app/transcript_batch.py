@@ -4,6 +4,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import re
 import tempfile
 import time
 from contextlib import contextmanager
@@ -30,7 +31,8 @@ class Choices:
     local_asr: bool = False
 
     def __post_init__(self):
-        if (not self.language.strip() or len(self.language) > 80
+        if (not isinstance(self.language, str) or not self.language.strip() or len(self.language) > 80
+                or type(self.local_asr) is not bool
                 or self.preference not in ('manual-first', 'auto-first', 'manual-only', 'auto-only')
                 or not self.formats or len(set(self.formats)) != len(self.formats)
                 or any(fmt not in FORMATS for fmt in self.formats)):
@@ -42,8 +44,13 @@ class Choices:
 
 
 def contained(root: Path, relative: str) -> Path:
+    if not isinstance(relative, str) or not relative:
+        raise SourceError('unsafe_output_path')
     path = Path(relative)
-    if path.is_absolute() or path.drive or '..' in path.parts:
+    if (path.is_absolute() or path.drive or '..' in path.parts
+            or any(part.endswith((' ', '.')) or re.search(r'[<>:"|?*\x00-\x1f]', part)
+                   or re.fullmatch(r'(?i)(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])(?:\..*)?', part)
+                   for part in path.parts)):
         raise SourceError('unsafe_output_path')
     candidate = root / path
     try:
@@ -90,6 +97,9 @@ class TranscriptBatch:
         self.manifest_path = contained(self.root, 'manifest.json')
         self.document = None
         self._last_scan_save = 0.0
+        self._request_urls = {}
+        self._changed_videos = {}
+        self._changed_inputs = set(range(len(self.urls)))
 
     def check(self):
         if self.cancelled():
@@ -100,19 +110,57 @@ class TranscriptBatch:
         if self.manifest_path.exists():
             try:
                 data = json.loads(self.manifest_path.read_text(encoding='utf-8'))
-                if (data['schema'] != 1 or data['urls'] != inputs
+                if (type(data['schema']) is not int or data['schema'] != 1 or data['urls'] != inputs
                         or data['choices'] != self.choices.document()
                         or not isinstance(data['videos'], dict)
+                        or not isinstance(data['inputs'], list)
+                        or type(data['cancelled']) is not bool
+                        or data.get('halt_reason', '') not in ('', 'rate_limited')
                         or len(data['inputs']) != len(inputs)):
                     raise ValueError()
-                for key, video in data['videos'].items():
-                    if (video['status'] not in STATUSES or not isinstance(video['attempts'], int)
-                            or fingerprint([video['extractor'], video['video_id']]) != key
-                            or not isinstance(video['inputs'], list)):
+                for index, item in enumerate(data['inputs']):
+                    if (not isinstance(item, dict) or item['url'] != inputs[index]
+                            or item['state'] not in ('pending', 'scanning', 'complete', 'incomplete', 'failed')
+                            or not isinstance(item['target'], str) or not isinstance(item['reason'], str)
+                            or not isinstance(item['videos'], list)
+                            or any(not isinstance(key, str) or key not in data['videos'] for key in item['videos'])
+                            or len(set(item['videos'])) != len(item['videos'])):
                         raise ValueError()
-                    for output in video.get('outputs', []):
+                for key, video in data['videos'].items():
+                    if (not isinstance(video, dict) or video['status'] not in STATUSES
+                            or type(video['attempts']) is not int or video['attempts'] < 0
+                            or not isinstance(video['extractor'], str) or not video['extractor']
+                            or not isinstance(video['video_id'], str) or not video['video_id']
+                            or fingerprint([video['extractor'], video['video_id']]) != key
+                            or not isinstance(video['inputs'], list) or not video['inputs']
+                            or any(type(i) is not int or not 0 <= i < len(inputs) for i in video['inputs'])
+                            or len(set(video['inputs'])) != len(video['inputs'])
+                            or not isinstance(video['source_url'], str)
+                            or public_url(video['source_url']) != video['source_url']
+                            or not isinstance(video['title'], str) or not isinstance(video['reason'], str)
+                            or not isinstance(video['track'], dict)
+                            or not isinstance(video['outputs'], list)):
+                        raise ValueError()
+                    if any((index in video['inputs']) != (key in item['videos'])
+                           for index, item in enumerate(data['inputs'])):
+                        raise ValueError()
+                    paths = set()
+                    for output in video['outputs']:
+                        if (not isinstance(output, dict) or not isinstance(output['path'], str)
+                                or not isinstance(output['sha256'], str)
+                                or not re.fullmatch('[0-9a-f]{64}', output['sha256'])
+                                or output['path'] in paths):
+                            raise ValueError()
                         contained(self.root, output['path'])
+                        paths.add(output['path'])
+                    if video['status'] == 'succeeded' and (
+                            video['attempts'] == 0 or len(paths) != len(self.choices.formats)
+                            or {Path(p).suffix[1:] for p in paths} != set(self.choices.formats)
+                            or any(not isinstance(video['track'].get(field), str)
+                                   for field in ('language', 'kind', 'representation', 'acquisition'))):
+                        raise ValueError()
                 self.document = data
+                self._changed_videos.update(data['videos'])
                 return
             except (KeyError, TypeError, ValueError, OSError):
                 raise SourceError('invalid_manifest_preserved') from None
@@ -148,6 +196,22 @@ class TranscriptBatch:
         self.save()
         self.progress(stage, self.document)
 
+    def progress_snapshot(self):
+        """Copy only display values changed since the previous worker notification."""
+        videos = self.document['videos']
+        inputs = self.document['inputs']
+        snapshot = dict(counts=dict(self.document['counts']),
+                        input_count=len(inputs),
+                        complete_inputs=sum(item['state'] == 'complete' for item in inputs),
+                        input_rows={i: (inputs[i]['target'] or inputs[i]['url'], inputs[i]['state'], inputs[i]['reason'])
+                                    for i in sorted(self._changed_inputs)},
+                        video_rows={key: (videos[key]['title'], videos[key]['status'],
+                                          f'{videos[key]["track"].get("language", "")} {videos[key]["track"].get("kind", "")}',
+                                          videos[key]['reason']) for key in self._changed_videos})
+        self._changed_inputs.clear()
+        self._changed_videos.clear()
+        return snapshot
+
     def _add(self, info, index, fallback, position):
         extractor = str(info.get('extractor_key') or info.get('ie_key') or info.get('extractor') or 'Unknown')
         if extractor.lower().startswith('youtube'):
@@ -158,6 +222,10 @@ class TranscriptBatch:
         if extractor == 'Youtube' and info.get('id'):
             from urllib.parse import urlencode
             source_url = 'https://www.youtube.com/watch?' + urlencode({'v': video_id})
+        # Request URLs stay in memory; persisted provenance intentionally strips unknown queries.
+        self._request_urls[key] = str(source_url)
+        self._changed_videos[key] = None
+        self._changed_inputs.add(index)
         record = self.document['videos'].get(key)
         if record is None:
             inaccessible = not info.get('id') or info.get('availability') in ('private', 'premium_only', 'subscriber_only', 'needs_auth')
@@ -214,6 +282,8 @@ class TranscriptBatch:
                         record = self.document['videos'][key]
                         if record['status'] != 'succeeded':
                             record.update(status=exc.status, reason=exc.reason)
+                    if exc.reason == 'rate_limited':
+                        raise
             expected = info.get('playlist_count')
             if expected is not None and int(expected) != count:
                 raise SourceError('collection_count_mismatch')
@@ -251,7 +321,10 @@ class TranscriptBatch:
             with os.fdopen(fd, 'wb') as stream:
                 stream.write(data); stream.flush(); os.fsync(stream.fileno())
             try:
-                os.link(name, path)  # exclusive atomic publication; never replace a user file
+                if os.name == 'nt':
+                    os.rename(name, path)  # Windows rename refuses existing files, including on exFAT.
+                else:
+                    os.link(name, path)
             except FileExistsError:
                 if path.stat().st_size != len(data) or self._hash_file(path) != hashlib.sha256(data).hexdigest():
                     raise SourceError('output_conflict_preserved') from None
@@ -261,10 +334,11 @@ class TranscriptBatch:
     def _process(self, key, record):
         self.check()
         record['attempts'] += 1
+        self._changed_videos[key] = None
         self.notify('Extracting')
         try:
             with self.source_factory(self.cancelled) as source:
-                info = source.extract(record['source_url'])
+                info = source.extract(self._request_urls.get(key, record['source_url']))
                 # A video reference may resolve through a transparent URL.
                 for _ in range(20):
                     if not isinstance(info, dict):
@@ -278,6 +352,7 @@ class TranscriptBatch:
                     raise SourceError('video_identity_changed')
                 cues, track = source.captions(info, self.choices.language, self.choices.preference)
             record['track'] = track
+            self._changed_videos[key] = None
             self.check()
             self.notify('Exporting')
             provenance = dict(source_url=record['source_url'], extractor=record['extractor'],
@@ -301,22 +376,33 @@ class TranscriptBatch:
             if reason == 'caption_absent' and self.choices.local_asr:
                 reason = 'caption_absent; local_asr_backend_model_unavailable'
             record.update(status=error.status, reason=reason)
+        finally:
+            self._changed_videos[key] = None
 
     def run(self, retry_failed=False):
         with batch_lock(self.root):
             self._load()
             self.document['cancelled'] = False
+            self.document['halt_reason'] = ''
             try:
                 for record in self.document['videos'].values():
                     if record['status'] == 'succeeded' and not self._verify_outputs(record):
                         record.update(status='failed', reason='output_integrity_changed')
-                if not retry_failed:
+                self._changed_videos.update(self.document['videos'])
+                if not retry_failed or any(v['extractor'] != 'Youtube' and v['status'] == 'failed'
+                                           for v in self.document['videos'].values()):
                     for index, url in enumerate(self.urls):
                         input_record = self.document['inputs'][index]
-                        if input_record['state'] == 'complete':
+                        # Rehydrate non-YouTube request identities after process restart without
+                        # persisting signed/unknown query parameters in the manifest.
+                        rehydrate = any(self.document['videos'][key]['extractor'] != 'Youtube'
+                                        and self.document['videos'][key]['status'] == ('failed' if retry_failed else 'pending')
+                                        and key not in self._request_urls for key in input_record['videos'])
+                        if not rehydrate and (retry_failed or input_record['state'] == 'complete'):
                             continue
                         self.check()
                         input_record.update(state='scanning', reason='')
+                        self._changed_inputs.add(index)
                         self.notify('Scanning')
                         try:
                             input_record['target'] = public_url(normalize_target(url))
@@ -328,16 +414,27 @@ class TranscriptBatch:
                             input_record['state'] = 'complete'
                         except Cancelled:
                             input_record.update(state='incomplete', reason='cancelled')
+                            self._changed_inputs.add(index)
                             raise
                         except Exception as exc:
                             error = classified_error(exc)
                             input_record.update(state='incomplete' if input_record['videos'] else 'failed', reason=error.reason)
+                            if error.reason == 'rate_limited':
+                                self.document['halt_reason'] = error.reason
+                        self._changed_inputs.add(index)
                         self.notify('Scanning')
+                        if self.document['halt_reason']:
+                            break
                 for key, record in self.document['videos'].items():
+                    if self.document['halt_reason']:
+                        break
                     if (record['status'] == 'pending' and not retry_failed) or (record['status'] == 'failed' and retry_failed):
                         self._process(key, record)
+                        if record['reason'] == 'rate_limited':
+                            self.document['halt_reason'] = 'rate_limited'
                         self.notify('Processed')
             except Cancelled:
                 self.document['cancelled'] = True
-            self.notify('Cancelled' if self.document['cancelled'] else 'Finished')
+            self.notify('Cancelled' if self.document['cancelled'] else
+                        'Rate limited' if self.document['halt_reason'] else 'Finished')
             return self.document

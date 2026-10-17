@@ -24,14 +24,14 @@ Run from the repository with its **existing** Python interpreter (Python 3.10+).
 .\.venv\Scripts\python.exe -m unittest tests.test_feature_loop -v
 ```
 
-If no such venv exists, Codex must identify the interpreter already used by the app; do not install anything tonight. `--run-checks` executes only fixed syntax and unittest commands with subprocess timeouts, not external network smoke. The syntax check may generate normal ignored `__pycache__` files. A nonzero exit indicates checks failed or a blocking structural finding; parse JSON for the cause. The existing YouTube smoke is skipped by default.
+If no such venv exists, Codex must identify the interpreter already used by the app; new tool installation requires separate user authorization. `--run-checks` executes only fixed syntax and unittest commands with subprocess timeouts, not external network smoke. The syntax check may generate normal ignored `__pycache__` files. A nonzero exit indicates checks failed or a blocking structural finding; parse JSON for the cause. The existing YouTube smoke is skipped by default.
 
 **Guarantee boundary:** Explicit FR/SC mentions in tasks are structural traceability, NOT proof the right feature tests exist. `PASS_WITH_SKIPS` is not a full test pass. `VERIFY_RELEASE` means *run final acceptance* and is **not** a release certificate. Full pagination, subtitle semantics, native Windows GUI, packaging, user permissions, external reviews and optional ASR require their own actual evidence.
 
 ## End-to-end control policy for Codex
 
 1. Inspect live worktree and existing tool registration, then read `AGENTS.md`, Product, Roadmap, Spec, the workflow and this control contract. Preserve unrelated changes; do not assume connected GitHub/Linear/Qodo from ChatGPT implies connectivity locally.
-2. **Before feature implementation:** resolve feature pointer with `.specify/scripts/powershell/check-prerequisites.ps1 -Json -PathsOnly` and inspect `specify integration status --json`. The first published `next` result is expected to be `PLAN_OR_RECONCILE` because `plan.md` and `tasks.md` do not yet exist. Use the installed Spec Kit plan/tasks skills to write both, based on source-backed decisions and all FR/SC identifiers. Do not create a competing spec or silently bypass Spec Kit's human review gates.
+2. **Before feature implementation:** resolve feature pointer with `.specify/scripts/powershell/check-prerequisites.ps1 -Json -PathsOnly` and inspect `specify integration status --json`. Measure actual current state rather than assuming a controller result. If the selected feature lacks plan/tasks, use the installed Spec Kit skills to create them from source-backed decisions and all FR/SC identifiers; otherwise continue the existing artifacts. Do not create a competing spec or silently bypass Spec Kit's human review gates.
 3. Perform `next --run-checks`. Treat controller result as **proposal only**: confirm task dependencies, approved requirements, change budget and exit test. For `PLAN_OR_RECONCILE` fix missing traceability; for `DIAGNOSE` correct regressions before taking new work; for `IMPLEMENT_ONE` implement a reviewable increment with the needed real behavioral tests.
 4. Measure after every change; compare before/after, preserve existing download behavior, mark a checkbox complete only after evidence. When two failed repairs share an assumption, apply **Pstack attack-the-premise**: state the premise and find an observation that distinguishes whether it is false before writing another fix. Three repeated failures is a resource ceiling, not the engineering design.
 5. If controller returns `VERIFY_RELEASE`, separately execute all feature acceptance contracts, required true-user desktop/UI verification, installer, completeness manifest, security and independent review. Mark absent evidence NOT_RUN/BLOCKED; never fake success.
@@ -41,7 +41,7 @@ If no such venv exists, Codex must identify the interpreter already used by the 
 
 **Observation** (exact check, fixture, PASS/FAIL/SKIPPED/BLOCKED, revision) → **measured gap** (specific FR/SC mismatch) → **controller decision** (one small, dependency-safe correction) → **actuation** (source diff and targeted test) → **feedback** (repeat same check and regression) → **checkpoint or documented halt**. Never conflate the changed source with the checked behavior.
 
-## Pre-implementation gap register — checked against published GitHub main
+## Historical pre-implementation gap register — initial assessment
 
 | Issue | Evidence/state | Agent action |
 |---|---|---|
@@ -63,3 +63,7 @@ If no such venv exists, Codex must identify the interpreter already used by the 
 | Reproducibility | Current repo uses Python requirements; no accepted pin policy | Choose compatible pins and reusable skill references after actual evidence |
 
 **Tomorrow's optional tool queue (not an installation task tonight):** HumanLayer/Pstack skills where missing, pytest-qt/Ruff where justified by tests, then compare Ralph TUI with Codex native headless facilities and Symphony given Windows constraints and user preference for a single agent. Exactly one runner should own task iteration. The Git repo owns canonical tasks; Linear mirrors them, not a second untrusted task source.
+
+
+## Current worktree note (2026-10-16)
+Historical references above to missing plan/tasks or unimplemented transcript suites describe the initial repository assessment. The current worktree contains the implementation, plan/tasks and deterministic/native acceptance suites. Use the latest production-hardening section of specs/transcript-extraction/plan.md and its task checkpoints for actual capabilities and evidence; do not recreate artifacts or interpret historical NOT_RUN/tool absence as current state. Build entrypoints now preserve existing outputs and require fresh destinations. Pstack is configured with the human-selected inherit-parent roles; no external autonomous runner is configured.
