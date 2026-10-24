@@ -13,7 +13,6 @@ from app.downloader_worker import DownloaderWorker
 from app.errors import RATE_LIMITED_MSG
 from app.formats import FORMAT_MP3, normalize_format_label
 from app.history import append_entry
-from app.ydl_options import reset_progress_throttle
 
 logger = logging.getLogger("videodownloader")
 
@@ -111,7 +110,6 @@ class DownloadQueue(QObject):
         self._audio_quality = audio_quality
         self._cancel_requested = False
         self._batch_completed = 0
-        reset_progress_throttle()
 
         new_jobs = [
             DownloadJob(url=url, row_index=row_index) for row_index, url in job_specs
@@ -153,7 +151,6 @@ class DownloadQueue(QObject):
         self._cancel_requested = False
         self._batch_completed = 0
         self._active = True
-        reset_progress_throttle()
         self.overall_progress.emit(0)
         self._process_next()
 

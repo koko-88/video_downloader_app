@@ -4,8 +4,10 @@ from __future__ import annotations
 
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 from app.errors import (
+    DownloadCancelled,
     FORMAT_UNAVAILABLE_MSG,
     FFMPEG_FAILURE_MSG,
     NETWORK_ERROR_MSG,
@@ -54,6 +56,43 @@ class FormatSelectionTests(unittest.TestCase):
         self.assertNotIn("140", opts["format"])
         self.assertNotIn("height=", opts["format"])
         self.assertTrue(any(s.startswith("vcodec:") for s in opts["format_sort"]))
+
+    def test_progress_is_independent_for_each_download_and_format_retry(self):
+        first, second, retry = [], [], []
+        first_hook = self._opts(on_progress=first.append)['progress_hooks'][0]
+        second_hook = self._opts(on_progress=second.append)['progress_hooks'][0]
+        retry_hook = self._opts(on_progress=retry.append, use_generic_fallback=True)['progress_hooks'][0]
+        event = dict(status='downloading', total_bytes=100, downloaded_bytes=10)
+        with patch('app.ydl_options.time.monotonic', return_value=1.0):
+            first_hook(event)
+            second_hook(event)
+            retry_hook(event)
+        self.assertEqual(first, [10])
+        self.assertEqual(second, [10])
+        self.assertEqual(retry, [10])
+
+    def test_progress_throttles_and_stays_below_completion_until_worker_finishes(self):
+        progress = []
+        hook = self._opts(on_progress=progress.append)['progress_hooks'][0]
+        with patch('app.ydl_options.time.monotonic', side_effect=[0.0, 0.01, 0.2, 0.4]):
+            hook(dict(status='downloading', total_bytes=100, downloaded_bytes=10))
+            hook(dict(status='downloading', total_bytes=100, downloaded_bytes=20))
+            hook(dict(status='downloading', total_bytes_estimate=100, downloaded_bytes=150))
+            hook(dict(status='finished'))
+        self.assertEqual(progress, [10, 99, 99])
+
+    def test_progress_cancellation_is_checked_even_when_throttled_or_unobserved(self):
+        for observed in (True, False):
+            with self.subTest(observed=observed):
+                cancelled = [False]
+                progress = []
+                hook = self._opts(on_progress=progress.append if observed else None,
+                                  is_cancelled=lambda: cancelled[0])['progress_hooks'][0]
+                with patch('app.ydl_options.time.monotonic', return_value=1.0):
+                    hook(dict(status='downloading', total_bytes=100, downloaded_bytes=10))
+                    cancelled[0] = True
+                    with self.assertRaises(DownloadCancelled):
+                        hook(dict(status='downloading', total_bytes=100, downloaded_bytes=20))
 
     def test_1080p_prefers_max_resolution_not_exact_id(self):
         opts = self._opts(video_quality="1080")

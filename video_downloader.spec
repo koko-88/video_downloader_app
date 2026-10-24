@@ -27,6 +27,7 @@ hiddenimports = [
     "app.privacy",
     "app.captions",
     "app.transcript_source",
+    "app.transcript_archive",
     "app.transcript_batch",
     "app.transcript_ui",
     "app.packaged_smoke",

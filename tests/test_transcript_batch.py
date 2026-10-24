@@ -5,7 +5,8 @@ import unittest
 from pathlib import Path
 from types import SimpleNamespace
 from app.captions import Cue
-from app.transcript_batch import Choices, TranscriptBatch, batch_lock, contained
+from app.transcript_archive import batch_lock, contained
+from app.transcript_batch import Choices, TranscriptBatch
 from app.transcript_source import Cancelled, SourceError
 
 BASE = 'https://www.youtube.com/watch?v='
@@ -144,13 +145,16 @@ class BatchTests(unittest.TestCase):
         self.assertEqual(output.read_text(),'USER EDIT')
 
     def test_cancelled_export_reuses_identical_partial_files(self):
-        cancel=[False]; batch=self.batch(cancelled=lambda:cancel[0],choices=Choices(formats=('txt','srt')))
-        original=batch._write_output
-        def write(relative,data): original(relative,data); cancel[0]=True
-        batch._write_output=write; data=batch.run()
+        cancel=[True]
+        batch=self.batch(cancelled=lambda:cancel[0] and any(self.root.rglob('transcript.*')),
+                         choices=Choices(formats=('txt','srt')))
+        data=batch.run()
         self.assertEqual(data['counts']['pending'],1)
-        batch._write_output=original; cancel[0]=False
+        partial={path:path.read_bytes() for path in batch.root.rglob('transcript.*')}
+        self.assertEqual(len(partial),1)
+        cancel[0]=False
         self.assertEqual(batch.run()['counts']['succeeded'],1)
+        self.assertTrue(all(path.read_bytes()==content for path,content in partial.items()))
         self.assertEqual(len(list(batch.root.rglob('transcript.*'))),2)
 
     def test_hostile_title_confined_and_path_tamper_preserved(self):
@@ -160,9 +164,11 @@ class BatchTests(unittest.TestCase):
         record=next(iter(data['videos'].values())); relative=record['outputs'][0]['path']
         self.assertTrue((batch.root/relative).resolve().is_relative_to(batch.root.resolve()))
         self.assertNotIn('..',Path(relative).parts)
-        record['outputs'][0]['path']='../../user.txt'; batch.save(); prior=batch.manifest_path.read_bytes()
+        record['outputs'][0]['path']='../../user.txt'
+        manifest=batch.root/'manifest.json'
+        manifest.write_text(json.dumps(data),encoding='utf-8'); prior=manifest.read_bytes()
         with self.assertRaisesRegex(SourceError,'unsafe_output_path'): batch.run()
-        self.assertEqual(batch.manifest_path.read_bytes(),prior)
+        self.assertEqual(manifest.read_bytes(),prior)
         for path in ('../outside','C:/outside','/outside'):
             with self.assertRaises(SourceError): contained(batch.root,path)
 
@@ -172,9 +178,10 @@ class BatchTests(unittest.TestCase):
             with self.assertRaisesRegex(SourceError,'batch_already_running'): batch.run()
         # OS releases the lock; retained lock file does not prevent resume.
         self.assertEqual(batch.run()['counts']['succeeded'],1)
-        batch.manifest_path.write_text('BROKEN',encoding='utf-8')
+        manifest=batch.root/'manifest.json'
+        manifest.write_text('BROKEN',encoding='utf-8')
         with self.assertRaisesRegex(SourceError,'invalid_manifest_preserved'): batch.run()
-        self.assertEqual(batch.manifest_path.read_text(),'BROKEN')
+        self.assertEqual(manifest.read_text(),'BROKEN')
 
     def test_per_input_failures_do_not_stop_valid_input(self):
         invalid='https://example.invalid/?token=SECRET'

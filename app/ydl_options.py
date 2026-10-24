@@ -30,8 +30,6 @@ CancelCheck = Callable[[], bool]
 GENERIC_FALLBACK_FORMAT = "bestvideo*+bestaudio/best"
 DEFAULT_VIDEO_FORMAT = "bv*+ba/b"
 
-_last_progress_emit = 0.0
-
 _SENSITIVE_LOG_MARKERS = (
     "googlevideo.com",
     "signature=",
@@ -46,26 +44,14 @@ _SENSITIVE_LOG_MARKERS = (
 )
 
 
-def _throttled_emit(callback: ProgressCallback | None, percent: int) -> None:
-    global _last_progress_emit
-    if callback is None:
-        return
-    now = time.monotonic()
-    if percent >= 100 or now - _last_progress_emit >= 0.1:
-        _last_progress_emit = now
-        callback(percent)
-
-
-def reset_progress_throttle() -> None:
-    global _last_progress_emit
-    _last_progress_emit = 0.0
-
-
 def make_progress_hook(
     on_progress: ProgressCallback | None,
     is_cancelled: CancelCheck,
 ) -> Callable:
+    last_emit: float | None = None
+
     def hook(d: dict) -> None:
+        nonlocal last_emit
         if is_cancelled():
             raise DownloadCancelled()
 
@@ -73,11 +59,19 @@ def make_progress_hook(
         if status == "downloading":
             total = d.get("total_bytes") or d.get("total_bytes_estimate")
             downloaded = d.get("downloaded_bytes") or 0
-            if total and total > 0:
-                pct = int(downloaded * 100 / total)
-                _throttled_emit(on_progress, min(max(pct, 0), 99))
+            if not total or total <= 0:
+                return
+            percent = min(max(int(downloaded * 100 / total), 0), 99)
         elif status == "finished":
-            _throttled_emit(on_progress, 99)
+            percent = 99
+        else:
+            return
+
+        if on_progress is not None:
+            now = time.monotonic()
+            if last_emit is None or now - last_emit >= 0.1:
+                last_emit = now
+                on_progress(percent)
 
     return hook
 

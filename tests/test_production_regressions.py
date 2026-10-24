@@ -13,7 +13,8 @@ from unittest.mock import MagicMock, patch
 from app.captions import Cue, export_captions, parse_captions
 from app.downloader_worker import DownloaderWorker
 from app.ffmpeg_resolver import FFmpegInfo
-from app.transcript_batch import Choices, TranscriptBatch, contained
+from app.transcript_archive import contained
+from app.transcript_batch import Choices, TranscriptBatch
 from app.transcript_source import SourceError, TranscriptSource
 from tests.test_transcript_batch import BASE, FixtureSource, video
 
@@ -99,10 +100,11 @@ class ProductionBatchTests(unittest.TestCase):
                 data = copy.deepcopy(original)
                 mutate(data)
                 before = json.dumps(data).encode()
-                batch.manifest_path.write_bytes(before)
+                manifest = batch.root / 'manifest.json'
+                manifest.write_bytes(before)
                 with self.assertRaisesRegex(SourceError, 'invalid_manifest_preserved'):
                     batch.run()
-                self.assertEqual(batch.manifest_path.read_bytes(), before)
+                self.assertEqual(manifest.read_bytes(), before)
 
     def test_windows_alternate_stream_paths_are_rejected(self):
         for name in ('video/transcript.txt:secret', 'video./transcript.txt',
@@ -112,7 +114,7 @@ class ProductionBatchTests(unittest.TestCase):
 
     @unittest.skipUnless(os.name == 'nt', 'Windows publication contract')
     def test_windows_exports_do_not_require_filesystem_hard_links(self):
-        with patch('app.transcript_batch.os.link', side_effect=OSError(errno.ENOTSUP, 'no hard links')):
+        with patch('app.transcript_archive.os.link', side_effect=OSError(errno.ENOTSUP, 'no hard links')):
             batch = self.batch()
             data = batch.run()
         self.assertEqual(data['counts']['succeeded'], 1)
